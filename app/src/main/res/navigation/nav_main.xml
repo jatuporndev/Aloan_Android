@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.aloan.LoanerHomeFragment"
+        android:label="ร้านค้า"
+        tools:layout="@layout/fragment_loaner_home" />
+    <fragment
+        android:id="@+id/nav_notify"
+        android:name="com.example.aloan.LoanerNotifyFragment"
+        android:label="ประวัติ"
+        tools:layout="@layout/fragment_loaner_notify" />
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.example.aloan.LoanerAccountFragment"
+        android:label="หน้าแรก"
+        tools:layout="@layout/fragment_loaner_account" />
+
+
+
+
+</navigation>

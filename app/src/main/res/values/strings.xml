@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Aloan</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--API-->
+    <string name="root_url">http://192.168.1.14:8000/</string>
+    <string name="profileBLoaner_image_url" translatable="false">assets/uploadfile/Loaner/profile/</string>
+    <string name="profileBorrower_image_url" translatable="false">assets/uploadfile/Borrower/profile/</string>
+
+
+    <!--API Loaner-->
+    <string name="Loaner_url">api/Loaner/</string>
+    <string name="LoanerUpdate_url">api/Loaner/update/</string>
+    <string name="loginLoaner_url">api/Loaner/login</string>
+    <string name="registerLoaner_url">api/Loaner/regis</string>
+
+    <!--API Loaner process-->
+    <string name="loaner_borrowlist_url">api/Loaner/list/</string>
+    <string name="loaner_setborrowlist_url">api/setborrowlist/</string>
+    <string name="loaner_showborrowlist_url">api/Loaner/show/</string>
+    <string name="loaner_updateborrowlist_url">api/Loaner/updateborrow/</string>
+    <string name="loaner_setpublic_url">api/setpublic/</string>
+    <string name="loaner_AddCriterion_url">api/AddCriterion/</string>
+    <string name="loaner_showCriterion_url">api/Loaner/showCriterion/</string>
+    <string name="loaner_deleteCriterion_url">api/Loaner/deleteCriterion/</string>
+    <string name="loaner_checkCriterion_url">api/checkCriterion/</string>
+    <string name="loaner_Menu1Request_url">api/Menu1request/</string>
+    <string name="loaner_viewcriterion_url">api/viewCriterion/</string>
+    <string name="loaner_updatecriterion_url">api/UpdateCriterion/</string>
+    <string name="loaner_insertCriterion_url">api/insertCriterion/</string>
+
+
+    <!--API Borrower-->
+    <string name="loginBorrower_url">api/Borrower/login</string>
+    <string name="registerBorrower_url">api/Borrower/regis</string>
+    <string name="Borrower_url">api/Borrower/</string>
+    <string name="showlist_url">api/list/</string>
+    <string name="countmenuBorrower_url">api/count/</string>
+    <string name="BorrowerUpdate_url">api/Borrower/update/</string>
+    <!--API Borrower pin-->
+    <string name="pined_url">api/pined/</string>
+    <string name="viewpined_url">api/viewpined/</string>
+    <string name="addpined_url">api/Addpined/</string>
+    <string name="deletepined_url">api/deletepined/</string>
+    <!--API Borrower request-->
+    <string name="addrequest_url">api/AddRequest/</string>
+    <string name="viewrequest_url">api/viewrequest/</string>
+    <string name="deleterequest_url">api/deleteRequest/</string>
+
+</resources>

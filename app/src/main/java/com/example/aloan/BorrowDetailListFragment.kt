@@ -78,7 +78,7 @@ class BorrowDetailListFragment : Fragment() {
         val sharedPrefer = requireContext().getSharedPreferences(
                 LoginBorrowerActivity().appPreference, Context.MODE_PRIVATE)
         borrowerID = sharedPrefer?.getString(LoginBorrowerActivity().borrowerIdPreference, null)
-
+//test
         recyclerView=root.findViewById(R.id.recyclerView)
         txtmoneyMax=root.findViewById(R.id.txtmoneyMax)
         txtmoneyMin=root.findViewById(R.id.txtmoneyMin)

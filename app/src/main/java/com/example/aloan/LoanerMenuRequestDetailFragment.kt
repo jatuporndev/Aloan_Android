@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 
 
@@ -23,7 +24,8 @@ class LoanerMenuRequestDetailFragment : Fragment() {
     var txtInterestRequest:TextView?=null
     var txtInterest_penaltyRequest:TextView?=null
     var date:TextView?=null
-
+    var back:ImageView?=null
+    var imgpro:ImageView?=null
 
 
     override fun onCreateView(

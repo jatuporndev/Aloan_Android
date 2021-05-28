@@ -86,15 +86,27 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
                 <TextView
+                    android:id="@+id/textView71"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="จำนวนเงินที่ยอมรับ :"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/txtmoneyMin2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+                <TextView
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="ดอกเบี้ย ณ วันที่ส่งคำขอ"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max2" />
 
                 <TextView
                     android:id="@+id/textView31"
@@ -193,15 +205,28 @@
                     android:text="1500.00"
                     android:textColor="@color/mainor"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+                <EditText
+                    android:id="@+id/txtmoneyMin2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="1500.00"
+                    android:textColor="@color/maingree"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin" />
 
                 <TextView
                     android:id="@+id/txtinstullment_max"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:text="1500.00"
@@ -209,7 +234,22 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin2" />
+
+                <EditText
+                    android:id="@+id/txtinstullment_max2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="1500.00"
+                    android:textColor="@color/maingree"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView29"
+                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max" />
 
                 <TextView
                     android:id="@+id/txtnameL"
@@ -310,15 +350,15 @@
                     android:id="@+id/txtin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:text="15%"
 
+                    android:text="15%"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max2" />
 
                 <TextView
                     android:id="@+id/txtinpen"
@@ -364,10 +404,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:text="จำนวนงวด"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin2" />
+
+                <TextView
+                    android:id="@+id/textView72"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="จำนวนงวดที่ยอมรับ :"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/txtinstullment_max2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -450,7 +502,7 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginTop="32dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="24dp"
                     android:text="ไม่ผ่าน"
                     app:backgroundTint="@color/design_default_color_error"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -469,6 +521,29 @@
                     app:backgroundTint="@color/maingree"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/male"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView73"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="21dp"
+                    android:text="ชาย"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

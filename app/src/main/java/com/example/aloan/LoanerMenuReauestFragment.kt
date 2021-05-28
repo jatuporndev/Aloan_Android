@@ -125,7 +125,10 @@ class LoanerMenuReauestFragment : Fragment() {
             holder.txtdate.text=data.dateRe
             holder.txtinstall.text=data.instullment_request
 
+            holder.btnview.setOnClickListener {
 
+
+            }
 
 
         }
@@ -141,7 +144,7 @@ class LoanerMenuReauestFragment : Fragment() {
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
             var txtdate : TextView = itemView.findViewById(R.id.txtdate)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
-            var btncancel: Button =itemView.findViewById(R.id.btncant)
+            var btnview: Button =itemView.findViewById(R.id.btncant)
             var con: ConstraintLayout =itemView.findViewById(R.id.consta)
 
 

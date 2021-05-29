@@ -7,7 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--API-->
-    <string name="root_url">http://192.168.1.16:8000/</string>
+    <string name="root_url">http://192.168.1.14:8000/</string>
     <!-- <string name="root_url">http://192.168.43.39:8000/</string>-->
     <string name="profileBLoaner_image_url" translatable="false">assets/uploadfile/Loaner/profile/</string>
     <string name="profileBorrower_image_url" translatable="false">assets/uploadfile/Borrower/profile/</string>
@@ -33,6 +33,11 @@
     <string name="loaner_viewcriterion_url">api/viewCriterion/</string>
     <string name="loaner_updatecriterion_url">api/UpdateCriterion/</string>
     <string name="loaner_insertCriterion_url">api/insertCriterion/</string>
+
+    <!--API Loaner process request-->
+    <string name="loaner_DetailMenu1request_url">api/DetailMenu1request/</string>
+    <string name="loaner_updateUnpass_url">api/updateUnpass/</string>
+
 
 
     <!--API Borrower-->

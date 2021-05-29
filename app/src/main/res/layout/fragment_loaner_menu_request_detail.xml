@@ -94,7 +94,7 @@
                     android:layout_marginRight="4dp"
                     android:text="จำนวนเงินที่ยอมรับ :"
                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/txtmoneyMin2"
+                    app:layout_constraintEnd_toStartOf="@+id/editmoneyB"
                     app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
                 <TextView
@@ -106,7 +106,7 @@
                     android:layout_marginTop="8dp"
                     android:text="ดอกเบี้ย ณ วันที่ส่งคำขอ"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max2" />
+                    app:layout_constraintTop_toBottomOf="@+id/editinstullmentB" />
 
                 <TextView
                     android:id="@+id/textView31"
@@ -169,15 +169,15 @@
                     android:layout_height="1dip"
                     android:layout_marginStart="12dp"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="12dp"
-                    android:background="#B6B2B2"
 
+                    android:background="#B6B2B2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView70" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnhstoryB" />
 
                 <View
                     android:id="@+id/view2"
@@ -196,7 +196,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
                 <TextView
-                    android:id="@+id/txtmoneyMin"
+                    android:id="@+id/txtmoneyRequestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -208,22 +208,22 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
                 <EditText
-                    android:id="@+id/txtmoneyMin2"
+                    android:id="@+id/editmoneyB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:text="1500.00"
                     android:textColor="@color/maingree"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyRequestB" />
 
                 <TextView
-                    android:id="@+id/txtinstullment_max"
+                    android:id="@+id/txtinstullmentB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -234,25 +234,25 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin2" />
+                    app:layout_constraintTop_toBottomOf="@+id/editmoneyB" />
 
                 <EditText
-                    android:id="@+id/txtinstullment_max2"
+                    android:id="@+id/editinstullmentB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:text="1500.00"
                     android:textColor="@color/maingree"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
-                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtinstullmentB" />
 
                 <TextView
-                    android:id="@+id/txtnameL"
+                    android:id="@+id/txtnameB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -266,18 +266,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
                 <TextView
-                    android:id="@+id/txtnameL2"
+                    android:id="@+id/txtdayReB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginRight="22dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:text="16-05-2021"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView59" />
 
                 <TextView
-                    android:id="@+id/txtemailL"
+                    android:id="@+id/txtemailB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -288,10 +288,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtnameL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtnameB" />
 
                 <TextView
-                    android:id="@+id/txtPhoneL"
+                    android:id="@+id/txtPhoneB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -302,10 +302,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtemailL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtemailB" />
 
                 <TextView
-                    android:id="@+id/txtlineL"
+                    android:id="@+id/txtlineB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -316,10 +316,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPhoneL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtPhoneB" />
 
                 <TextView
-                    android:id="@+id/txtlineL2"
+                    android:id="@+id/txtbirsthdayB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -330,10 +330,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtlineL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtlineB" />
 
                 <TextView
-                    android:id="@+id/txtlineL3"
+                    android:id="@+id/txtageB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -344,10 +344,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtlineL2" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtbirsthdayB" />
 
                 <TextView
-                    android:id="@+id/txtin"
+                    android:id="@+id/txtiInterest_requestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -358,10 +358,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max2" />
+                    app:layout_constraintTop_toBottomOf="@+id/editinstullmentB" />
 
                 <TextView
-                    android:id="@+id/txtinpen"
+                    android:id="@+id/txtInterest_penalty_requestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -372,7 +372,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView31"
-                    app:layout_constraintTop_toBottomOf="@+id/txtin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtiInterest_requestB" />
 
                 <ImageView
                     android:id="@+id/imageButtonpin"
@@ -407,7 +407,7 @@
                     android:layout_marginTop="8dp"
                     android:text="จำนวนงวด"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin2" />
+                    app:layout_constraintTop_toBottomOf="@+id/editmoneyB" />
 
                 <TextView
                     android:id="@+id/textView72"
@@ -418,7 +418,7 @@
                     android:layout_marginRight="4dp"
                     android:text="จำนวนงวดที่ยอมรับ :"
                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/txtinstullment_max2"
+                    app:layout_constraintEnd_toStartOf="@+id/editinstullmentB"
                     app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
                 <TextView
@@ -459,14 +459,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:text="วันที่ส่งคำขอ"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView70"
+                    android:id="@+id/txtaddressB"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="150dp"
@@ -478,52 +478,51 @@
                     android:text="5556555555555555555555555555555555555555555555555555"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView68"
-                    app:layout_constraintTop_toBottomOf="@+id/txtlineL3" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtageB" />
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="100dp"
-                    android:layout_height="37dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
+                    android:id="@+id/btnhstoryB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="39dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/textboxui"
-                    android:text="ประวัติ"
+                    android:text="ประวัติการกู้"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:backgroundTint="@color/penRoyalBlue"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtnameL2" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtaddressB" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnunpass"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
-                    android:layout_marginTop="32dp"
                     android:layout_marginBottom="24dp"
                     android:text="ไม่ผ่าน"
                     app:backgroundTint="@color/design_default_color_error"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnpass"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
                     android:text="ผ่าน"
                     android:textStyle="bold"
                     app:backgroundTint="@color/maingree"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view2" />
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imggenderB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -534,7 +533,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView73"
+                    android:id="@+id/txtgenderB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -542,8 +541,21 @@
                     android:layout_marginTop="21dp"
                     android:text="ชาย"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/imggenderB"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="ตรวจสอบข้อมูลอย่างครบถ้วน"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view2" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

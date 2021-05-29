@@ -126,8 +126,27 @@ class LoanerMenuReauestFragment : Fragment() {
             holder.txtinstall.text=data.instullment_request
 
             holder.btnview.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("RequestID", data.RequestID)
 
+                val fm = LoanerMenuRequestDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
 
+            }
+            holder.con.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("RequestID", data.RequestID)
+
+                val fm = LoanerMenuRequestDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
             }
 
 

@@ -237,7 +237,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
                 <TextView
-                    android:id="@+id/txtmoneyMin"
+                    android:id="@+id/txtmoneyRequestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
@@ -251,7 +251,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtmoneyMax" />
 
                 <TextView
-                    android:id="@+id/txtinstullment_max"
+                    android:id="@+id/txtinstullmentB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -262,10 +262,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyRequestB" />
 
                 <TextView
-                    android:id="@+id/txtnameL"
+                    android:id="@+id/txtnameB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -279,7 +279,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
                 <TextView
-                    android:id="@+id/txtemailL"
+                    android:id="@+id/txtemailB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -290,10 +290,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtnameL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtnameB" />
 
                 <TextView
-                    android:id="@+id/txtPhoneL"
+                    android:id="@+id/txtPhoneB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -304,10 +304,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtemailL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtemailB" />
 
                 <TextView
-                    android:id="@+id/txtlineL"
+                    android:id="@+id/txtlineB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -318,10 +318,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPhoneL" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtPhoneB" />
 
                 <TextView
-                    android:id="@+id/txtin"
+                    android:id="@+id/txtiInterest_requestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -332,10 +332,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/txtinstullment_max" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtinstullmentB" />
 
                 <TextView
-                    android:id="@+id/txtinpen"
+                    android:id="@+id/txtInterest_penalty_requestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -346,7 +346,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView31"
-                    app:layout_constraintTop_toBottomOf="@+id/txtin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtiInterest_requestB" />
 
                 <ImageView
                     android:id="@+id/imageButtonpin"

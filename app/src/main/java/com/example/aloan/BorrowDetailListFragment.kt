@@ -2,7 +2,6 @@ package com.example.aloan
 
 import  android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -79,13 +78,13 @@ class BorrowDetailListFragment : Fragment() {
 //test2
         recyclerView=root.findViewById(R.id.recyclerView)
         txtmoneyMax=root.findViewById(R.id.txtmoneyMax)
-        txtmoneyMin=root.findViewById(R.id.txtmoneyMin)
-        txtinterest=root.findViewById(R.id.txtin)
-        txtinterest_penalty=root.findViewById(R.id.txtinpen)
-        txtlineId=root.findViewById(R.id.txtlineL)
-        txtname=root.findViewById(R.id.txtnameL)
-        txtemail=root.findViewById(R.id.txtemailL)
-        txtphone=root.findViewById(R.id.txtPhoneL)
+        txtmoneyMin=root.findViewById(R.id.txtmoneyRequestB)
+        txtinterest=root.findViewById(R.id.txtiInterest_requestB)
+        txtinterest_penalty=root.findViewById(R.id.txtInterest_penalty_requestB)
+        txtlineId=root.findViewById(R.id.txtlineB)
+        txtname=root.findViewById(R.id.txtnameB)
+        txtemail=root.findViewById(R.id.txtemailB)
+        txtphone=root.findViewById(R.id.txtPhoneB)
         pin=root.findViewById(R.id.imageButtonpin)
         back=root.findViewById(R.id.imageViewback)
         btnaddnum=root.findViewById(R.id.btnaddone)
@@ -96,7 +95,7 @@ class BorrowDetailListFragment : Fragment() {
         imgpro=root.findViewById(R.id.imgpro)
         txtno=root.findViewById(R.id.txtno)
         progressBar=root.findViewById(R.id.progressBar)
-        txtinstullment_max=root.findViewById(R.id.txtinstullment_max)
+        txtinstullment_max=root.findViewById(R.id.txtinstullmentB)
 
         backlist=bundle?.get("backlist").toString()
         borrowelistID=bundle?.get("borrowlistID").toString()

@@ -150,7 +150,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtmoneyMax" />
 
                 <TextView
-                    android:id="@+id/txtmoneyMin"
+                    android:id="@+id/txtmoneyRequestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
@@ -164,7 +164,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/view" />
 
                 <TextView
-                    android:id="@+id/txtin"
+                    android:id="@+id/txtiInterest_requestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -175,10 +175,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyMin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyRequestB" />
 
                 <TextView
-                    android:id="@+id/txtinpen"
+                    android:id="@+id/txtInterest_penalty_requestB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -189,7 +189,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView31"
-                    app:layout_constraintTop_toBottomOf="@+id/txtin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtiInterest_requestB" />
 
                 <TextView
                     android:id="@+id/txtintu"
@@ -203,7 +203,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView31"
-                    app:layout_constraintTop_toBottomOf="@+id/txtin" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtiInterest_requestB" />
 
                 <Button
                     android:id="@+id/btncancel"

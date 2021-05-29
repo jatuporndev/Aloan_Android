@@ -3,7 +3,6 @@ package com.example.aloan
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,9 +61,9 @@ class LoanerHomeFragment : Fragment() {
         sc=root.findViewById(R.id.NestedScrollView)
         recyclerView=root.findViewById(R.id.recyclerView)
         txtmoneyMax=root.findViewById(R.id.txtmoneyMax)
-        txtmoneyMin=root.findViewById(R.id.txtmoneyMin)
-        txtinterest=root.findViewById(R.id.txtin)
-        txtinterest_penalty=root.findViewById(R.id.txtinpen)
+        txtmoneyMin=root.findViewById(R.id.txtmoneyRequestB)
+        txtinterest=root.findViewById(R.id.txtiInterest_requestB)
+        txtinterest_penalty=root.findViewById(R.id.txtInterest_penalty_requestB)
         btnedit=root.findViewById(R.id.btncancel)
         switchPublic=root.findViewById(R.id.switchPublic)
         txtname=root.findViewById(R.id.txtname)

@@ -3,6 +3,7 @@ package com.example.aloan
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -26,6 +28,7 @@ class LoanerMenuReauestFragment : Fragment() {
 
     var loanerID:String?=null
     var recyclerView: RecyclerView?=null
+    var wsipe: SwipeRefreshLayout?=null
 
     var back : ImageView?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +41,16 @@ class LoanerMenuReauestFragment : Fragment() {
         loanerID = sharedPrefer?.getString(LoginLoanerActivity().LoanerIdPreference, null)
         back =root.findViewById(R.id.imageviewback)
         recyclerView=root.findViewById(R.id.recyclerView)
+        wsipe=root.findViewById(R.id.swipe_layout)
+        wsipe?.setColorSchemeResources(
+            R.color.maingree,
+            R.color.maingree,
+            R.color.maingree)
+
+        wsipe?.setOnRefreshListener {
+            showlist()
+            wsipe?.isRefreshing=false
+        }
 
         back?.setOnClickListener {
 

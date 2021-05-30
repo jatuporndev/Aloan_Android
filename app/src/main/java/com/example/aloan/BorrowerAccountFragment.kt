@@ -26,8 +26,12 @@ class BorrowerAccountFragment : Fragment() {
     var btnlogout : Button? = null
     var btnpined:Button?=null
     var Menu1Waiting:ImageButton?=null
+    var MenuUnpass:ImageButton?=null
+
+
     var txtcountWaiting:TextView?=null
     var txtcountconfirm:TextView?=null
+    var txtcountunpass:TextView?=null
     var btnedituser:Button?=null
     var btneditbank:Button?=null
 
@@ -49,6 +53,7 @@ class BorrowerAccountFragment : Fragment() {
 
         btnlogout =root.findViewById(R.id.btnlogout)
         Menu1Waiting =root.findViewById(R.id.imageButtonWait)
+        MenuUnpass=root.findViewById(R.id.imageButtonUnpass)
         btnpined=root.findViewById(R.id.btnpined)
         txtcountWaiting=root.findViewById(R.id.txtcountwaiting)
         txtcountconfirm=root.findViewById(R.id.txtcountconfirm)
@@ -59,6 +64,9 @@ class BorrowerAccountFragment : Fragment() {
         imgpro =root.findViewById(R.id.imgpro)
         btnedituser=root.findViewById(R.id.btnedituser3)
         btneditbank=root.findViewById(R.id.btneditbank)
+        txtcountunpass=root.findViewById(R.id.txtcountunpass)
+
+
 
         btneditbank?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -79,6 +87,7 @@ class BorrowerAccountFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+
         Menu1Waiting?.setOnClickListener {
 
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -86,6 +95,16 @@ class BorrowerAccountFragment : Fragment() {
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuWaitingFragment())
             fragmentTransaction.commit()
         }
+        MenuUnpass?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuUnpassFragment())
+            fragmentTransaction.commit()
+        }
+
+
+
+
         btnpined?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
@@ -138,6 +157,11 @@ class BorrowerAccountFragment : Fragment() {
                             txtcountconfirm?.isVisible=false
                         }else{
                             txtcountconfirm?.text=data.getString("count_confirm")
+                        }
+                        if(data.getString("count_unpass")=="0"){
+                            txtcountunpass?.isVisible=false
+                        }else{
+                            txtcountunpass?.text=data.getString("count_unpass")
                         }
 
 

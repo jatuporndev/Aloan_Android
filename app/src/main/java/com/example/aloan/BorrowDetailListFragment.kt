@@ -59,10 +59,13 @@ class BorrowDetailListFragment : Fragment() {
     var money_min:String?=""
     var Interest:String?=""
     var Interest_penalty:String?=""
+    var instullment_max:String?=""
+
     var backlist:String?=null
     var borrowelistID:String?=null
 
     var borrowerCriMoneyMax:String?=null
+    var borrowerCriIntu_Max:String?=null
     var criterionID:String?=null
 
     
@@ -119,8 +122,15 @@ class BorrowDetailListFragment : Fragment() {
         btnreaquest?.setOnClickListener {
             var money_max:Float? = money_max?.toFloat()
             var money_min:Float? = money_min?.toFloat()
+            var instullment_max:Int?=instullment_max?.toInt()
             var moneyRequest:Float?=editRequest?.text.toString().toFloat()
+            var instullmentequest:Int?=0
+            instullmentequest=txtinstullment?.text.toString().toInt()
             var crimax:Float? = borrowerCriMoneyMax?.toFloat()
+            var criinstumax:Int?=borrowerCriIntu_Max?.toInt()
+
+            //Log.d("text2",instullmentequest.toString()+" "+criinstumax.toString())
+           // Log.d("text2",(instullmentequest <= criinstumax!!).toString())
 
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("แจ้งเตือน")
@@ -131,22 +141,26 @@ class BorrowDetailListFragment : Fragment() {
                         if(moneyRequest!! < money_min!! || moneyRequest!! > money_max!!){
                             Toast.makeText(requireContext(), "จำนวนเงินไม่ตรงเงื่อนไข", Toast.LENGTH_LONG).show()
                         }else{
-                            if(moneyRequest <= crimax!!){
+                                if(instullmentequest > instullment_max!!){
+                                    Toast.makeText(requireContext(), "จำนวนงวดชำระไม่ตรงเงื่อนไข", Toast.LENGTH_LONG).show()
+                                }else {
 
-                                if(viewrequast(borrowerID,borrowelistID)){
-                                    addrequest(borrowerID,borrowelistID)
-                                    Toast.makeText(requireContext(), "ส่งคำขอสำเร็จแล้ว", Toast.LENGTH_LONG).show()
-                                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                                    fragmentTransaction.addToBackStack(null)
-                                    fragmentTransaction.replace(R.id.nav_host_fragment,BorrowerAccountFragment())
-                                    fragmentTransaction.commit()
-                                }else{
-                                    Toast.makeText(requireContext(), "มีคำขออยู่แล้ว", Toast.LENGTH_LONG).show()
+                                    if (moneyRequest <= crimax!! && instullmentequest <= criinstumax!!) {
+
+                                        if (viewrequast(borrowerID, borrowelistID)) {
+                                            addrequest(borrowerID, borrowelistID)
+                                            Toast.makeText(requireContext(), "ส่งคำขอสำเร็จแล้ว", Toast.LENGTH_LONG).show()
+                                            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                                            fragmentTransaction.addToBackStack(null)
+                                            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerAccountFragment())
+                                            fragmentTransaction.commit()
+                                        } else {
+                                            Toast.makeText(requireContext(), "มีคำขออยู่แล้ว", Toast.LENGTH_LONG).show()
+                                        }
+                                    } else {
+                                        Toast.makeText(requireContext(), "ข้อมูลของคุณไม่ตรงกับเกณฑ์ที่ผู้ให้กู้กำหนดไว้", Toast.LENGTH_LONG).show()
+                                    }
                                 }
-                            }else{
-                                Toast.makeText(requireContext(), "ข้อมูลของคุณไม่ตรงกับเกณฑ์ที่ผู้ให้กู้กำหนดไว้", Toast.LENGTH_LONG).show()
-                            }
-
                         }
                     }
                     .setNegativeButton("ยกเลิก") { dialog, id ->
@@ -193,11 +207,12 @@ class BorrowDetailListFragment : Fragment() {
                         Interest_penalty=data.getString("Interest_penalty")
                         var name =data.getString("firstname")
                         var lastname =data.getString("lastname")
-                        txtname?.text="คุณ $name $lastname"
+                        txtname?.text="$name $lastname"
                         txtemail?.text=data.getString("email")
                         txtphone?.text=data.getString("phone")
                         txtlineId?.text=data.getString("LineID")
                         txtinstullment_max?.text=data.getString("instullment_max")
+                        instullment_max=data.getString("instullment_max")
 
                         var url = getString(R.string.root_url) +
                                 getString(R.string.profileBLoaner_image_url) + data.getString("imageProfile")
@@ -213,6 +228,9 @@ class BorrowDetailListFragment : Fragment() {
                             }
                             if (backlist=="home"){
                                  fm = BorrowerHomeFragment()
+                            }
+                            if (backlist=="unpass"){
+                                fm = BorrowerMenuUnpassFragment()
                             }
                             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                             fragmentTransaction.addToBackStack(null)
@@ -365,7 +383,7 @@ class BorrowDetailListFragment : Fragment() {
 
         var check :Boolean=false
         var url: String = getString(R.string.root_url) + getString(R.string.pined_url) + borrowerID+","+BorrowelistID
-        Log.d("rrr4",url)
+      //  Log.d("rrr4",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
                 .url(url)
@@ -388,7 +406,7 @@ class BorrowDetailListFragment : Fragment() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        Log.d("rrr4", check.toString())
+      //  Log.d("rrr4", check.toString())
         return check
     }
     private fun addpined(borrowerID: String? ,BorrowelistID: String?)
@@ -488,7 +506,7 @@ class BorrowDetailListFragment : Fragment() {
 
         var check :Boolean=true
         var url: String = getString(R.string.root_url) + getString(R.string.viewrequest_url) +"?BorrowerID="+ borrowerID+"&borrowlistID="+BorrowelistID
-        Log.d("www2",url)
+      //  Log.d("www2",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
                 .url(url)
@@ -516,7 +534,7 @@ class BorrowDetailListFragment : Fragment() {
     private fun viewborrower(){
 
         var url: String = getString(R.string.root_url) + getString(R.string.Borrower_url) + borrowerID
-        Log.d("text2",url)
+     //   Log.d("text2",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
                 .url(url)
@@ -572,7 +590,7 @@ class BorrowDetailListFragment : Fragment() {
 
         var url: String = getString(R.string.root_url) + getString(R.string.loaner_checkCriterion_url) +"?borrowlistID="+borrowelistID+
                 "&Age_range="+age_range+"&Saraly_range="+saraly_range+"&Married="+borrowerMarri
-        Log.d("text2",url)
+      //  Log.d("text2",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder()
                 .url(url)
@@ -587,6 +605,7 @@ class BorrowDetailListFragment : Fragment() {
                         ///////////////////////////
                         borrowerCriMoneyMax=data.getString("money_max")
                         criterionID=data.getString("criterionID")
+                        borrowerCriIntu_Max=data.getString("instullment_max")
 
                     }else{
                         borrowerCriMoneyMax=Int.MAX_VALUE.toString()
@@ -600,7 +619,8 @@ class BorrowDetailListFragment : Fragment() {
                 //borrowerCriMoneyMax=Int.MAX_VALUE.toString()
                 borrowerCriMoneyMax="0"
             }
-            Log.d("text2",borrowerCriMoneyMax.toString())
+          //  Log.d("text2",borrowerCriMoneyMax.toString())
+          //  Log.d("text2",borrowerCriIntu_Max.toString())
 
         } catch (e: IOException) {
             e.printStackTrace()

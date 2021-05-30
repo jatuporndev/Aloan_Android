@@ -39,7 +39,6 @@
     <string name="loaner_updateUnpass_url">api/updateUnpass/</string>
 
 
-
     <!--API Borrower-->
     <string name="loginBorrower_url">api/Borrower/login</string>
     <string name="registerBorrower_url">api/Borrower/regis</string>
@@ -56,5 +55,5 @@
     <string name="addrequest_url">api/AddRequest/</string>
     <string name="viewrequest_url">api/viewrequest/</string>
     <string name="deleterequest_url">api/deleteRequest/</string>
-
+    <string name="viewunpass_url">api/viewunpass/</string>
 </resources>

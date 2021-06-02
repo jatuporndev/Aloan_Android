@@ -71,7 +71,7 @@ class LoanerAccountFragment : Fragment() {
         btneditbank?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerEditBankFragment())
+            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerBankFragment())
             fragmentTransaction.commit()
         }
         btnrequest?.setOnClickListener {

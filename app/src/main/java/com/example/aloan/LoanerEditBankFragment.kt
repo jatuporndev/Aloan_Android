@@ -25,6 +25,7 @@ class LoanerEditBankFragment : Fragment() {
     var editbanknumber: TextView?=null
     var back: ImageView?=null
     var btnconfirm: Button?=null
+    var editholdername:TextView?=null
 
     var loanerID:String?=null
     override fun onCreateView(
@@ -41,6 +42,7 @@ class LoanerEditBankFragment : Fragment() {
         editbanknumber=root.findViewById(R.id.editbanknumber)
         back=root.findViewById(R.id.imageviewback)
         btnconfirm=root.findViewById(R.id.btnconfrim1)
+        editholdername=root.findViewById(R.id.editBank2)
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -49,52 +51,22 @@ class LoanerEditBankFragment : Fragment() {
             fragmentTransaction.commit()
         }
         btnconfirm?.setOnClickListener {
-            updateUser()
+            addBank()
         }
-        viewloaner()
+
         return root
     }
-    private fun viewloaner(){
 
-        var url: String = getString(R.string.root_url) + getString(R.string.Loaner_url) + loanerID
-        val okHttpClient = OkHttpClient()
-        val request: Request = Request.Builder()
-            .url(url)
-            .get()
-            .build()
-        try {
-            val response = okHttpClient.newCall(request).execute()
-            if (response.isSuccessful) {
-                try {
-                    val data = JSONObject(response.body!!.string())
-                    if (data.length() > 0) {
-                        ///////////////////////////
-                        editbanknumber?.setText(data.getString("IDBank"))
-                        editbank?.setText(data.getString("bank"))
-
-
-                    }
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            } else {
-                response.code
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-    }
-    private fun updateUser()
+    private fun addBank()
     {
-        var url: String = getString(R.string.root_url) + getString(R.string.LoanerUpdate_url) + loanerID
+        var url: String = getString(R.string.root_url) + getString(R.string.loaner_addBank_url) + loanerID
         val okHttpClient = OkHttpClient()
         var request: Request
         val formBody: RequestBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
-            .addFormDataPart("typeUpdate", "bank")
-            .addFormDataPart("IDBank", editbanknumber?.text.toString())
-            .addFormDataPart("Bank", editbank?.text.toString())
+            .addFormDataPart("bankNumber", editbanknumber?.text.toString())
+            .addFormDataPart("bank", editbank?.text.toString())
+            .addFormDataPart("holderName", editholdername?.text.toString())
 
             .build()
         request= Request.Builder()
@@ -111,7 +83,7 @@ class LoanerEditBankFragment : Fragment() {
                         Toast.makeText(context, "สำเร็จ", Toast.LENGTH_LONG).show()
                         val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                         fragmentTransaction.addToBackStack(null)
-                        fragmentTransaction.replace(R.id.nav_host_fragment,LoanerAccountFragment())
+                        fragmentTransaction.replace(R.id.nav_host_fragment,LoanerBankFragment())
                         fragmentTransaction.commit()
 
                     }

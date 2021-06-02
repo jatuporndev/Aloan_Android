@@ -173,6 +173,7 @@ class BorrowerAccountFragment : Fragment() {
                 response.code
                 txtcountWaiting?.isVisible=false
                 txtcountconfirm?.isVisible=false
+                txtcountunpass?.isVisible=false
             }
         } catch (e: IOException) {
             e.printStackTrace()

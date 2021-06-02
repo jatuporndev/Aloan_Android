@@ -33,10 +33,14 @@
     <string name="loaner_viewcriterion_url">api/viewCriterion/</string>
     <string name="loaner_updatecriterion_url">api/UpdateCriterion/</string>
     <string name="loaner_insertCriterion_url">api/insertCriterion/</string>
+    <string name="loaner_addBank_url">api/Loaner/addbank/</string>
+    <string name="loaner_viewBank_url">api/Loaner/viewbank/</string>
+    <string name="loaner_deleteBank_url">api/Loaner/deleteBank/</string>
 
     <!--API Loaner process request-->
     <string name="loaner_DetailMenu1request_url">api/DetailMenu1request/</string>
     <string name="loaner_updateUnpass_url">api/updateUnpass/</string>
+
 
 
     <!--API Borrower-->

@@ -25,8 +25,10 @@ class BorrowerAccountFragment : Fragment() {
     var borrowerID:String?=null
     var btnlogout : Button? = null
     var btnpined:Button?=null
+
     var Menu1Waiting:ImageButton?=null
     var MenuUnpass:ImageButton?=null
+    var MenuPass:ImageButton?=null
 
 
     var txtcountWaiting:TextView?=null
@@ -41,6 +43,7 @@ class BorrowerAccountFragment : Fragment() {
     var txtLineID:TextView?=null
     var imgpro:ImageView?=null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,6 +57,7 @@ class BorrowerAccountFragment : Fragment() {
         btnlogout =root.findViewById(R.id.btnlogout)
         Menu1Waiting =root.findViewById(R.id.imageButtonWait)
         MenuUnpass=root.findViewById(R.id.imageButtonUnpass)
+        MenuPass=root.findViewById(R.id.imageButtonPass)
         btnpined=root.findViewById(R.id.btnpined)
         txtcountWaiting=root.findViewById(R.id.txtcountwaiting)
         txtcountconfirm=root.findViewById(R.id.txtcountconfirm)
@@ -89,7 +93,6 @@ class BorrowerAccountFragment : Fragment() {
 
 
         Menu1Waiting?.setOnClickListener {
-
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuWaitingFragment())
@@ -101,6 +104,13 @@ class BorrowerAccountFragment : Fragment() {
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuUnpassFragment())
             fragmentTransaction.commit()
         }
+        MenuPass?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuConfirmedFragment())
+            fragmentTransaction.commit()
+        }
+
 
 
 
@@ -217,7 +227,7 @@ class BorrowerAccountFragment : Fragment() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
+
 
 }

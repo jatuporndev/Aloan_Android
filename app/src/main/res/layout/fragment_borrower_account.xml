@@ -79,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imageButtonPass"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_marginTop="24dp"
@@ -95,7 +95,7 @@
             android:layout_marginTop="24dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/pay"
-            app:layout_constraintStart_toEndOf="@+id/imageButton2"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonPass"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
@@ -138,9 +138,9 @@
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginLeft="14dp"
-            android:text="ยืนยันแล้ว"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:text="ที่ยืนยันแล้ว"
             app:layout_constraintStart_toEndOf="@+id/textView18"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonWait" />
 

@@ -127,6 +127,23 @@ class LoanerMenuRequestDetailFragment : Fragment() {
 
             builder.show()
         }
+        btnpass?.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("แจ้งเตือน")
+            builder.setMessage("ยืนยันการดำเนินการหรือไม่?")
+                    .setCancelable(false)
+                    .setPositiveButton("ยืนยัน") { dialog, id ->
+                        // ใช่
+                        updatePass(bundle?.get("RequestID").toString())
+
+                    }
+                    .setNegativeButton("ยกเลิก") { dialog, id ->
+                        // Dismiss the dialog
+                        dialog.dismiss()
+                    }
+            val alert = builder.create()
+            alert.show()
+        }
 
 
         viewdetailborroweer(bundle?.get("RequestID").toString())
@@ -208,6 +225,42 @@ class LoanerMenuRequestDetailFragment : Fragment() {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
                         Toast.makeText(context, "ยกเลิกแล้ว", Toast.LENGTH_LONG).show()
+
+                        val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                        fragmentTransaction.addToBackStack(null)
+                        fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuReauestFragment())
+                        fragmentTransaction.commit()
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            } else {
+                response.code
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+    private fun updatePass(RequrstID:String )
+    {
+        var url: String = getString(R.string.root_url) + getString(R.string.loaner_updatePass_url) + RequrstID
+        val okHttpClient = OkHttpClient()
+        val formBody: RequestBody = FormBody.Builder()
+                .add("money_confirm", editmoneyRequest?.text.toString())
+                .add("instullment_confirm", editinstullmentRequest?.text.toString())
+                .build()
+        val request: Request = Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                try {
+                    val data = JSONObject(response.body!!.string())
+                    if (data.length() > 0) {
+                        Toast.makeText(context, "สำเร็จ", Toast.LENGTH_LONG).show()
 
                         val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                         fragmentTransaction.addToBackStack(null)

@@ -77,7 +77,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imageButtonPass"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_marginTop="20dp"
@@ -93,7 +93,7 @@
             android:layout_marginTop="20dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/pay"
-            app:layout_constraintStart_toEndOf="@+id/imageButton2"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonPass"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton

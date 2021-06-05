@@ -1,13 +1,14 @@
 package com.example.aloan
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.Fragment
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -15,6 +16,7 @@ import okhttp3.RequestBody
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
+import java.io.InputStream
 
 
 class LoanerEditCriterionFragment : Fragment() {
@@ -28,6 +30,7 @@ class LoanerEditCriterionFragment : Fragment() {
     var btnback:ImageView?=null
     var btnupdate:Button?=null
     var loanerID: String? = null
+    var txtraw:TextView?=null
     var sc=""
     var index=""
 
@@ -51,6 +54,7 @@ class LoanerEditCriterionFragment : Fragment() {
         btncancel=root.findViewById(R.id.btncancel)
         btnupdate=root.findViewById(R.id.btnconedit)
         btnback=root.findViewById(R.id.btnback)
+        txtraw=root.findViewById(R.id.txtraw)
 
         btnback?.setOnClickListener {
 
@@ -66,9 +70,43 @@ class LoanerEditCriterionFragment : Fragment() {
             fragmentTransaction.commit()
         }
         btnupdate?.setOnClickListener {
-            update(bundle?.get("criterionID").toString())
+            if(editmoney_max?.text.toString().toFloat() > bundle?.get("moneyMax").toString().toFloat() ||
+                    editinstullment_max?.text.toString().toFloat()>bundle?.get("instullmentMax").toString().toFloat()){
+                Toast.makeText(context, "จำนวนงวดสูงสุดหรือจำนวนเงินสุด ต้องไม่เกินค่าเริ่มต้น", Toast.LENGTH_LONG).show()
+
+            }else{
+                update(bundle?.get("criterionID").toString())
+            }
+
         }
 
+        var view:View = layoutInflater.inflate(R.layout.read,null)
+        var btnreaded:Button = view.findViewById(R.id.btnreaded)
+
+        var txtpp:TextView=view.findViewById(R.id.txtpp)
+
+        var text:String=""
+        try {
+            var io: InputStream = requireContext().assets.open("raw.txt")
+            var size:Int = io.available()
+            var buffer=ByteArray(size)
+            io.read(buffer)
+            io.close()
+            text= String(buffer)
+        }catch (ex : IOException){
+            ex.printStackTrace()
+        }
+        txtpp.text=text
+
+        var dialog: Dialog = Dialog(requireContext(),android.R.style.ThemeOverlay_DeviceDefault_Accent_DayNight)
+        dialog.setContentView(view)
+        txtraw?.setOnClickListener {
+            dialog.show()
+        }
+        btnreaded?.setOnClickListener {
+            dialog.dismiss()
+        }
+        txtraw?.paintFlags = txtraw?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
         viewcriterion(bundle?.get("criterionID").toString())
 
         return root

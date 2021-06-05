@@ -1,58 +1,50 @@
 package com.example.aloan
 
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
-import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
 
-class BorrowerMenuUnpassFragment : Fragment() {
+class BorrowerMenuConfirmedFragment : Fragment() {
     var borrowerID:String?=null
+    var txtWar:TextView?=null
     var recyclerView:RecyclerView?=null
-    var back:ImageView?=null
-    var wsipe: SwipeRefreshLayout?=null
+    var back: ImageView?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root =inflater.inflate(R.layout.fragment_borrower_menu_unpass, container, false)
+        val root =inflater.inflate(R.layout.fragment_borrower_menu_confirmed, container, false)
         val sharedPrefer = requireContext().getSharedPreferences(
-            LoginBorrowerActivity().appPreference, Context.MODE_PRIVATE)
+                LoginBorrowerActivity().appPreference, Context.MODE_PRIVATE)
         borrowerID = sharedPrefer?.getString(LoginBorrowerActivity().borrowerIdPreference, null)
+        txtWar=root.findViewById(R.id.textView79)
         recyclerView=root.findViewById(R.id.recyclerView)
         back=root.findViewById(R.id.imageviewback)
-
-        wsipe=root.findViewById(R.id.swipe_layout)
-        wsipe?.setColorSchemeResources(
-                R.color.mainor,
-                R.color.mainor,
-                R.color.mainor)
-
-        wsipe?.setOnRefreshListener {
-            showlist()
-            wsipe?.isRefreshing=false
-        }
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -61,17 +53,19 @@ class BorrowerMenuUnpassFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-
+       txtWar?.fadeIn()
         showlist()
         return root
     }
-
-
-
-
+    inline fun View.fadeIn(durationMillis: Long = 1000) {
+        this.startAnimation(AlphaAnimation(0F, 1F).apply {
+            duration = durationMillis
+            fillAfter = true
+        })
+    }
     private fun showlist() {
         val data = ArrayList<Data>()
-        val url: String = getString(R.string.root_url) + getString(R.string.viewunpass_url)+"?BorrowerID="+borrowerID
+        val url: String = getString(R.string.root_url) + getString(R.string.viewConfirmed_url)+borrowerID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(url).get().build()
         try {
@@ -83,18 +77,20 @@ class BorrowerMenuUnpassFragment : Fragment() {
                         for (i in 0 until res.length()) {
                             val item: JSONObject = res.getJSONObject(i)
                             data.add(Data(
-                                item.getString("RequestID"),
-                                item.getString("Money"),
-                                item.getString("instullment_request"),
-                                item.getString("firstname"),
-                                item.getString("lastname"),
-                                item.getString("imageProfile"),
-                                item.getString("dateRe"),
-                                item.getString("borrowlistID"),
-                                item.getString("LoanerID"),
-                                item.getString("comment"),
-                                item.getString("dateCheck"),
-                                item.getString("status")
+                                    item.getString("RequestID"),
+                                    item.getString("Money"),
+                                    item.getString("instullment_request"),
+                                    item.getString("firstname"),
+                                    item.getString("lastname"),
+                                    item.getString("imageProfile"),
+                                    item.getString("dateRe"),
+                                    item.getString("borrowlistID"),
+                                    item.getString("LoanerID"),
+                                    item.getString("comment"),
+                                    item.getString("dateCheck"),
+                                    item.getString("status"),
+                                    item.getString("money_confirm"),
+                                    item.getString("instullment_confirm")
 
 
                             )
@@ -118,17 +114,17 @@ class BorrowerMenuUnpassFragment : Fragment() {
         }
     }
     internal class Data(
-        var RequestID: String,var Money: String,var instullment: String,var Firstname: String
-        ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String,var LoanerID:String,
-        var comment:String,var dateCheck:String,var status:String
+            var RequestID: String,var Money: String,var instullment: String,var Firstname: String
+            ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String,var LoanerID:String,
+            var comment:String,var dateCheck:String,var status:String,var money_confirm:String,var instullment_confirm:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
-        RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+            RecyclerView.Adapter<DataAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view: View = LayoutInflater.from(parent.context).inflate(
-                R.layout.item_borrower_unpass,
-                parent, false
+                    R.layout.item_borrower_cofrimed,
+                    parent, false
             )
             return ViewHolder(view)
         }
@@ -148,31 +144,10 @@ class BorrowerMenuUnpassFragment : Fragment() {
             holder.txtinstall.text=data.instullment
             holder.txtdateCheck.text=data.dateCheck
 
-            holder.btncheck.setOnClickListener {
-                updateUnpassCheck(data.RequestID)
-                val builder = AlertDialog.Builder(requireContext())
-
-                builder.setTitle("สาเหตุของการกู้ไม่ผ่าน")
-                builder.setMessage(data.comment)
-
-                builder.setPositiveButton("YES"){dialog, which ->
-                    showlist()
-                }
-
-                val dialog: AlertDialog = builder.create()
-
-                dialog.show()
-
-            }
-            if(data.status =="4") {
-                holder.con.setBackgroundColor(Color.parseColor("#FFF5E9"))
-            }
-
+            holder.txtmoneyconfrim.text=data.money_confirm
+            holder.txtinstallconfirm.text=data.instullment_confirm
             holder.con.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putString("borrowlistID", data.borrowlistID)
-                bundle.putString("LoanerID",data.LoanerID )
-                bundle.putString("backlist","unpass")
                 val fm = BorrowDetailListFragment()
                 fm.arguments = bundle;
                 val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -188,7 +163,7 @@ class BorrowerMenuUnpassFragment : Fragment() {
         }
 
         internal inner class ViewHolder(itemView: View) :
-            RecyclerView.ViewHolder(itemView) {
+                RecyclerView.ViewHolder(itemView) {
             var data: Data? = null
             var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
@@ -198,37 +173,12 @@ class BorrowerMenuUnpassFragment : Fragment() {
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncheck: Button =itemView.findViewById(R.id.btncant)
             var con: ConstraintLayout =itemView.findViewById(R.id.consta)
+            var txtmoneyconfrim:TextView=itemView.findViewById(R.id.txtmoneyconfirm)
+            var txtinstallconfirm:TextView=itemView.findViewById(R.id.txtinstallconfirm)
 
 
 
-        }
-    }
-    private fun updateUnpassCheck(RequrstID:String )
-    {
-        var url: String = getString(R.string.root_url) + getString(R.string.updateUnpassChecked_url) + RequrstID
-        val okHttpClient = OkHttpClient()
-        val formBody: RequestBody = FormBody.Builder()
-                .build()
-        val request: Request = Request.Builder()
-                .url(url)
-                .post(formBody)
-                .build()
-        try {
-            val response = okHttpClient.newCall(request).execute()
-            if (response.isSuccessful) {
-                try {
-                    val data = JSONObject(response.body!!.string())
-                    if (data.length() > 0) {
-                    }
 
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            } else {
-                response.code
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
     }
 }

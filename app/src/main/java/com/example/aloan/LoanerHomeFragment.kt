@@ -42,6 +42,9 @@ class LoanerHomeFragment : Fragment() {
     var lastFirstVisiblePosition = -1
     var sc: NestedScrollView?=null
 
+    var moneyMax:String?=null
+    var instullmentMax:String?=null
+
     var index = -1
     var top = -1
     var mLayoutManager: LinearLayoutManager? = null
@@ -77,9 +80,12 @@ class LoanerHomeFragment : Fragment() {
 
 
         btnedit?.setOnClickListener {
+            val bundle = Bundle()
+            val fm = LoanerBorrowlistEditFragment()
+            fm.arguments = bundle;
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.replace(R.id.nav_host_fragment,LoanerBorrowlistEditFragment())
+            fragmentTransaction.replace(R.id.nav_host_fragment, fm)
             fragmentTransaction.commit()
         }
 
@@ -121,6 +127,7 @@ class LoanerHomeFragment : Fragment() {
                     if (data.length() > 0) {
 
                          txtmoneyMax?.text = data.getString("money_max")+"฿"
+                        moneyMax=data.getString("money_max")
                          txtmoneyMin?.text = data.getString("money_min")+"฿"
                         txtinterest?.text = data.getString("interest")+"%"
                         txtinterest_penalty?.text = data.getString("Interest_penalty")+"%"
@@ -131,6 +138,7 @@ class LoanerHomeFragment : Fragment() {
                         switchPublic?.isChecked = status=="1"
                         borrowlistID=data.getString("borrowlistID")
                         txtinstullment_max?.text=data.getString("instullment_max")
+                        instullmentMax=data.getString("instullment_max")
                         switchPublic?.setOnCheckedChangeListener { buttonView, isChecked ->
                             if (isChecked) {
                                 // The switch enabled
@@ -281,6 +289,9 @@ class LoanerHomeFragment : Fragment() {
                 bundle.putString("criterionID", data.criterionID)
                 bundle.putString("sc", sc?.scrollY.toString())
                 bundle.putString("index", index.toString())
+
+                bundle.putString("instullmentMax", instullmentMax)
+                bundle.putString("moneyMax", moneyMax)
 
                 val fm = LoanerEditCriterionFragment()
                 fm.arguments = bundle;

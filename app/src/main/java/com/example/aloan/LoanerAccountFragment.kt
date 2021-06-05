@@ -57,7 +57,7 @@ class LoanerAccountFragment : Fragment() {
         txtLineID=root.findViewById(R.id.txtline2)
         imgpro=root.findViewById(R.id.imgpro)
         btnrequest=root.findViewById(R.id.imageButtonWait)
-        btnpay=root.findViewById(R.id.imageButton2)
+        btnpay=root.findViewById(R.id.imageButtonPass)
         btneditbank=root.findViewById(R.id.btneditbank)
         btneditprofile=root.findViewById(R.id.btnedituser3)
 

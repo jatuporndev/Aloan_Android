@@ -85,9 +85,10 @@ class LoanerMenuReauestFragment : Fragment() {
                                     item.getString("imageProfile"),
                                     item.getString("dateRe"),
                                     item.getString("borrowlistID"),
-                                    item.getString("LoanerID")
-
-
+                                    item.getString("status"),
+                                    item.getString("dateCheck"),
+                                    item.getString("money_confirm"),
+                                    item.getString("instullment_confirm")
 
                             )
                             )
@@ -111,7 +112,8 @@ class LoanerMenuReauestFragment : Fragment() {
     }
     internal class Data(
             var RequestID: String,var Money: String,var instullment_request: String,var Firstname: String
-            ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String,var LoanerID:String
+            ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String
+            ,var status:String,var dateCheck:String,var money_confirm:String,var instullment_confirm:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -138,28 +140,40 @@ class LoanerMenuReauestFragment : Fragment() {
             holder.txtdate.text=data.dateRe
             holder.txtinstall.text=data.instullment_request
 
+            if(data.status=="1"){
+                holder.btnview.visibility=View.INVISIBLE
+                holder.money.text="฿"+data.money_confirm
+                holder.txtdate.text="วันที่ยืนยัน: "+data.dateCheck
+                holder.txtinstall.text=data.instullment_confirm
+                holder.txtstatus.text="รอผู้กู้ยอมรับ"
+                holder.txtstatus.setTextColor(Color.parseColor("#FF612F"));
+                holder.money.setTextColor(Color.parseColor("#FF612F"));
+                holder.txtinstall.setTextColor(Color.parseColor("#FF612F"));
+            }
+
             holder.btnview.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("RequestID", data.RequestID)
-
                 val fm = LoanerMenuRequestDetailFragment()
                 fm.arguments = bundle;
                 val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                 fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.replace(R.id.nav_host_fragment, fm)
                 fragmentTransaction.commit()
-
             }
-            holder.con.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("RequestID", data.RequestID)
 
-                val fm = LoanerMenuRequestDetailFragment()
-                fm.arguments = bundle;
-                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
-                fragmentTransaction.commit()
+            if(data.status=="0") {
+                holder.con.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString("RequestID", data.RequestID)
+
+                    val fm = LoanerMenuRequestDetailFragment()
+                    fm.arguments = bundle;
+                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                    fragmentTransaction.commit()
+                }
             }
 
 
@@ -178,6 +192,7 @@ class LoanerMenuReauestFragment : Fragment() {
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btnview: Button =itemView.findViewById(R.id.btncant)
             var con: ConstraintLayout =itemView.findViewById(R.id.consta)
+            var txtstatus:TextView=itemView.findViewById(R.id.textView66)
 
 
         }

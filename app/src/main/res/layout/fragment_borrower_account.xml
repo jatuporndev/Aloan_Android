@@ -75,7 +75,7 @@
             android:layout_marginTop="24dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/checked"
-            app:layout_constraintStart_toEndOf="@+id/imageButton3"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonWaitPay"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
@@ -89,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/imageButtonWaitPay"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_marginTop="24dp"
@@ -255,7 +255,30 @@
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnhistory"
+            app:strokeColor="@color/mainor"
+            app:strokeWidth="3dp" />
+
+        <Button
+            android:id="@+id/btnhistory"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:drawableLeft="@drawable/ic_baseline_history_24_or"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24_green"
+            android:gravity="left|center_vertical"
+            android:inputType="text"
+            android:text="ประวัติ"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
             app:strokeColor="@color/mainor"

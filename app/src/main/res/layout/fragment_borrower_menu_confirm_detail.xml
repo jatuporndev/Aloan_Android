@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maingree"
-    tools:context=".LoanerMenuRequestDetailFragment">
+    android:background="@color/mainor">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -81,20 +80,20 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="จำนวนเงิน"
+                    android:text="จำนวนเงินที่ส่งคำขอ"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView81" />
 
                 <TextView
                     android:id="@+id/textView71"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="จำนวนเงินที่ยอมรับ :"
                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/txtmoneyconfirmB"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
                 <TextView
@@ -169,15 +168,15 @@
                     android:layout_height="1dip"
                     android:layout_marginStart="12dp"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
+
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="12dp"
-
                     android:background="#B6B2B2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnhstoryB" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView52" />
 
                 <View
                     android:id="@+id/view2"
@@ -203,23 +202,22 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:text="1500.00"
-                    android:textColor="@color/mainor"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView81" />
 
-                <EditText
+                <TextView
                     android:id="@+id/txtmoneyconfirmB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:text="1500.00"
                     android:textColor="@color/maingree"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView29"
+                    app:layout_constraintStart_toEndOf="@+id/textView71"
                     app:layout_constraintTop_toBottomOf="@+id/txtmoneyRequestB" />
 
                 <TextView
@@ -230,25 +228,24 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:text="1500.00"
-                    android:textColor="@color/mainor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView29"
                     app:layout_constraintTop_toBottomOf="@+id/txtmoneyconfirmB" />
 
-                <EditText
+                <TextView
                     android:id="@+id/txtinstullmentconfirmB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:text="1500.00"
                     android:textColor="@color/maingree"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView29"
+                    app:layout_constraintStart_toEndOf="@+id/textView72"
                     app:layout_constraintTop_toBottomOf="@+id/txtinstullmentB" />
 
                 <TextView
@@ -272,9 +269,19 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:text="16-05-2021"
-                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView59" />
+
+                <TextView
+                    android:id="@+id/txtdayReB2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="16-05-2021"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
                 <TextView
                     android:id="@+id/txtemailB"
@@ -317,34 +324,6 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView48"
                     app:layout_constraintTop_toBottomOf="@+id/txtPhoneB" />
-
-                <TextView
-                    android:id="@+id/txtbirsthdayB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="2014--05-05"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtlineB" />
-
-                <TextView
-                    android:id="@+id/txtageB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="8 ปี"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView48"
-                    app:layout_constraintTop_toBottomOf="@+id/txtbirsthdayB" />
 
                 <TextView
                     android:id="@+id/txtiInterest_requestB"
@@ -390,7 +369,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="110dp"
-                    android:text="ข้อมูลผู้ส่งคำขอ"
+                    android:text="ข้อมูล"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -405,7 +384,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="จำนวนงวด"
+                    android:text="จำนวนงวดที่ส่งคำขอ"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtmoneyconfirmB" />
 
@@ -413,46 +392,13 @@
                     android:id="@+id/textView72"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="จำนวนงวดที่ยอมรับ :"
                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toStartOf="@+id/txtinstullmentconfirmB"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="วันเกิด"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView52" />
-
-                <TextView
-                    android:id="@+id/textView65"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="อายุ"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-                <TextView
-                    android:id="@+id/textView68"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="ที่อยู่"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView65" />
 
                 <TextView
                     android:id="@+id/textView59"
@@ -466,35 +412,15 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtaddressB"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:gravity="right"
-                    android:text="5556555555555555555555555555555555555555555555555555"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView68"
-                    app:layout_constraintTop_toBottomOf="@+id/txtageB" />
-
-                <Button
-                    android:id="@+id/btnhstoryB"
+                    android:id="@+id/textView80"
                     android:layout_width="wrap_content"
-                    android:layout_height="39dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/textboxui"
-                    android:text="ประวัติการกู้"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="@color/penRoyalBlue"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="วันที่ตรวจสอบ"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtaddressB" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtdayReB" />
 
                 <Button
                     android:id="@+id/btnunpass"
@@ -503,7 +429,7 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
                     android:layout_marginBottom="24dp"
-                    android:text="ไม่ผ่าน"
+                    android:text="ยกเลิก"
                     app:backgroundTint="@color/design_default_color_error"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -515,34 +441,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:layout_marginRight="32dp"
-                    android:text="ผ่าน"
+                    android:text="ยอมรับ"
                     android:textStyle="bold"
                     app:backgroundTint="@color/maingree"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
-
-                <ImageView
-                    android:id="@+id/imggenderB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/male"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtgenderB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="21dp"
-                    android:text="ชาย"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@+id/imggenderB"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <CheckBox
                     android:id="@+id/checkBox2"
@@ -550,10 +453,53 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginLeft="32dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="ตรวจสอบข้อมูลอย่างครบถ้วน"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/mainor"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView82"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView81"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ผ่าน"
+                    android:textColor="@color/maingree"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+                <TextView
+                    android:id="@+id/textView82"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="*เมื่อกดยอมรับแล้ว รายการอื่นจะถูกยกเลิกทันที โปรดตรวจสอบให้แน่ใจว่าที่คุณเลือกถูกต้อง"
+                    android:textColor="@color/mainor"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view2" />
 

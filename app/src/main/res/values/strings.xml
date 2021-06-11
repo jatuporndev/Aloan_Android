@@ -39,6 +39,7 @@
 
     <!--API Loaner process request-->
     <string name="loaner_DetailMenu1request_url">api/DetailMenu1request/</string>
+    <string name="loaner_Menu2WaitingPay_url">api/Menu2WaitingPay/</string>
     <string name="loaner_updateUnpass_url">api/updateUnpass/</string>
     <string name="loaner_updatePass_url">api/updatePass/</string>
 
@@ -61,5 +62,8 @@
     <string name="deleterequest_url">api/deleteRequest/</string>
     <string name="viewunpass_url">api/viewunpass/</string>
     <string name="viewConfirmed_url">api/viewConfirmed/</string>
+    <string name="viewConfirmedDetail_url">api/viewConfirmedDetail/</string>
     <string name="updateUnpassChecked_url">api/updateUnpassChecked/</string>
+    <string name="updateAccept_url">api/updateAccept/</string>
+    <string name="updatecancleRequest_url">api/cancleRequest/</string>
 </resources>

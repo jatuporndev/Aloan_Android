@@ -82,8 +82,8 @@ class LoanerMenuRequestDetailFragment : Fragment() {
         back=root.findViewById(R.id.imageViewback)
         imgpro=root.findViewById(R.id.imgpro)
 
-        editmoneyRequest=root.findViewById(R.id.editmoneyB)
-        editinstullmentRequest=root.findViewById(R.id.editinstullmentB)
+        editmoneyRequest=root.findViewById(R.id.txtmoneyconfirmB)
+        editinstullmentRequest=root.findViewById(R.id.txtinstullmentconfirmB)
         btnpass=root.findViewById(R.id.btnpass)
         btnunpass=root.findViewById(R.id.btnunpass)
         btnhistory=root.findViewById(R.id.btnhstoryB)

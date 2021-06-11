@@ -3,6 +3,7 @@ package com.example.aloan
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -74,7 +75,11 @@ class BorrowerMenuWaitingFragment : Fragment() {
                                     item.getString("imageProfile"),
                                     item.getString("dateRe"),
                                     item.getString("borrowlistID"),
-                                    item.getString("LoanerID")
+                                    item.getString("LoanerID"),
+                                    item.getString("status"),
+                                    item.getString("dateCheck"),
+                                    item.getString("money_confirm"),
+                                    item.getString("instullment_confirm")
 
 
 
@@ -100,7 +105,8 @@ class BorrowerMenuWaitingFragment : Fragment() {
     }
     internal class Data(
             var RequestID: String,var Money: String,var instullment: String,var Firstname: String
-            ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String,var LoanerID:String
+            ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String,var LoanerID:String,var status:String
+            ,var dateCheck:String,var money_confirm:String,var instullment_confirm:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -124,8 +130,20 @@ class BorrowerMenuWaitingFragment : Fragment() {
             Picasso.get().load(url).into(holder.imageProfile)
             holder.nameLoaner.text="คุณ ${data.Firstname} ${data.Lastname}"
             holder.money.text="฿"+data.Money
-            holder.txtdate.text=data.dateRe
+            holder.txtdate.text="วันที่ส่งคำจอ: "+data.dateRe
             holder.txtinstall.text=data.instullment
+
+            if(data.status=="2"){
+                holder.txtstatus.text="รอผู้ให้กู้โอนเงิน"
+                holder.txtstatus.setTextColor(Color.parseColor("#33BC40"));
+                holder.money.setTextColor(Color.parseColor("#33BC40"));
+                holder.txtinstall.setTextColor(Color.parseColor("#33BC40"));
+                holder.btncancel.visibility= View.GONE
+                holder.txtdate.text="วันที่ยืนยัน: "+data.dateCheck
+                holder.money.text="฿"+data.money_confirm
+                holder.txtinstall.text=data.instullment_confirm
+            }
+
             holder.btncancel.setOnClickListener {
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setTitle("แจ้งเตือน")
@@ -172,6 +190,7 @@ class BorrowerMenuWaitingFragment : Fragment() {
             var txtdate :TextView = itemView.findViewById(R.id.txtdate)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncancel:Button =itemView.findViewById(R.id.btncant)
+            var txtstatus:TextView=itemView.findViewById(R.id.textView66)
             var con:ConstraintLayout=itemView.findViewById(R.id.consta)
 
 

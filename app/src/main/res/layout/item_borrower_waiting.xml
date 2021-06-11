@@ -11,13 +11,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_marginTop="4dp"
         android:background="#E8E8E8"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btncant">
+        app:layout_constraintTop_toBottomOf="@+id/txtdate">
 
     </LinearLayout>
 
@@ -174,9 +173,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="29dp"
         android:text="16-5-2021"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

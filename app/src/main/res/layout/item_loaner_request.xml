@@ -68,7 +68,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="รอตรวจสอบ"
+        android:text="ยังไม่ได้ตรวจสอบ"
         android:textColor="@color/maingree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

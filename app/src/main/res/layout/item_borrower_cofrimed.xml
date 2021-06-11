@@ -82,7 +82,7 @@
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:text="จำนวนเงินที่ส่งคำขอ :"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/txtmoneyre"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -97,7 +97,7 @@
         android:layout_marginRight="8dp"
         android:text="จำนวนเงินที่ผู้ให้กู้ยอมรับ :"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,12 +107,12 @@
         android:id="@+id/textView78"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="จำนวนงวดที่ผู้ให้กู้ยอมรับ :"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/txtinstallconfirm"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -124,7 +124,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="฿100000000000"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -213,7 +213,7 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="จำนวนงวดที่ส่งคำขอ :"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/txtinstall"
         app:layout_constraintTop_toBottomOf="@+id/textView67" />
 
@@ -224,7 +224,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="5"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtmoneyre" />
 
@@ -236,7 +236,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:backgroundTint="@color/mainor"
-        android:text="ตวจสอบข้อมูล"
+        android:text="ตรวจสอบข้อมูล"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />

@@ -73,7 +73,7 @@
             android:layout_marginTop="20dp"
             android:background="?android:selectableItemBackground"
             android:src="@drawable/checked"
-            app:layout_constraintStart_toEndOf="@+id/imageButton3"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonWaitPay"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
@@ -87,7 +87,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/imageButtonWaitPay"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_marginTop="20dp"
@@ -220,7 +220,6 @@
 
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="6dp"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:drawableLeft="@drawable/ic_baseline_credit_card_24_green"
@@ -232,6 +231,29 @@
             app:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnhistory"
+            app:strokeColor="@color/maingree"
+            app:strokeWidth="3dp" />
+
+        <Button
+            android:id="@+id/btnhistory"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:drawableLeft="@drawable/ic_baseline_history_24"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24_green"
+            android:gravity="left|center_vertical"
+            android:inputType="text"
+            android:text="ประวัติ"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
             app:strokeColor="@color/maingree"
@@ -310,9 +332,9 @@
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/textborder"
             android:padding="5dp"
             android:text="ผู้ให้กู้/Loaner"
@@ -343,6 +365,22 @@
             android:layout_height="27dp"
             android:layout_marginStart="116dp"
             android:layout_marginLeft="116dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/item_count"
+            android:gravity="center|center_horizontal"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButtonWait"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtcountwaitpay"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="188dp"
+            android:layout_marginLeft="188dp"
             android:layout_marginBottom="40dp"
             android:background="@drawable/item_count"
             android:gravity="center|center_horizontal"

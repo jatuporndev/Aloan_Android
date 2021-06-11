@@ -20,10 +20,13 @@ import org.json.JSONObject
 import java.io.IOException
 
 
-class LoanerAccountFragment : Fragment() {
+class  LoanerAccountFragment : Fragment() {
     var btnlogout : Button? = null
-    var txtcoutRequest:TextView?=null
-    var txtcoutpay:TextView?=null
+
+    var txtcoutRequest:TextView?=null//1
+    var txtcoutpay:TextView?=null//2
+    var txtcoutWaitpay:TextView?=null//3
+
     var loanerID: String? = null
     var txtname:TextView?=null
     var txtphone:TextView?=null
@@ -31,11 +34,13 @@ class LoanerAccountFragment : Fragment() {
     var txtLineID:TextView?=null
     var imgpro:ImageView?=null
 
-    var btnrequest:ImageButton?=null
-    var btnpay:ImageButton?=null
+    var btnrequest:ImageButton?=null//1
+    var btnpay:ImageButton?=null//2
+    var btnWaitPay:ImageButton?=null//3
 
     var btneditbank:Button?=null//เมนู1
     var btneditprofile:Button?=null//เมนู2
+
 
     override fun onCreateView(
 
@@ -60,6 +65,8 @@ class LoanerAccountFragment : Fragment() {
         btnpay=root.findViewById(R.id.imageButtonPass)
         btneditbank=root.findViewById(R.id.btneditbank)
         btneditprofile=root.findViewById(R.id.btnedituser3)
+        txtcoutWaitpay=root.findViewById(R.id.txtcountwaitpay)
+       // btnWaitPay=root.findViewById(R.id.imageButtonWaitPay)
 
         btneditprofile?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -78,6 +85,12 @@ class LoanerAccountFragment : Fragment() {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuReauestFragment())
+            fragmentTransaction.commit()
+        }
+        btnpay?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuWaitingPayFragment())
             fragmentTransaction.commit()
         }
 
@@ -127,6 +140,12 @@ class LoanerAccountFragment : Fragment() {
                         }else{
                             txtcoutpay?.text=data.getString("count_pay_loaner")
                         }
+                        ///////////////////////////
+                        if(data.getString("count_Waitpay_loaner")=="0"){
+                            txtcoutWaitpay?.isVisible=false
+                        }else{
+                            txtcoutWaitpay?.text=data.getString("count_Waitpay_loaner")
+                        }
 
 
                     }
@@ -137,6 +156,7 @@ class LoanerAccountFragment : Fragment() {
                 response.code
                 txtcoutRequest?.isVisible=false
                 txtcoutpay?.isVisible=false
+                txtcoutWaitpay?.isVisible=false
             }
         } catch (e: IOException) {
             e.printStackTrace()

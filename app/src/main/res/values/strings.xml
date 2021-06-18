@@ -11,6 +11,7 @@
     <!-- <string name="root_url">http://192.168.43.39:8000/</string>-->
     <string name="profileBLoaner_image_url" translatable="false">assets/uploadfile/Loaner/profile/</string>
     <string name="profileBorrower_image_url" translatable="false">assets/uploadfile/Borrower/profile/</string>
+    <string name="bank_image_url" translatable="false">assets/uploadfile/bank/</string>
 
 
     <!--API Loaner-->
@@ -35,13 +36,19 @@
     <string name="loaner_insertCriterion_url">api/insertCriterion/</string>
     <string name="loaner_addBank_url">api/Loaner/addbank/</string>
     <string name="loaner_viewBank_url">api/Loaner/viewbank/</string>
+    <string name="loaner_viewBankfromname_url">api/viewBankfromname/</string>
     <string name="loaner_deleteBank_url">api/Loaner/deleteBank/</string>
+    <string name="loaner_allbank_url">api/allbank/</string>
 
     <!--API Loaner process request-->
     <string name="loaner_DetailMenu1request_url">api/DetailMenu1request/</string>
     <string name="loaner_Menu2WaitingPay_url">api/Menu2WaitingPay/</string>
     <string name="loaner_updateUnpass_url">api/updateUnpass/</string>
     <string name="loaner_updatePass_url">api/updatePass/</string>
+
+    <!--API Loaner process borrowDetail-->
+    <string name="loaner_addBorrowDetail_url">api/addBorrowDetail/</string>
+
 
 
     <!--API Borrower-->

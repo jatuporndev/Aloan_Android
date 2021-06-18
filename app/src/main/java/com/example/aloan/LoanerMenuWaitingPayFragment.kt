@@ -140,7 +140,14 @@ class LoanerMenuWaitingPayFragment : Fragment() {
 
             holder.btnview.setText("ดำเนินการ")
             holder.btnview.setOnClickListener {
-
+                val bundle = Bundle()
+                bundle.putString("RequestID", data.RequestID)
+                val fm = LoanerMenuWaitingPayDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
             }
         }
         override fun getItemCount(): Int {

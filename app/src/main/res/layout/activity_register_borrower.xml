@@ -157,13 +157,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editname" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/editbank"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/textboxui"
@@ -175,7 +175,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editadress" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <EditText
                 android:id="@+id/editadress"
@@ -236,6 +236,26 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editidbank" />
+
+            <EditText
+                android:id="@+id/editidcardback"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/textboxui"
+                android:drawableLeft="@drawable/ic_baseline_credit_card_24"
+                android:ems="10"
+                android:hint="| หมายเลขหลังบัตรประชาชน"
+                android:inputType="phone"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editidcard" />
 
             <EditText
                 android:id="@+id/editidbank"
@@ -489,14 +509,48 @@
                 android:layout_height="200dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editidcard"
+                app:layout_constraintTop_toBottomOf="@+id/editidcardback"
                 app:srcCompat="@drawable/card5" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="150dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView90"
+                app:strokeColor="@color/mainor"
+                app:strokeWidth="3dp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/imgpro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/textView90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="บัญชีสำหรับรับเงิน(สามารถแก้ไขได้ภายหลัง)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editadress" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

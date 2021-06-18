@@ -84,7 +84,8 @@ class LoanerBankFragment : Fragment() {
                                 item.getString("bankID"),
                                 item.getString("bank"),
                                 item.getString("holderName"),
-                                item.getString("bankNumber")
+                                item.getString("bankNumber"),
+                                item.getString("imagebank")
 
 
 
@@ -110,7 +111,7 @@ class LoanerBankFragment : Fragment() {
         }
     }
     internal class Data(
-        var bankID : String,var bank: String,var holderName: String,var bankNumber: String
+        var bankID : String,var bank: String,var holderName: String,var bankNumber: String,var bankimg:String
     )
     internal inner class DataAdapter(private val list: List<Data>) :
         RecyclerView.Adapter<DataAdapter.ViewHolder>() {
@@ -136,6 +137,9 @@ class LoanerBankFragment : Fragment() {
                 deleteBank(data.bankID)
                 showbank()
             }
+            var url = getString(R.string.root_url) +
+                    getString(R.string.bank_image_url) + data.bankimg
+            Picasso.get().load(url).into(holder.imagpro)
 
 
 
@@ -151,6 +155,7 @@ class LoanerBankFragment : Fragment() {
             var txtbank: TextView = itemView.findViewById(R.id.txtbankname)
             var txtbankID: TextView = itemView.findViewById(R.id.txtbankID)
             var btndelete: ImageButton = itemView.findViewById(R.id.imageButtonDelete)
+            var imagpro:ImageView=itemView.findViewById(R.id.imgpro)
 
         }
     }

@@ -28,11 +28,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.github.gcacace.signaturepad.views.SignaturePad
+import com.squareup.picasso.Picasso
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.*
@@ -56,7 +58,7 @@ class RegisterBorrowerActivity : AppCompatActivity() {
     var editphone: EditText?=null
     var editjob: EditText?=null
     var editadress: EditText?=null
-    var editbank: EditText?=null
+    var editbank: Spinner?=null
     var editidbank: EditText?=null
     var editidcard: EditText?=null
     var editsalary: EditText?=null
@@ -68,6 +70,8 @@ class RegisterBorrowerActivity : AppCompatActivity() {
     var imgface: ImageView?=null
     var btnimgcard: Button?=null
     var btnimgface: Button?=null
+    var imgpro:ImageView?=null
+    var editidcardback:EditText?=null
 
     var filecard: File? = null
     var fileface: File? = null
@@ -75,6 +79,10 @@ class RegisterBorrowerActivity : AppCompatActivity() {
     var imageFilePath: String? = null
 
     var  signaturePad: SignaturePad?=null
+    var banklistID=""
+    var bankname=""
+    var bankimg=""
+    private var bank = java.util.ArrayList<Bank>()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,6 +119,8 @@ class RegisterBorrowerActivity : AppCompatActivity() {
         imgface=findViewById(R.id.imgface)
         btnimgface=findViewById(R.id.btnimgface)
         btnimgcard=findViewById(R.id.btnimgcard)
+        imgpro=findViewById(R.id.imgpro)
+        editidcardback=findViewById(R.id.editidcardback)
 
         check?.setOnClickListener {
             btnconfrim?.isEnabled = check!!.isChecked
@@ -237,8 +247,61 @@ class RegisterBorrowerActivity : AppCompatActivity() {
         }
 
         permission()
+        listbank()
+        val adapterband = ArrayAdapter(
+                this,android.R.layout.simple_spinner_item, bank)
+        editbank?.adapter = adapterband
+
+        editbank?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+                val band = editbank!!.selectedItem as Bank
+                banklistID = band.banklistID
+                bankname=band.bankname
+                bankimg=band.imagebank
+                var url = getString(R.string.root_url) +
+                        getString(R.string.bank_image_url) + bankimg
+                Picasso.get().load(url).into(imgpro)
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
     }
+
+    class Bank(var banklistID: String, var bankname: String,var imagebank: String) {
+        override fun toString(): String {
+            return bankname
+        }
+
+    }
+    private fun listbank() {
+
+        val urlProvince: String = getString(R.string.root_url) + getString(R.string.loaner_allbank_url)
+        val okHttpClient = OkHttpClient()
+        val request: Request = Request.Builder().url(urlProvince).get().build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                try {
+                    val res = JSONArray(response.body!!.string())
+                    if (res.length() > 0) {
+                        for (i in 0 until res.length()) {
+                            val item: JSONObject = res.getJSONObject(i)
+                            bank.add(
+                                    Bank(
+                                            item.getString("banklistID"),
+                                            item.getString("bankname"),
+                                            item.getString("imagebank")
+                                    )
+                            )
+                        }
+                    }
+                } catch (e: JSONException) { e.printStackTrace() }
+            } else { response.code }
+        } catch (e: IOException) { e.printStackTrace() }
+    }
+
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun sig(){
         val sdf = SimpleDateFormat("dd-M-yyyy-hh-mm-ss")
@@ -476,10 +539,10 @@ class RegisterBorrowerActivity : AppCompatActivity() {
                 .addFormDataPart("email", editemail?.text.toString())
                 .addFormDataPart("IDCard", editidcard?.text.toString())
                 .addFormDataPart("IDBank", editidbank?.text.toString())
-                .addFormDataPart("Bank", editbank?.text.toString())
+                .addFormDataPart("Bank", bankname.toString())
                 .addFormDataPart("Job", editjob?.text.toString())
                 .addFormDataPart("Salary", editsalary?.text.toString())
-
+                .addFormDataPart("IDCard_back", editidcardback?.text.toString())
                 .addFormDataPart("Gender", if (radioWomen!!.isChecked) "1" else "0")
                 .addFormDataPart("Married", if (radioMarried!!.isChecked) "1" else "0")
 

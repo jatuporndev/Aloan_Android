@@ -1,4 +1,4 @@
-package com.example.aloan
+    package com.example.aloan
 
 import android.Manifest
 import android.app.Activity
@@ -25,11 +25,14 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.github.gcacace.signaturepad.views.SignaturePad
+import com.squareup.picasso.Picasso
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.*
@@ -53,7 +56,7 @@ class  RegisterLoanerActivity : AppCompatActivity() {
     var editphone:EditText?=null
     var editjob:EditText?=null
     var editadress:EditText?=null
-    var editbank:EditText?=null
+    var editbank:Spinner?=null
     var editidbank:EditText?=null
     var editidcard:EditText?=null
     var editidcardback:EditText?=null
@@ -65,6 +68,7 @@ class  RegisterLoanerActivity : AppCompatActivity() {
     var imgface:ImageView?=null
     var btnimgcard: Button?=null
     var btnimgface: Button?=null
+    var imgpro:ImageView?=null
 
     var filecard: File? = null
     var fileface: File? = null
@@ -72,7 +76,10 @@ class  RegisterLoanerActivity : AppCompatActivity() {
     var imageFilePath: String? = null
 
     var  signaturePad: SignaturePad?=null
-
+    var banklistID=""
+    var bankname=""
+    var bankimg=""
+    private var bank = java.util.ArrayList<Bank>()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,7 +118,7 @@ class  RegisterLoanerActivity : AppCompatActivity() {
         imgface=findViewById(R.id.imgface)
         btnimgface=findViewById(R.id.btnimgface)
         btnimgcard=findViewById(R.id.btnimgcard)
-
+        imgpro=findViewById(R.id.imgpro)
 
         check?.setOnClickListener {
             btnconfrim?.isEnabled = check!!.isChecked
@@ -124,6 +131,25 @@ class  RegisterLoanerActivity : AppCompatActivity() {
 
         btnclear?.setOnClickListener {
             signaturePad?.clearView()
+        }
+        listbank()
+        val adapterband = ArrayAdapter(
+                this,android.R.layout.simple_spinner_item, bank)
+        editbank?.adapter = adapterband
+
+        editbank?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+                val band = editbank!!.selectedItem as Bank
+                banklistID = band.banklistID
+                bankname=band.bankname
+                bankimg=band.imagebank
+                var url = getString(R.string.root_url) +
+                        getString(R.string.bank_image_url) + bankimg
+                Picasso.get().load(url).into(imgpro)
+                Log.d("text",url.toString())
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
         //Date picker (Birth date)
@@ -237,6 +263,7 @@ class  RegisterLoanerActivity : AppCompatActivity() {
         }
 
         permission()
+
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
@@ -476,7 +503,7 @@ class  RegisterLoanerActivity : AppCompatActivity() {
             .addFormDataPart("email", editemail?.text.toString())
             .addFormDataPart("IDCard", editidcard?.text.toString())
             .addFormDataPart("IDBank", editidbank?.text.toString())
-            .addFormDataPart("Bank", editbank?.text.toString())
+            .addFormDataPart("Bank", bankname.toString())
             .addFormDataPart("Job", editjob?.text.toString())
             .addFormDataPart("IDCard_back", editidcardback?.text.toString())
 
@@ -519,6 +546,39 @@ class  RegisterLoanerActivity : AppCompatActivity() {
             e.printStackTrace()
             Toast.makeText(this, "อีเมลซ้ำ", Toast.LENGTH_LONG).show()
         }
+    }
+
+    class Bank(var banklistID: String, var bankname: String,var imagebank: String) {
+        override fun toString(): String {
+            return bankname
+        }
+
+    }
+    private fun listbank() {
+
+        val urlProvince: String = getString(R.string.root_url) + getString(R.string.loaner_allbank_url)
+        val okHttpClient = OkHttpClient()
+        val request: Request = Request.Builder().url(urlProvince).get().build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                try {
+                    val res = JSONArray(response.body!!.string())
+                    if (res.length() > 0) {
+                        for (i in 0 until res.length()) {
+                            val item: JSONObject = res.getJSONObject(i)
+                            bank.add(
+                                    Bank(
+                                            item.getString("banklistID"),
+                                            item.getString("bankname"),
+                                            item.getString("imagebank")
+                                    )
+                            )
+                        }
+                    }
+                } catch (e: JSONException) { e.printStackTrace() }
+            } else { response.code }
+        } catch (e: IOException) { e.printStackTrace() }
     }
 
 }

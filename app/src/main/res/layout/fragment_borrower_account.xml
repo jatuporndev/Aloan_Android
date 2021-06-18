@@ -228,7 +228,7 @@
             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24_green"
             android:gravity="left|center_vertical"
             android:inputType="text"
-            android:text="ข้อมูลบัญชีธนาคาร"
+            android:text="ข้อมูลบัญชีรับเงิน"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

@@ -29,11 +29,13 @@ class BorrowerAccountFragment : Fragment() {
     var Menu1Waiting:ImageButton?=null
     var MenuUnpass:ImageButton?=null
     var MenuPass:ImageButton?=null
+    var Menupay:ImageButton?=null
 
 
     var txtcountWaiting:TextView?=null
     var txtcountconfirm:TextView?=null
     var txtcountunpass:TextView?=null
+    var txtcountPay:TextView?=null
     var btnedituser:Button?=null
     var btneditbank:Button?=null
 
@@ -69,6 +71,8 @@ class BorrowerAccountFragment : Fragment() {
         btnedituser=root.findViewById(R.id.btnedituser3)
         btneditbank=root.findViewById(R.id.btneditbank)
         txtcountunpass=root.findViewById(R.id.txtcountunpass)
+        txtcountPay=root.findViewById(R.id.txtcountcontPay)
+        Menupay=root.findViewById(R.id.imageButtonWaitPay)
 
 
 
@@ -108,6 +112,12 @@ class BorrowerAccountFragment : Fragment() {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuConfirmedFragment())
+            fragmentTransaction.commit()
+        }
+        Menupay?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuPayingFragment())
             fragmentTransaction.commit()
         }
 
@@ -173,6 +183,11 @@ class BorrowerAccountFragment : Fragment() {
                         }else{
                             txtcountunpass?.text=data.getString("count_unpass")
                         }
+                        if(data.getString("count_paying")=="0"){
+                            txtcountPay?.isVisible=false
+                        }else{
+                            txtcountPay?.text=data.getString("count_paying")
+                        }
 
 
                     }
@@ -184,6 +199,7 @@ class BorrowerAccountFragment : Fragment() {
                 txtcountWaiting?.isVisible=false
                 txtcountconfirm?.isVisible=false
                 txtcountunpass?.isVisible=false
+                txtcountPay?.isVisible=false
             }
         } catch (e: IOException) {
             e.printStackTrace()

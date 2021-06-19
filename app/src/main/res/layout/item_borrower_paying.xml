@@ -27,13 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:text="นาย จตุพร แสนทิพย์"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView88" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
@@ -46,7 +46,7 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="150dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView88"
         app:strokeColor="@color/white"
         app:strokeWidth="3dp"
         tools:ignore="MissingConstraints">
@@ -68,8 +68,8 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="ผ่าน"
-        android:textColor="@color/maingree"
+        android:text="ต้องชำระ"
+        android:textColor="@color/mainor"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,13 +78,13 @@
         android:id="@+id/textView67"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
-        android:text="จำนวนเงินที่ส่งคำขอ :"
+        android:text="จำนวนเงินที่กู้: "
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/txtmoneyre"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtnameW" />
 
     <TextView
         android:id="@+id/textView77"
@@ -95,7 +95,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="จำนวนเงินที่ผู้ให้กู้ยอมรับ :"
+        android:text="ยอดที่ต้องชำระต่องวด"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,10 +107,10 @@
         android:id="@+id/textView78"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:text="จำนวนงวดที่ผู้ให้กู้ยอมรับ :"
+        android:text="กำหนดชำระ"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/txtdatenext"
@@ -120,13 +120,13 @@
         android:id="@+id/txtmoneyre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="฿100000000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtnameW" />
 
     <TextView
         android:id="@+id/txtmoneyconfirm"
@@ -138,7 +138,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="฿100000000000"
-        android:textColor="@color/maingree"
+        android:textColor="@color/mainor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -153,8 +153,8 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="5"
-        android:textColor="@color/maingree"
-        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -212,7 +212,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:text="จำนวนงวดที่ส่งคำขอ :"
+        android:text="จำนวดงวด: "
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/txtinstall"
         app:layout_constraintTop_toBottomOf="@+id/textView67" />
@@ -245,21 +245,13 @@
         android:id="@+id/txtdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="28dp"
         android:text="16-5-2021"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView70"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-    <TextView
-        android:id="@+id/txtdate2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:text="16-5-2021"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/textView73"
-        app:layout_constraintTop_toBottomOf="@+id/txtdate" />
 
     <TextView
         android:id="@+id/textView70"
@@ -267,20 +259,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="วันที่ส่งคำขอ: "
+        android:layout_marginTop="28dp"
+        android:text="วันที่เริ่ม"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <TextView
-        android:id="@+id/textView73"
+        android:id="@+id/textView88"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="1dp"
-        android:text="วันที่ตรวจสอบ:"
+        android:layout_marginTop="8dp"
+        android:text="รหัส"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdate" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView93"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="25"
+        app:layout_constraintStart_toEndOf="@+id/textView88"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

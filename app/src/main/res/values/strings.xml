@@ -50,7 +50,6 @@
     <string name="loaner_addBorrowDetail_url">api/addBorrowDetail/</string>
 
 
-
     <!--API Borrower-->
     <string name="loginBorrower_url">api/Borrower/login</string>
     <string name="registerBorrower_url">api/Borrower/regis</string>
@@ -73,4 +72,5 @@
     <string name="updateUnpassChecked_url">api/updateUnpassChecked/</string>
     <string name="updateAccept_url">api/updateAccept/</string>
     <string name="updatecancleRequest_url">api/cancleRequest/</string>
+    <string name="Menupay_url">api/Menupay/</string>
 </resources>

@@ -61,13 +61,9 @@ class BorrowerMenuUnpassFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-
         showlist()
         return root
     }
-
-
-
 
     private fun showlist() {
         val data = ArrayList<Data>()

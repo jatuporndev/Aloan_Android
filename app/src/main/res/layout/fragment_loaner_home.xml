@@ -150,7 +150,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtmoneyMax" />
 
                 <TextView
-                    android:id="@+id/txtmoneyRequestB"
+                    android:id="@+id/txtmoney_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
@@ -175,7 +175,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmoneyRequestB" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtmoney_amount" />
 
                 <TextView
                     android:id="@+id/txtInterest_penalty_requestB"

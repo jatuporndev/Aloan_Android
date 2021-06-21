@@ -73,4 +73,8 @@
     <string name="updateAccept_url">api/updateAccept/</string>
     <string name="updatecancleRequest_url">api/cancleRequest/</string>
     <string name="Menupay_url">api/Menupay/</string>
+
+    <!--API ฺBorrower process borrowDetail-->
+    <string name="ViewPaying_url">api/ViewPaying/</string>
+    <string name="ManuPaydetail_url">api/ManuPaydetail/</string>
 </resources>

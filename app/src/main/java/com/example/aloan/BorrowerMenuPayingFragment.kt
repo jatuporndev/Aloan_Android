@@ -148,6 +148,26 @@ class BorrowerMenuPayingFragment : Fragment() {
             holder.txtdatenext.text=oneMonthLater.toString()
             holder.moneyper.text=(data.remain.toFloat()/data.instullment_total.toFloat()).toString()
 
+            holder.btncheck.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("borrowDetailID", data.BorrowDetailID)
+                val fm = BorrowerMenuPayingDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
+            }
+            holder.con.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("borrowDetailID", data.BorrowDetailID)
+                val fm = BorrowerMenuPayingDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
+            }
 
 
         }

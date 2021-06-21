@@ -81,7 +81,7 @@ class BorrowDetailListFragment : Fragment() {
 //test2
         recyclerView=root.findViewById(R.id.recyclerView)
         txtmoneyMax=root.findViewById(R.id.txtmoneyMax)
-        txtmoneyMin=root.findViewById(R.id.txtmoneyRequestB)
+        txtmoneyMin=root.findViewById(R.id.txtmoney_amount)
         txtinterest=root.findViewById(R.id.txtiInterest_requestB)
         txtinterest_penalty=root.findViewById(R.id.txtInterest_penalty_requestB)
         txtlineId=root.findViewById(R.id.txtlineB)

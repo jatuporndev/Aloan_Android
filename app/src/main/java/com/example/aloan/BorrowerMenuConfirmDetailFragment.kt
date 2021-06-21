@@ -15,7 +15,6 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONException
 import org.json.JSONObject
-import org.w3c.dom.Text
 import java.io.IOException
 
 
@@ -53,7 +52,7 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
         txtloanerphone=root.findViewById(R.id.txtPhoneB)
         txtloanerline=root.findViewById(R.id.txtlineB)
         imgpro=root.findViewById(R.id.imgpro)
-        txtmoneyRequest=root.findViewById(R.id.txtmoneyRequestB)
+        txtmoneyRequest=root.findViewById(R.id.txtmoney_amount)
         txtinstullmentRequest=root.findViewById(R.id.txtinstullmentB)
         txtmoneyConfirm=root.findViewById(R.id.txtmoneyconfirmB)
         txtinstullmentConfirm=root.findViewById(R.id.txtinstullmentconfirmB)

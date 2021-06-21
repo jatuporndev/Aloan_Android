@@ -74,7 +74,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
         txtgender=root.findViewById(R.id.txtgenderB)
         imggender=root.findViewById(R.id.imggenderB)
 
-        txtmoneyRequest=root.findViewById(R.id.txtmoneyRequestB)
+        txtmoneyRequest=root.findViewById(R.id.txtmoney_amount)
         txtinstullmentRequest=root.findViewById(R.id.txtinstullmentB)
         txtInterestRequest=root.findViewById(R.id.txtiInterest_requestB)
         txtInterest_penaltyRequest=root.findViewById(R.id.txtInterest_penalty_requestB)

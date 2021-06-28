@@ -48,6 +48,9 @@
 
     <!--API Loaner process borrowDetail-->
     <string name="loaner_addBorrowDetail_url">api/addBorrowDetail/</string>
+    <string name="loaner_ViewbankLoaner_url">api/ViewbankLoaner/</string>
+    <string name="loaner_ViewBorrowDetail_url">api/loaner/borrowdetail/</string>
+    <string name="loaner_checkpayMenu_url">api/loaner/checkpayMenu/</string>
 
 
     <!--API Borrower-->
@@ -62,6 +65,7 @@
     <string name="viewpined_url">api/viewpined/</string>
     <string name="addpined_url">api/Addpined/</string>
     <string name="deletepined_url">api/deletepined/</string>
+
     <!--API Borrower request-->
     <string name="addrequest_url">api/AddRequest/</string>
     <string name="viewrequest_url">api/viewrequest/</string>
@@ -73,8 +77,11 @@
     <string name="updateAccept_url">api/updateAccept/</string>
     <string name="updatecancleRequest_url">api/cancleRequest/</string>
     <string name="Menupay_url">api/Menupay/</string>
+    <string name="nextDateurl">api/nextDate/</string>
 
     <!--API ฺBorrower process borrowDetail-->
     <string name="ViewPaying_url">api/ViewPaying/</string>
     <string name="ManuPaydetail_url">api/ManuPaydetail/</string>
+    <string name="updateStatusHistory_url">api/updateStatusHistory/</string>
+    <string name="createHis_url">api/createHis/</string>
 </resources>

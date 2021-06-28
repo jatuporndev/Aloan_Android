@@ -4,15 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
@@ -22,52 +25,33 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
-class BorrowerMenuPayingFragment : Fragment() {
-    var back:ImageView?=null
-    var borrowerID:String?=null
+class LoanerMenuGetMoneyFragment : Fragment() {
+
     var recyclerView:RecyclerView?=null
-    var wsipe:SwipeRefreshLayout?=null
+    var back:ImageView?=null
+    var swip:SwipeRefreshLayout?=null
+    var loanerID:String?=null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val root =inflater.inflate(R.layout.fragment_borrower_menu_paying, container, false)
+        val root =inflater.inflate(R.layout.fragment_loaner_menu_get_money, container, false)
         val sharedPrefer = requireContext().getSharedPreferences(
-                LoginBorrowerActivity().appPreference, Context.MODE_PRIVATE)
-        borrowerID = sharedPrefer?.getString(LoginBorrowerActivity().borrowerIdPreference, null)
-        wsipe=root.findViewById(R.id.swipe_layout)
+                LoginLoanerActivity().appPreference, Context.MODE_PRIVATE)
+        loanerID = sharedPrefer?.getString(LoginLoanerActivity().LoanerIdPreference, null)
+
         recyclerView=root.findViewById(R.id.recyclerView)
         back=root.findViewById(R.id.imageViewback)
-
-        back?.setOnClickListener {
-            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerAccountFragment())
-            fragmentTransaction.commit()
-        }
-        wsipe=root.findViewById(R.id.swipe_layout)
-        wsipe?.setColorSchemeResources(
-                R.color.mainor,
-                R.color.mainor,
-                R.color.mainor)
-
-        wsipe?.setOnRefreshListener {
-            showlist()
-            wsipe?.isRefreshing=false
-        }
+        swip=root.findViewById(R.id.swipe_layout)
 
         showlist()
         return root
     }
     private fun showlist() {
         val data = ArrayList<Data>()
-        val url: String = getString(R.string.root_url) + getString(R.string.Menupay_url)+borrowerID
+        val url: String = getString(R.string.root_url) + getString(R.string.loaner_ViewBorrowDetail_url)+loanerID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(url).get().build()
         try {
@@ -121,7 +105,7 @@ class BorrowerMenuPayingFragment : Fragment() {
             RecyclerView.Adapter<DataAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view: View = LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_borrower_paying,
+                    R.layout.item_loaner_waitpay,
                     parent, false
             )
             return ViewHolder(view)
@@ -135,7 +119,7 @@ class BorrowerMenuPayingFragment : Fragment() {
             val data = list[position]
             holder.data = data
             var url = getString(R.string.root_url) +
-                    getString(R.string.profileBLoaner_image_url) + data.imageProfile
+                    getString(R.string.profileBorrower_image_url) + data.imageProfile
             Picasso.get().load(url).into(holder.imageProfile)
 
             holder.nameLoaner.text="คุณ ${data.firstname} ${data.lastname}"
@@ -146,25 +130,16 @@ class BorrowerMenuPayingFragment : Fragment() {
             holder.txtdatenext.text=nextday(data.BorrowDetailID)
             holder.moneyper.text=(data.remain.toFloat()/data.instullment_total.toFloat()).toString()
 
+            if (checkpay(data.BorrowDetailID)){
+                holder.txttsttus.text="มีการชำระใหม่รอยืนยัน"
+                bl(holder.txttsttus)
+            }
+
             holder.btncheck.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("borrowDetailID", data.BorrowDetailID)
-                val fm = BorrowerMenuPayingDetailFragment()
-                fm.arguments = bundle;
-                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
-                fragmentTransaction.commit()
+
             }
             holder.con.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("borrowDetailID", data.BorrowDetailID)
-                val fm = BorrowerMenuPayingDetailFragment()
-                fm.arguments = bundle;
-                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
-                fragmentTransaction.commit()
+
             }
 
 
@@ -184,8 +159,9 @@ class BorrowerMenuPayingFragment : Fragment() {
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncheck: Button =itemView.findViewById(R.id.btncant)
             var con: ConstraintLayout =itemView.findViewById(R.id.consta)
-            var borrowdetailID:TextView=itemView.findViewById(R.id.textView93)
-            var moneyper:TextView=itemView.findViewById(R.id.txtmoneyconfirm)
+            var borrowdetailID: TextView =itemView.findViewById(R.id.textView93)
+            var moneyper: TextView =itemView.findViewById(R.id.txtmoneyconfirm)
+            var txttsttus:TextView=itemView.findViewById(R.id.textView107)
 
 
 
@@ -206,7 +182,7 @@ class BorrowerMenuPayingFragment : Fragment() {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
                         ///////////////////////////
-                         settlement_date =data.getString("settlement_date")
+                        settlement_date =data.getString("settlement_date")
 
                     }
                 } catch (e: JSONException) {
@@ -220,5 +196,42 @@ class BorrowerMenuPayingFragment : Fragment() {
         }
         return settlement_date
     }
+    private fun checkpay(BorrowDetailID:String):Boolean{
+        var settlement_date=false
+        var url: String = getString(R.string.root_url) + getString(R.string.loaner_checkpayMenu_url) + BorrowDetailID
+        val okHttpClient = OkHttpClient()
+        val request: Request = Request.Builder()
+                .url(url)
+                .get()
+                .build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                try {
+                    val data = JSONArray(response.body!!.string())
+                    if (data.length() > 0) {
+                        //////////////////////////
+                        settlement_date=true
+                    }
 
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            } else {
+                response.code
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return settlement_date
+    }
+    fun bl(text:TextView){
+        val anim: Animation = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 500 //You can manage the blinking time with this parameter
+
+        anim.startOffset = 20
+        anim.repeatMode = Animation.REVERSE
+        anim.repeatCount = Animation.INFINITE
+        text.startAnimation(anim)
+    }
 }

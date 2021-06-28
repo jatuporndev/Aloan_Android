@@ -66,7 +66,7 @@ class  LoanerAccountFragment : Fragment() {
         btneditbank=root.findViewById(R.id.btneditbank)
         btneditprofile=root.findViewById(R.id.btnedituser3)
         txtcoutWaitpay=root.findViewById(R.id.txtcountwaitpay)
-       // btnWaitPay=root.findViewById(R.id.imageButtonWaitPay)
+        btnWaitPay=root.findViewById(R.id.imageButtonWaitPay)
 
         btneditprofile?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -91,6 +91,12 @@ class  LoanerAccountFragment : Fragment() {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuWaitingPayFragment())
+            fragmentTransaction.commit()
+        }
+        btnWaitPay?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuGetMoneyFragment())
             fragmentTransaction.commit()
         }
 

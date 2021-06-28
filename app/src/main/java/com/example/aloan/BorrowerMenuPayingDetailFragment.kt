@@ -43,14 +43,16 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
     var txthis:TextView?=null
 
     var monneytotal:Float= 0F
+    var monneytoRemain:Float= 0F
     var borrowDetailID:String?=null
+    var loanerID:String=""
+    private var IDhis = java.util.ArrayList<String>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val root =inflater.inflate(R.layout.fragment_borrower_menu_paying_detail, container, false)
         val bundle =this.arguments
         borrowDetailID=bundle?.get("borrowDetailID").toString()
-
         recyclerView=root.findViewById(R.id.recyclerView2)
         back=root.findViewById(R.id.imageViewback)
         imgpro=root.findViewById(R.id.imgpro)
@@ -63,8 +65,8 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
 
         txtPrinciple=root.findViewById(R.id.txtPrinciple)
         txtinstullment_total=root.findViewById(R.id.txtinstullment_total)
-        txtInterest=root.findViewById(R.id.txtInterest_penalty)
-        txtinstullment_amont=root.findViewById(R.id.txtinstullment_total)
+        txtInterest=root.findViewById(R.id.txtInterest)
+        txtinstullment_amont=root.findViewById(R.id.txtinstullment_amont)
         txtInterest_penalty=root.findViewById(R.id.txtInterest_penalty)
         txttotalmoney=root.findViewById(R.id.txttotalmoney)
         txtmoney_amount=root.findViewById(R.id.txtmoney_amount)
@@ -73,7 +75,33 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
 
         txthis?.paintFlags = txthis?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
 
+        IDhis?.clear()
+
+        back?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuPayingFragment())
+            fragmentTransaction.commit()
+        }
+
         viewdetail(borrowDetailID!!)
+
+        btnpayment?.setOnClickListener {
+
+            val bundle = Bundle()
+           // bundle.putString("criterionID", data.criterionID)
+            bundle.putStringArrayList("arrayID",IDhis)
+            bundle.putString("moneytotal",monneytotal.toString())
+            bundle.putString("moneytoRemain",monneytoRemain.toString())
+            bundle.putString("borrowDetailID",borrowDetailID)
+            bundle.putString("loanerID",loanerID)
+            val fm = BorrowerPaymentFragment()
+            fm.arguments = bundle;
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+            fragmentTransaction.commit()
+        }
 
 
         return root
@@ -108,6 +136,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                         txtinstullment_amont?.text=data.getString("instullment_Amount")
                         txtInterest?.text=data.getString("Interest")
                         txtInterest_penalty?.text=data.getString("Interest_penalty")
+                        loanerID=data.getString("LoanerID")
 
                         viewPaying(data.getString("BorrowDetailID"))
 
@@ -148,7 +177,6 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                                     item.getString("dateset_status"),
                                     item.getString("interest_penalty_money")
 
-
                             )
                             )
                           //  if(item.getString("dateset_status")=="1"){
@@ -164,7 +192,8 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                      //   txttotalmoney?.text=monneytotal.toString()
                     } else {
                         recyclerView!!.adapter = DataAdapter(data)
-
+                        monneytotal= 0F
+                        txttotalmoney?.text=monneytotal.toString()
 
                     }
                 } catch (e: JSONException) {
@@ -217,11 +246,15 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             if (data.dateset_status=="0") {
                 if (holder.checkBox.isChecked) {
                     monneytotal += data.moneySet.toFloat()
+                    monneytoRemain += data.moneySet.toFloat()
+                    IDhis.add(data.HistoryID)
                 }
             }
             if (data.dateset_status=="1") {
                 if (holder.checkBox.isChecked) {
                     monneytotal+=data.moneySet.toFloat()+data.interest_penalty_money.toFloat()
+                    monneytoRemain += data.moneySet.toFloat()
+                    IDhis.add(data.HistoryID)
                 }
             }
 
@@ -229,8 +262,12 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
 
                 if (holder.checkBox.isChecked) {
                     monneytotal += data.moneySet.toFloat()
+                    monneytoRemain += data.moneySet.toFloat()
+                    IDhis.add(data.HistoryID)
                 }else{
                     monneytotal -= data.moneySet.toFloat()
+                    monneytoRemain -= data.moneySet.toFloat()
+                    IDhis.remove(data.HistoryID)
                 }
                 txttotalmoney?.text=monneytotal.toString()
             }

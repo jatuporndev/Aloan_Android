@@ -447,7 +447,7 @@
                             android:layout_weight="1"
                             android:gravity="center|left"
                             android:padding="10dp"
-                            android:text="2100"
+                            android:text="0"
                             android:textColor="@color/mainor"
                             android:textSize="18sp"
                             android:textStyle="bold"

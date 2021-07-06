@@ -12,6 +12,7 @@
     <string name="profileBLoaner_image_url" translatable="false">assets/uploadfile/Loaner/profile/</string>
     <string name="profileBorrower_image_url" translatable="false">assets/uploadfile/Borrower/profile/</string>
     <string name="bank_image_url" translatable="false">assets/uploadfile/bank/</string>
+    <string name="payment_image_url" translatable="false">assets/uploadfile/Borrower/payment/</string>
 
 
     <!--API Loaner-->
@@ -51,7 +52,13 @@
     <string name="loaner_ViewbankLoaner_url">api/ViewbankLoaner/</string>
     <string name="loaner_ViewBorrowDetail_url">api/loaner/borrowdetail/</string>
     <string name="loaner_checkpayMenu_url">api/loaner/checkpayMenu/</string>
+    <string name="loaner_ManuGetMoneydetail_url">api/ManuGetMoneydetail/</string>
+    <string name="loaner_Bill_url">api/Bill/</string>
 
+    <!--API Loaner process History-->
+    <string name="loaner_billdetail_url">api/billDetail/</string>
+    <string name="loaner_historylist_url">api/historylist/</string>
+    <string name="loaner_confrimBill_url">api/confrimBill/</string>
 
     <!--API Borrower-->
     <string name="loginBorrower_url">api/Borrower/login</string>

@@ -136,10 +136,24 @@ class LoanerMenuGetMoneyFragment : Fragment() {
             }
 
             holder.btncheck.setOnClickListener {
-
+                val bundle = Bundle()
+                bundle.putString("BorrowDetailID", data.BorrowDetailID)
+                val fm = LoanerMenuGetMoneyDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
             }
             holder.con.setOnClickListener {
-
+                val bundle = Bundle()
+                bundle.putString("BorrowDetailID", data.BorrowDetailID)
+                val fm = LoanerMenuGetMoneyDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
             }
 
 

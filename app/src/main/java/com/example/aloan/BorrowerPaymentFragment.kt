@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.DocumentsContract
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +43,7 @@ class BorrowerPaymentFragment : Fragment() {
     var recyclerView:RecyclerView?=null
     var btnupload:Button?=null
     var file: File? = null
+    var moneyRemain:String?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -52,10 +52,11 @@ class BorrowerPaymentFragment : Fragment() {
 
         val bundle=this.arguments
         var borrowdetailID =bundle?.get("borrowDetailID").toString()
+        moneyRemain = bundle?.get("moneytoRemain").toString()
         back=root.findViewById(R.id.imageviewback)
         totalmoney=root.findViewById(R.id.txttotalmoney)
         bankNumber=root.findViewById(R.id.editbanknumber)
-        slip=root.findViewById(R.id.imageView5)
+        slip=root.findViewById(R.id.imgslip)
         checkBox1=root.findViewById(R.id.checkBox5)
         checkBox2=root.findViewById(R.id.checkBox6)
         btnconfirm=root.findViewById(R.id.btnconfrim1)
@@ -218,6 +219,7 @@ class BorrowerPaymentFragment : Fragment() {
         val okHttpClient = OkHttpClient()
         val formBody: RequestBody = MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
+                .addFormDataPart("money", moneyRemain.toString())
                 .addFormDataPart("imageBill", (file?.name),
                         RequestBody.create("application/octet-stream".toMediaTypeOrNull(), file!!))
                 .build()

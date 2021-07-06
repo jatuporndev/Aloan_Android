@@ -131,7 +131,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                         txtphone?.text=data.getString("phone")
                         txtline?.text=data.getString("LineID")
                         txtPrinciple?.text="฿"+data.getString("Principle")
-                        txtmoney_amount?.text="&"+data.getString("remain")
+                        txtmoney_amount?.text="฿"+data.getString("remain")
                         txtinstullment_total?.text=data.getString("instullment_total")
                         txtinstullment_amont?.text=data.getString("instullment_Amount")
                         txtInterest?.text=data.getString("Interest")

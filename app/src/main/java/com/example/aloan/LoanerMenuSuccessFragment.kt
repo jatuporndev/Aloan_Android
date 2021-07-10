@@ -1,6 +1,7 @@
 package com.example.aloan
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -13,7 +14,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -23,48 +23,33 @@ import org.json.JSONObject
 import java.io.IOException
 
 
-class LoanerMenuReauestFragment : Fragment() {
-
+class LoanerMenuSuccessFragment : Fragment() {
+    var back:ImageView?=null
+    var recyclerView:RecyclerView?=null
     var loanerID:String?=null
-    var recyclerView: RecyclerView?=null
-    var wsipe: SwipeRefreshLayout?=null
-
-    var back : ImageView?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
-        val root =inflater.inflate(R.layout.fragment_loaner_menu_reauest, container, false)
+        val root = inflater.inflate(R.layout.fragment_loaner_menu_success, container, false)
         val sharedPrefer = requireContext().getSharedPreferences(
                 LoginLoanerActivity().appPreference, Context.MODE_PRIVATE)
         loanerID = sharedPrefer?.getString(LoginLoanerActivity().LoanerIdPreference, null)
-        back =root.findViewById(R.id.imageviewback)
+        back = root.findViewById(R.id.imageviewback)
         recyclerView=root.findViewById(R.id.recyclerView)
-        wsipe=root.findViewById(R.id.swipe_layout)
-        wsipe?.setColorSchemeResources(
-            R.color.maingree,
-            R.color.maingree,
-            R.color.maingree)
-
-        wsipe?.setOnRefreshListener {
-            showlist()
-            wsipe?.isRefreshing=false
-        }
-
         back?.setOnClickListener {
-
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, LoanerAccountFragment())
             fragmentTransaction.commit()
         }
+
         showlist()
         return root
     }
-
     private fun showlist() {
         val data = ArrayList<Data>()
-        val url: String = getString(R.string.root_url) + getString(R.string.loaner_Menu1Request_url)+loanerID
+        val url: String = getString(R.string.root_url) + getString(R.string.loaner_AllSuccess_url)+loanerID
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(url).get().build()
         try {
@@ -76,18 +61,15 @@ class LoanerMenuReauestFragment : Fragment() {
                         for (i in 0 until res.length()) {
                             val item: JSONObject = res.getJSONObject(i)
                             data.add(Data(
-                                    item.getString("RequestID"),
-                                    item.getString("Money"),
-                                    item.getString("instullment_request"),
+                                    item.getString("Principle"),
+                                    item.getString("instullment_total"),
                                     item.getString("firstname"),
                                     item.getString("lastname"),
                                     item.getString("imageProfile"),
-                                    item.getString("dateRe"),
-                                    item.getString("borrowlistID"),
-                                    item.getString("status"),
-                                    item.getString("dateCheck"),
-                                    item.getString("money_confirm"),
-                                    item.getString("instullment_confirm")
+                                    item.getString("date_start"),
+                                    item.getString("Update_date"),
+                                    item.getString("Interest")
+
 
                             )
                             )
@@ -110,16 +92,15 @@ class LoanerMenuReauestFragment : Fragment() {
         }
     }
     internal class Data(
-            var RequestID: String,var Money: String,var instullment_request: String,var Firstname: String
-            ,var Lastname: String,var imageProfile: String,var dateRe:String,var borrowlistID:String
-            ,var status:String,var dateCheck:String,var money_confirm:String,var instullment_confirm:String
+            var Money: String,var instullment: String,var Firstname: String
+            ,var Lastname: String,var imageProfile: String,var dateStart:String,var Update_date:String,var Interest:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
             RecyclerView.Adapter<DataAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view: View = LayoutInflater.from(parent.context).inflate(
-                    R.layout.item_loaner_request,
+                    R.layout.item_loaner_menu_success,
                     parent, false
             )
             return ViewHolder(view)
@@ -134,46 +115,12 @@ class LoanerMenuReauestFragment : Fragment() {
             var url = getString(R.string.root_url) +
                     getString(R.string.profileBorrower_image_url) + data.imageProfile
             Picasso.get().load(url).into(holder.imageProfile)
-            holder.nameLoaner.text="คุณ ${data.Firstname} ${data.Lastname}"
+            holder.name.text="คุณ ${data.Firstname} ${data.Lastname}"
             holder.money.text="฿"+data.Money
-            holder.txtdate.text=data.dateRe
-            holder.txtinstall.text=data.instullment_request
-
-            if(data.status=="1"){
-                holder.btnview.visibility=View.INVISIBLE
-                holder.money.text="฿"+data.money_confirm
-                holder.txtdate.text="วันที่ยืนยัน: "+data.dateCheck
-                holder.txtinstall.text=data.instullment_confirm
-                holder.txtstatus.text="รอผู้กู้ยอมรับ"
-                holder.txtstatus.setTextColor(Color.parseColor("#FF612F"));
-                holder.money.setTextColor(Color.parseColor("#FF612F"));
-                holder.txtinstall.setTextColor(Color.parseColor("#FF612F"));
-            }
-
-            holder.btnview.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("RequestID", data.RequestID)
-                val fm = LoanerMenuRequestDetailFragment()
-                fm.arguments = bundle;
-                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                fragmentTransaction.addToBackStack(null)
-                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
-                fragmentTransaction.commit()
-            }
-
-            if(data.status=="0") {
-                holder.con.setOnClickListener {
-                    val bundle = Bundle()
-                    bundle.putString("RequestID", data.RequestID)
-
-                    val fm = LoanerMenuRequestDetailFragment()
-                    fm.arguments = bundle;
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.replace(R.id.nav_host_fragment, fm)
-                    fragmentTransaction.commit()
-                }
-            }
+            holder.ints.text=data.Interest+"%"
+            holder.txtinstall.text=data.instullment
+            holder.dateStart.text=data.dateStart
+            holder.dateEnd.text=data.Update_date
 
 
         }
@@ -184,16 +131,17 @@ class LoanerMenuReauestFragment : Fragment() {
         internal inner class ViewHolder(itemView: View) :
                 RecyclerView.ViewHolder(itemView) {
             var data: Data? = null
-            var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
+            var name : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate : TextView = itemView.findViewById(R.id.dateendg)
-            var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
-            var btnview: Button =itemView.findViewById(R.id.btncant)
+            var ints:TextView=itemView.findViewById(R.id.txtints)
+            var dateStart:TextView=itemView.findViewById(R.id.txtdatestartg)
+            var dateEnd:TextView=itemView.findViewById(R.id.dateendg)
             var con: ConstraintLayout =itemView.findViewById(R.id.consta)
-            var txtstatus:TextView=itemView.findViewById(R.id.textView66)
+            var imageProfile:ImageView=itemView.findViewById(R.id.imgpro)
+
 
 
         }
     }
-}
+    }

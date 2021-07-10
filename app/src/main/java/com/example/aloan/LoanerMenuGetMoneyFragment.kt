@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -168,7 +167,7 @@ class LoanerMenuGetMoneyFragment : Fragment() {
             var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate : TextView = itemView.findViewById(R.id.txtdate)
+            var txtdate : TextView = itemView.findViewById(R.id.dateendg)
             var txtdatenext : TextView = itemView.findViewById(R.id.txtdatenext)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncheck: Button =itemView.findViewById(R.id.btncant)

@@ -22,8 +22,6 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
 class BorrowerMenuPayingFragment : Fragment() {
@@ -179,7 +177,7 @@ class BorrowerMenuPayingFragment : Fragment() {
             var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate : TextView = itemView.findViewById(R.id.txtdate)
+            var txtdate : TextView = itemView.findViewById(R.id.dateendg)
             var txtdatenext : TextView = itemView.findViewById(R.id.txtdatenext)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncheck: Button =itemView.findViewById(R.id.btncant)

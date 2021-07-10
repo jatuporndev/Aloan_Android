@@ -98,6 +98,12 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
                         ///////////////////////////
+                        if (data.getString("remain") =="0"){
+                            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                            fragmentTransaction.addToBackStack(null)
+                            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerAccountFragment())
+                            fragmentTransaction.commit()
+                        }
                         var fristname =data.getString("firstname")
                         var lastname =data.getString("lastname")
                         txtname?.text="$fristname $lastname"
@@ -117,6 +123,8 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
                         var url = getString(R.string.root_url) +
                                 getString(R.string.profileBorrower_image_url) + data.getString("imageProfile")
                         Picasso.get().load(url).into(imgpro)
+
+
 
                     }
                 } catch (e: JSONException) {

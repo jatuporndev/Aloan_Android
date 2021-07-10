@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -187,7 +186,7 @@ class BorrowerMenuWaitingFragment : Fragment() {
             var nameLoaner :TextView = itemView.findViewById(R.id.txtnameW)
             var money :TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall :TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate :TextView = itemView.findViewById(R.id.txtdate)
+            var txtdate :TextView = itemView.findViewById(R.id.dateendg)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncancel:Button =itemView.findViewById(R.id.btncant)
             var txtstatus:TextView=itemView.findViewById(R.id.textView66)

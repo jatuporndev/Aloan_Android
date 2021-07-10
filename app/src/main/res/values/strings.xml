@@ -58,7 +58,8 @@
     <!--API Loaner process History-->
     <string name="loaner_billdetail_url">api/billDetail/</string>
     <string name="loaner_historylist_url">api/historylist/</string>
-    <string name="loaner_confrimBill_url">api/confrimBill/</string>
+    <string name="loaner_confrimBill_url">api/confrimBill2/</string>
+    <string name="loaner_AllSuccess_url">api/AllSuccess/</string>
 
     <!--API Borrower-->
     <string name="loginBorrower_url">api/Borrower/login</string>

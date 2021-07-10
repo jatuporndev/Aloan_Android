@@ -12,9 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
@@ -189,7 +187,7 @@ class BorrowerMenuUnpassFragment : Fragment() {
             var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate : TextView = itemView.findViewById(R.id.txtdate)
+            var txtdate : TextView = itemView.findViewById(R.id.dateendg)
             var txtdateCheck:TextView=itemView.findViewById(R.id.txtdate2)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncheck: Button =itemView.findViewById(R.id.btncant)

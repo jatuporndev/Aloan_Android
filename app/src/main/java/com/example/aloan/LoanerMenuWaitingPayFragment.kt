@@ -2,7 +2,6 @@ package com.example.aloan
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -160,7 +159,7 @@ class LoanerMenuWaitingPayFragment : Fragment() {
             var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate : TextView = itemView.findViewById(R.id.txtdate)
+            var txtdate : TextView = itemView.findViewById(R.id.dateendg)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btnview: Button =itemView.findViewById(R.id.btncant)
             var con: ConstraintLayout =itemView.findViewById(R.id.consta)

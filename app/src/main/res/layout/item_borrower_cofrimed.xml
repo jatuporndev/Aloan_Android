@@ -242,7 +242,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <TextView
-        android:id="@+id/txtdate"
+        android:id="@+id/dateendg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -259,7 +259,7 @@
         android:text="16-5-2021"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView73"
-        app:layout_constraintTop_toBottomOf="@+id/txtdate" />
+        app:layout_constraintTop_toBottomOf="@+id/dateendg" />
 
     <TextView
         android:id="@+id/textView70"
@@ -281,6 +281,6 @@
         android:layout_marginTop="1dp"
         android:text="วันที่ตรวจสอบ:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdate" />
+        app:layout_constraintTop_toBottomOf="@+id/dateendg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtfirstname" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/menusuccess"
             android:layout_width="69dp"
             android:layout_height="69dp"
             android:layout_marginTop="20dp"
@@ -340,7 +340,7 @@
             android:text="ผู้ให้กู้/Loaner"
             android:textColor="@color/maingree"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton4"
+            app:layout_constraintBottom_toTopOf="@+id/imageButtonUnpass"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView

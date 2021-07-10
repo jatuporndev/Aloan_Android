@@ -171,7 +171,7 @@ class BorrowerMenuConfirmedFragment : Fragment() {
             var nameLoaner : TextView = itemView.findViewById(R.id.txtnameW)
             var money : TextView = itemView.findViewById(R.id.txtmoneyre)
             var txtinstall : TextView = itemView.findViewById(R.id.txtinstall)
-            var txtdate : TextView = itemView.findViewById(R.id.txtdate)
+            var txtdate : TextView = itemView.findViewById(R.id.dateendg)
             var txtdateCheck:TextView=itemView.findViewById(R.id.txtdate2)
             var imageProfile :ImageView = itemView.findViewById(R.id.imgpro)
             var btncheck: Button =itemView.findViewById(R.id.btncant)

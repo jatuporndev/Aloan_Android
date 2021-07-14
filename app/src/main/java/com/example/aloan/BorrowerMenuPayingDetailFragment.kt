@@ -102,7 +102,16 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             fragmentTransaction.replace(R.id.nav_host_fragment, fm)
             fragmentTransaction.commit()
         }
-
+        txthis?.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("BorrowDetailID", borrowDetailID)
+            val fm = BorrowerHistoryBillFragment()
+            fm.arguments = bundle;
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+            fragmentTransaction.commit()
+        }
 
         return root
     }
@@ -269,10 +278,10 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                     monneytoRemain -= data.moneySet.toFloat()
                     IDhis.remove(data.HistoryID)
                 }
-                txttotalmoney?.text=monneytotal.toString()
+                txttotalmoney?.text=String.format("%.2f", monneytotal)
             }
 
-            txttotalmoney?.text=monneytotal.toString()
+            txttotalmoney?.text=String.format("%.2f", monneytotal)
 
 
         }

@@ -38,6 +38,7 @@ class  LoanerAccountFragment : Fragment() {
     var btnpay:ImageButton?=null//2
     var btnWaitPay:ImageButton?=null//3
     var btnsuccess:ImageButton?=null//4
+    var btnunpass:ImageButton?=null
 
 
     var btneditbank:Button?=null//เมนู1
@@ -71,6 +72,7 @@ class  LoanerAccountFragment : Fragment() {
         txtcoutWaitpay=root.findViewById(R.id.txtcountwaitpay)
         btnWaitPay=root.findViewById(R.id.imageButtonWaitPay)
         btnsuccess=root.findViewById(R.id.menusuccess)
+        btnunpass=root.findViewById(R.id.imageButtonUnpass)
 
         btneditprofile?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -107,6 +109,13 @@ class  LoanerAccountFragment : Fragment() {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuSuccessFragment())
+            fragmentTransaction.commit()
+        }
+
+        btnunpass?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuUnPassFragment())
             fragmentTransaction.commit()
         }
 

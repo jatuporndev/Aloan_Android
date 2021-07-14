@@ -30,6 +30,7 @@ class BorrowerAccountFragment : Fragment() {
     var MenuUnpass:ImageButton?=null
     var MenuPass:ImageButton?=null
     var Menupay:ImageButton?=null
+    var MenuSucess:ImageButton?=null
 
 
     var txtcountWaiting:TextView?=null
@@ -73,6 +74,7 @@ class BorrowerAccountFragment : Fragment() {
         txtcountunpass=root.findViewById(R.id.txtcountunpass)
         txtcountPay=root.findViewById(R.id.txtcountcontPay)
         Menupay=root.findViewById(R.id.imageButtonWaitPay)
+        MenuSucess =root.findViewById(R.id.menusucess)
 
 
 
@@ -120,8 +122,12 @@ class BorrowerAccountFragment : Fragment() {
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuPayingFragment())
             fragmentTransaction.commit()
         }
-
-
+        MenuSucess?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuSuccessFragment())
+            fragmentTransaction.commit()
+        }
 
 
 

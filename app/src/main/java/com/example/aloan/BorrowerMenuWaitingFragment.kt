@@ -141,6 +141,7 @@ class BorrowerMenuWaitingFragment : Fragment() {
                 holder.txtdate.text="วันที่ยืนยัน: "+data.dateCheck
                 holder.money.text="฿"+data.money_confirm
                 holder.txtinstall.text=data.instullment_confirm
+                holder.con.isEnabled=false
             }
 
             holder.btncancel.setOnClickListener {

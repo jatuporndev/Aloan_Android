@@ -107,7 +107,7 @@
             android:src="@drawable/cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageButton4"
+            app:layout_constraintStart_toEndOf="@+id/menusuccess"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <ImageButton
@@ -166,9 +166,9 @@
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="ยกเลิกแล้ว"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:text="ไม่สำเร็จ"
             app:layout_constraintStart_toEndOf="@+id/textView21"
             app:layout_constraintTop_toBottomOf="@+id/imageButtonWait" />
 

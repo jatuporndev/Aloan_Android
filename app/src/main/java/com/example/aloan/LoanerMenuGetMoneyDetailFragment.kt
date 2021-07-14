@@ -98,7 +98,7 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
                         ///////////////////////////
-                        if (data.getString("remain") =="0"){
+                        if (data.getString("instullment_Amount") =="0"){
                             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
                             fragmentTransaction.addToBackStack(null)
                             fragmentTransaction.replace(R.id.nav_host_fragment, LoanerAccountFragment())

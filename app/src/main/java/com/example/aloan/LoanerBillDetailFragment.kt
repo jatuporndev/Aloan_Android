@@ -1,6 +1,7 @@
 package com.example.aloan
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
@@ -10,10 +11,7 @@ import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import okhttp3.FormBody
@@ -38,6 +36,7 @@ class LoanerBillDetailFragment : Fragment() {
     var txtmoneyfire:TextView?=null
     var checkBox:CheckBox?=null
     var borrowDetailID = ""
+    var historyDetailID = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -45,6 +44,7 @@ class LoanerBillDetailFragment : Fragment() {
         val root =inflater.inflate(R.layout.fragment_loaner_bill_detail, container, false)
         val bundle = this.arguments
         borrowDetailID = bundle?.get("BorrowDetailID").toString()
+        historyDetailID = bundle?.get("historyDetailID").toString()
         recyclerView=root.findViewById(R.id.recyclerView4)
         txtdayPay=root.findViewById(R.id.txtdatepay)
         txtmoney=root.findViewById(R.id.txtmoney1)
@@ -57,9 +57,11 @@ class LoanerBillDetailFragment : Fragment() {
         checkBox=root.findViewById(R.id.checkBox7)
 
         btnconfrim?.isEnabled=false
+        btncancle?.isEnabled=false
 
         checkBox?.setOnClickListener {
             btnconfrim?.isEnabled = checkBox?.isChecked!!
+            btncancle?.isEnabled = checkBox?.isChecked!!
         }
 
         btncancle?.paintFlags = btncancle?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
@@ -78,9 +80,40 @@ class LoanerBillDetailFragment : Fragment() {
             fragmentTransaction.commit()
         }
         btnconfrim?.setOnClickListener {
-            comfrim(bundle?.get("historyDetailID").toString())
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("แจ้งเตือน")
+            builder.setMessage("ตรวจสอบข้อมูลครบถ้วน")
+                    .setCancelable(false)
+                    .setPositiveButton("ใช่") { dialog, id ->
+                        // ใช่
+                        comfrim(historyDetailID)
+                    }
+                    .setNegativeButton("ยกเลิก") { dialog, id ->
+                        // Dismiss the dialog
+                        dialog.dismiss()
+                    }
+            val alert = builder.create()
+            alert.show()
+
+        }
+        btncancle?.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("แจ้งเตือน")
+            builder.setMessage("ยืนยันที่จะยกเลิกหรือไม่")
+                .setCancelable(false)
+                .setPositiveButton("ใช่") { dialog, id ->
+                    // ใช่
+
+                }
+                .setNegativeButton("ยกเลิก") { dialog, id ->
+                    // Dismiss the dialog
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
 
+        Log.d("testh",historyDetailID.toString()+" testt")
 
         return root
     }
@@ -104,7 +137,7 @@ class LoanerBillDetailFragment : Fragment() {
                         txtdayPay?.text=data.getString("datepaying")
                         txtmoney?.text="฿"+data.getString("money")
                         txtmoneytotal?.text="฿"+data.getString("money_total")
-                        txtmoneyfire?.text="฿"+(data.getString("money_total").toFloat() - data.getString("money").toFloat()).toString()
+                        txtmoneyfire?.text="฿"+data.getString("fire")
 
 
                         var url = getString(R.string.root_url) +
@@ -245,6 +278,7 @@ class LoanerBillDetailFragment : Fragment() {
                 fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.replace(R.id.nav_host_fragment, fm)
                 fragmentTransaction.commit()
+                Toast.makeText(context, "ยืนยันสำเร็จแล้ว", Toast.LENGTH_LONG).show()
                 try {
 
                 } catch (e: JSONException) {

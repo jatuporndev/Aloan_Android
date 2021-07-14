@@ -42,8 +42,15 @@ class LoanerMenuGetMoneyFragment : Fragment() {
         loanerID = sharedPrefer?.getString(LoginLoanerActivity().LoanerIdPreference, null)
 
         recyclerView=root.findViewById(R.id.recyclerView)
-        back=root.findViewById(R.id.imageViewback)
+        back=root.findViewById(R.id.imageviewback)
         swip=root.findViewById(R.id.swipe_layout)
+
+        back?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerAccountFragment())
+            fragmentTransaction.commit()
+        }
 
         showlist()
         return root
@@ -70,7 +77,8 @@ class LoanerMenuGetMoneyFragment : Fragment() {
                                     item.getString("instullment_total"),
                                     item.getString("imageProfile"),
                                     item.getString("firstname"),
-                                    item.getString("lastname")
+                                    item.getString("lastname"),
+                                    item.getString("perints")
 
 
 
@@ -97,7 +105,8 @@ class LoanerMenuGetMoneyFragment : Fragment() {
     }
     internal class Data(
             var BorrowDetailID: String,var date_start: String,var Update_date: String,var Principle: String
-            ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String
+            ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String,
+            var perints :String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -127,7 +136,7 @@ class LoanerMenuGetMoneyFragment : Fragment() {
             holder.txtinstall.text=data.instullment_total
             holder.txtdate.text=data.date_start
             holder.txtdatenext.text=nextday(data.BorrowDetailID)
-            holder.moneyper.text=(data.remain.toFloat()/data.instullment_total.toFloat()).toString()
+            holder.moneyper.text="฿"+data.perints
 
             if (checkpay(data.BorrowDetailID)){
                 holder.txttsttus.text="มีการชำระใหม่รอยืนยัน"

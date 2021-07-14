@@ -46,6 +46,7 @@
     <string name="loaner_Menu2WaitingPay_url">api/Menu2WaitingPay/</string>
     <string name="loaner_updateUnpass_url">api/updateUnpass/</string>
     <string name="loaner_updatePass_url">api/updatePass/</string>
+    <string name="loaner_viewUnpass_url">api/loanerMenuUnpass/</string>
 
     <!--API Loaner process borrowDetail-->
     <string name="loaner_addBorrowDetail_url">api/addBorrowDetail/</string>
@@ -58,8 +59,9 @@
     <!--API Loaner process History-->
     <string name="loaner_billdetail_url">api/billDetail/</string>
     <string name="loaner_historylist_url">api/historylist/</string>
-    <string name="loaner_confrimBill_url">api/confrimBill2/</string>
+    <string name="loaner_confrimBill_url">api/confrimBill/</string>
     <string name="loaner_AllSuccess_url">api/AllSuccess/</string>
+    <string name="loaner_indexHistoryurl">api/indexHistory/</string>
 
     <!--API Borrower-->
     <string name="loginBorrower_url">api/Borrower/login</string>
@@ -92,4 +94,9 @@
     <string name="ManuPaydetail_url">api/ManuPaydetail/</string>
     <string name="updateStatusHistory_url">api/updateStatusHistory/</string>
     <string name="createHis_url">api/createHis/</string>
+    <string name="BorrowerAllSuccess_url">api/BorrowerAllSuccess/</string>
+
+
+    <!--API ฺBorrower process history-->
+    <string name="historybill_url">api/historybill/</string>
 </resources>

@@ -75,6 +75,24 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuConfirmedFragment())
             fragmentTransaction.commit()
         }
+
+        btncancle?.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("แจ้งเตือน")
+            builder.setMessage("ยืนยันการยกเลิกหรือไม่่")
+                .setCancelable(false)
+                .setPositiveButton("ยืนยัน") { dialog, id ->
+                    // ใช่
+                    Cancel(bundle?.get("RequestID").toString())
+                }
+                .setNegativeButton("ยกเลิก") { dialog, id ->
+                    // Dismiss the dialog
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
+        }
+
         btnok?.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("แจ้งเตือน")
@@ -186,6 +204,38 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
             if (response.isSuccessful) {
                 try {
 
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            } else {
+                response.code
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun Cancel(RequrstID:String )
+    {
+        var url: String = getString(R.string.root_url) + getString(R.string.loaner_updateUnpass_url) + RequrstID
+        val okHttpClient = OkHttpClient()
+        val formBody: RequestBody = FormBody.Builder()
+            .add("comment", "ยกเลิก")
+            .build()
+        val request: Request = Request.Builder()
+            .url(url)
+            .post(formBody)
+            .build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                try {
+                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuUnpassFragment())
+                    fragmentTransaction.commit()
+                    Toast.makeText(requireContext(), "\n ยกเลิกสำเร็จ", Toast.LENGTH_LONG).show()
 
                 } catch (e: JSONException) {
                     e.printStackTrace()

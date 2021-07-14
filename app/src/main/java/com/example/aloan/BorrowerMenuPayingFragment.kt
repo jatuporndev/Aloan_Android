@@ -41,7 +41,7 @@ class BorrowerMenuPayingFragment : Fragment() {
         borrowerID = sharedPrefer?.getString(LoginBorrowerActivity().borrowerIdPreference, null)
         wsipe=root.findViewById(R.id.swipe_layout)
         recyclerView=root.findViewById(R.id.recyclerView)
-        back=root.findViewById(R.id.imageViewback)
+        back=root.findViewById(R.id.imageviewback)
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -85,7 +85,8 @@ class BorrowerMenuPayingFragment : Fragment() {
                                     item.getString("instullment_total"),
                                     item.getString("imageProfile"),
                                     item.getString("firstname"),
-                                    item.getString("lastname")
+                                    item.getString("lastname"),
+                                    item.getString("perints")
 
 
 
@@ -112,7 +113,7 @@ class BorrowerMenuPayingFragment : Fragment() {
     }
     internal class Data(
             var BorrowDetailID: String,var date_start: String,var Update_date: String,var Principle: String
-            ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String
+            ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String,var perints:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -142,7 +143,7 @@ class BorrowerMenuPayingFragment : Fragment() {
             holder.txtinstall.text=data.instullment_total
             holder.txtdate.text=data.date_start
             holder.txtdatenext.text=nextday(data.BorrowDetailID)
-            holder.moneyper.text=(data.remain.toFloat()/data.instullment_total.toFloat()).toString()
+            holder.moneyper.text="฿"+data.perints
 
             holder.btncheck.setOnClickListener {
                 val bundle = Bundle()

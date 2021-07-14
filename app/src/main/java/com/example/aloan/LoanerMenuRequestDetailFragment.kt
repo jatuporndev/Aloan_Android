@@ -52,6 +52,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
     var checkbox:CheckBox?=null
 
     var comment:String?=null
+    var borrowerID:String?=null
 
 
 
@@ -62,6 +63,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         val root =inflater.inflate(R.layout.fragment_loaner_menu_request_detail, container, false)
         val bundle = this.arguments
+        var requestID =bundle?.get("RequestID").toString()
 
 
         txtname =root.findViewById(R.id.txtnameB)
@@ -145,6 +147,18 @@ class LoanerMenuRequestDetailFragment : Fragment() {
             alert.show()
         }
 
+        btnhistory?.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("BorrowerID", borrowerID)
+            bundle.putString("RequestID", requestID)
+            val fm = LoanerBorrowerHistoryFragment()
+            fm.arguments = bundle;
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+            fragmentTransaction.commit()
+        }
+
 
         viewdetailborroweer(bundle?.get("RequestID").toString())
 
@@ -166,6 +180,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
                         ///////////////////////////
+                        borrowerID=data.getString("BorrowerID")
                         var fristname =data.getString("firstname")
                         var lastname =data.getString("lastname")
                         txtname?.text="$fristname $lastname"

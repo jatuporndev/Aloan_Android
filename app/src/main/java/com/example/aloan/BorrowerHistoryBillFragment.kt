@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -69,7 +70,8 @@ class BorrowerHistoryBillFragment : Fragment() {
                                 item.getString("historyDetailID"),
                                 item.getString("datepaying"),
                                 item.getString("money_total"),
-                                item.getString("status")
+                                item.getString("status"),
+                                item.getString("BorrowDetailID")
 
 
 
@@ -94,7 +96,7 @@ class BorrowerHistoryBillFragment : Fragment() {
         }
     }
     internal class Data(
-        var historybillID: String,var datepaying: String,var money_total: String,var status: String
+        var historybillID: String,var datepaying: String,var money_total: String,var status: String,var BorrowDetailID:String
 
 
     )
@@ -125,6 +127,24 @@ class BorrowerHistoryBillFragment : Fragment() {
             if(data.status=="1"){
                 holder.txtstatus.text="ยืนยันแล้ว"
             }
+            if(data.status=="2"){
+                holder.txtstatus.text="ยกเลิกแล้ว"
+                holder.txtstatus.setTextColor(Color.parseColor("#FF0000"));
+                holder.con.isEnabled=false
+                holder.arrow.visibility=View.INVISIBLE
+            }
+
+            holder.con.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("historybillID",data.historybillID)
+                bundle.putString("borrowDetailID", data.BorrowDetailID)
+                val fm = BorrowerHistoryBillDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
+            }
 
         }
         override fun getItemCount(): Int {
@@ -139,6 +159,7 @@ class BorrowerHistoryBillFragment : Fragment() {
             var txtstatus:TextView=itemView.findViewById(R.id.txtstatusbill1)
             var txtID:TextView=itemView.findViewById(R.id.textView128)
             var con: ConstraintLayout =itemView.findViewById(R.id.constraintlayout)
+            var arrow: ImageButton =itemView.findViewById(R.id.imageButton)
 
 
 

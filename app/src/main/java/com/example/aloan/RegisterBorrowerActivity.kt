@@ -573,6 +573,8 @@ class RegisterBorrowerActivity : AppCompatActivity() {
                         val intent = Intent(applicationContext, LoginBorrowerActivity::class.java)
                         startActivity(intent)
                         finish()
+                    }else{
+                        Toast.makeText(this, "อีเมลถูกใช้ไปแล้ว", Toast.LENGTH_LONG).show()
                     }
 
                 } catch (e: JSONException) {

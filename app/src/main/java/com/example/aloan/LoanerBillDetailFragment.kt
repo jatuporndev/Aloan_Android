@@ -98,12 +98,13 @@ class LoanerBillDetailFragment : Fragment() {
         }
         btncancle?.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("แจ้งเตือน")
+
+            builder.setTitle("แจ้งเตือนการยกเลิก")
             builder.setMessage("ยืนยันที่จะยกเลิกหรือไม่")
                 .setCancelable(false)
                 .setPositiveButton("ใช่") { dialog, id ->
                     // ใช่
-
+                    cancleBill(historyDetailID)
                 }
                 .setNegativeButton("ยกเลิก") { dialog, id ->
                     // Dismiss the dialog
@@ -292,5 +293,39 @@ class LoanerBillDetailFragment : Fragment() {
         }
 
     }
+    private fun cancleBill(historyDetailID: String?)
+    {
+        var url: String = getString(R.string.root_url) + getString(R.string.loaner_cancleBill_url) + historyDetailID
+        val okHttpClient = OkHttpClient()
+        val formBody: RequestBody = FormBody.Builder()
+            .build()
+        val request: Request = Request.Builder()
+            .url(url)
+            .post(formBody)
+            .build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                val bundle = Bundle()
+                bundle.putString("BorrowDetailID", borrowDetailID)
+                val fm = LoanerMenuGetMoneyDetailFragment()
+                fm.arguments = bundle;
+                val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                fragmentTransaction.commit()
+                Toast.makeText(context, "ยกเลิกยืนยันสำเร็จแล้ว", Toast.LENGTH_LONG).show()
+                try {
 
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            } else {
+                response.code
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+    }
 }

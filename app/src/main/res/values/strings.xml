@@ -60,6 +60,7 @@
     <string name="loaner_billdetail_url">api/billDetail/</string>
     <string name="loaner_historylist_url">api/historylist/</string>
     <string name="loaner_confrimBill_url">api/confrimBill/</string>
+    <string name="loaner_cancleBill_url">api/cancleBill/</string>
     <string name="loaner_AllSuccess_url">api/AllSuccess/</string>
     <string name="loaner_indexHistoryurl">api/indexHistory/</string>
 

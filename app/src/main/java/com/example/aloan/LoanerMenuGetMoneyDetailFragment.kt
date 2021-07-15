@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -226,6 +223,11 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
                 holder.txtstatus.text="ยืนยันแล้ว"
                 holder.txtstatus.setTextColor(Color.parseColor("#33BC40"));
             }
+            if (data.status =="2"){
+                holder.txtstatus.text="ยกเลิกแล้ว"
+                holder.txtstatus.setTextColor(Color.parseColor("#FF0000"));
+
+            }
 
 
 
@@ -243,6 +245,7 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
             var txtmoneybill : TextView = itemView.findViewById(R.id.txtmoneybill)
             var txtdatebill : TextView = itemView.findViewById(R.id.txtdatebill)
             var constraintLayout : ConstraintLayout = itemView.findViewById(R.id.constraintLayout)
+
 
 
 

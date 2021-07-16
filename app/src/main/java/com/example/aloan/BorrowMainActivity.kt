@@ -19,7 +19,7 @@ class BorrowMainActivity : AppCompatActivity() {
             var fm: Fragment = LoanerHomeFragment()
             when (it.itemId) {
                 R.id.nav_home -> fm = BorrowerHomeFragment()
-                R.id.nav_notify -> fm = BorrowerNotifyFragment()
+                R.id.nav_notify -> fm = BorrowerArticleFragment()
                 R.id.nav_account-> fm = BorrowerAccountFragment()
 
             }

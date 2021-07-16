@@ -44,7 +44,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
     <EditText
         android:id="@+id/editBank2"

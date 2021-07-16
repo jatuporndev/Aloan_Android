@@ -13,6 +13,8 @@
     <string name="profileBorrower_image_url" translatable="false">assets/uploadfile/Borrower/profile/</string>
     <string name="bank_image_url" translatable="false">assets/uploadfile/bank/</string>
     <string name="payment_image_url" translatable="false">assets/uploadfile/Borrower/payment/</string>
+    <string name="article_image_url" translatable="false">assets/uploadfile/article/</string>
+    <string name="Loanerslip_image_url" translatable="false">assets/uploadfile/Loaner/slip/</string>
 
 
     <!--API Loaner-->
@@ -100,4 +102,9 @@
 
     <!--API ฺBorrower process history-->
     <string name="historybill_url">api/historybill/</string>
+
+    <!--API ฺBorrower process history-->
+    <string name="article_url">api/article/</string>
+    <string name="articledetail_url">api/articledetail/</string>
+
 </resources>

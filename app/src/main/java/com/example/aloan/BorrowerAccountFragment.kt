@@ -1,5 +1,6 @@
 package com.example.aloan
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -45,6 +46,7 @@ class BorrowerAccountFragment : Fragment() {
     var txtemail:TextView?=null
     var txtLineID:TextView?=null
     var imgpro:ImageView?=null
+    var btnhelp:Button?=null
 
 
     override fun onCreateView(
@@ -75,6 +77,7 @@ class BorrowerAccountFragment : Fragment() {
         txtcountPay=root.findViewById(R.id.txtcountcontPay)
         Menupay=root.findViewById(R.id.imageButtonWaitPay)
         MenuSucess =root.findViewById(R.id.menusucess)
+        btnhelp=root.findViewById(R.id.btnhelp)
 
 
 
@@ -152,6 +155,20 @@ class BorrowerAccountFragment : Fragment() {
             val intent = Intent(context, LoginBorrowerActivity::class.java)
             startActivity(intent)
         }
+        var view:View = layoutInflater.inflate(R.layout.r_help,null)
+        var btnclose:ImageView=view.findViewById(R.id.imgclose)
+        var dialog: Dialog = Dialog(requireContext(),android.R.style.ThemeOverlay_DeviceDefault_Accent_DayNight)
+        dialog.setContentView(view)
+
+        btnhelp?.setOnClickListener {
+            dialog.show()
+        }
+
+        btnclose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+
         counts()
         viewborrower()
 

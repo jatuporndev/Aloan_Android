@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -24,7 +25,7 @@ class BorrowerMenuSuccessFragment : Fragment() {
     var back:ImageView?=null
     var recyclerView:RecyclerView?=null
     var borrowerID:String?=null
-
+    var wsipe: SwipeRefreshLayout?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -40,6 +41,16 @@ class BorrowerMenuSuccessFragment : Fragment() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerAccountFragment())
             fragmentTransaction.commit()
+        }
+        wsipe=root.findViewById(R.id.swipe_layout)
+        wsipe?.setColorSchemeResources(
+                R.color.mainor,
+                R.color.mainor,
+                R.color.mainor)
+
+        wsipe?.setOnRefreshListener {
+            showlist()
+            wsipe?.isRefreshing=false
         }
 
         showlist()

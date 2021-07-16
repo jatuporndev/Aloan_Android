@@ -78,7 +78,9 @@ class LoanerMenuGetMoneyFragment : Fragment() {
                                     item.getString("imageProfile"),
                                     item.getString("firstname"),
                                     item.getString("lastname"),
-                                    item.getString("perints")
+                                    item.getString("perints"),
+                                    item.getString("settlement_date"),
+                                    item.getString("checkpay")
 
 
 
@@ -106,7 +108,7 @@ class LoanerMenuGetMoneyFragment : Fragment() {
     internal class Data(
             var BorrowDetailID: String,var date_start: String,var Update_date: String,var Principle: String
             ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String,
-            var perints :String
+            var perints :String,var settlement_date:String,var checkpay:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -135,10 +137,10 @@ class LoanerMenuGetMoneyFragment : Fragment() {
             holder.money.text=data.Principle
             holder.txtinstall.text=data.instullment_total
             holder.txtdate.text=data.date_start
-            holder.txtdatenext.text=nextday(data.BorrowDetailID)
+            holder.txtdatenext.text=data.settlement_date
             holder.moneyper.text="฿"+data.perints
 
-            if (checkpay(data.BorrowDetailID)){
+            if (data.checkpay=="True"){
                 holder.txttsttus.text="มีการชำระใหม่รอยืนยัน"
                 bl(holder.txttsttus)
             }
@@ -189,35 +191,7 @@ class LoanerMenuGetMoneyFragment : Fragment() {
 
         }
     }
-    private fun nextday(BorrowDetailID:String):String{
-        var settlement_date=""
-        var url: String = getString(R.string.root_url) + getString(R.string.nextDateurl) + BorrowDetailID
-        val okHttpClient = OkHttpClient()
-        val request: Request = Request.Builder()
-                .url(url)
-                .get()
-                .build()
-        try {
-            val response = okHttpClient.newCall(request).execute()
-            if (response.isSuccessful) {
-                try {
-                    val data = JSONObject(response.body!!.string())
-                    if (data.length() > 0) {
-                        ///////////////////////////
-                        settlement_date =data.getString("settlement_date")
 
-                    }
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            } else {
-                response.code
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return settlement_date
-    }
     private fun checkpay(BorrowDetailID:String):Boolean{
         var settlement_date=false
         var url: String = getString(R.string.root_url) + getString(R.string.loaner_checkpayMenu_url) + BorrowDetailID

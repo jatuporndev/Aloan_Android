@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_marginTop="8dp"
+        android:background="#B6B2B2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView136" />
+
+    <TextView
+        android:id="@+id/textView129"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="ติดต่อเราได้ที่"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="150dp"
+        app:strokeColor="@color/maingree"
+        app:strokeWidth="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView129"
+
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/imgpro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/email" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="150dp"
+        app:strokeColor="@color/mainor"
+        app:strokeWidth="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imgpro2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:src="@drawable/phone_call" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView131"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="28dp"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView129" />
+
+    <TextView
+        android:id="@+id/textView133"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="22dp"
+        android:text="โทรศัพท์"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/cardView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView134" />
+
+    <TextView
+        android:id="@+id/textView134"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="5dp"
+        android:text="panat_ban@rmutto.ac.th"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView131" />
+
+    <TextView
+        android:id="@+id/textView135"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="5dp"
+        android:text="0993212046"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView133" />
+
+    <TextView
+        android:id="@+id/textView136"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="ช่วยเหลือ"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgclose"
+        android:layout_width="47dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_24"
+        tools:ignore="VectorDrawableCompat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

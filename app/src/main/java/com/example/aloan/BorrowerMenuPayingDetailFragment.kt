@@ -1,16 +1,14 @@
 package com.example.aloan
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -41,6 +39,8 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
     var txttotalmoney:TextView?=null
     var btnpayment:Button?=null
     var txthis:TextView?=null
+    var txtslip:TextView?=null
+    var imgslipLoaner:ImageView?=null
 
     var monneytotal:Float= 0F
     var monneytoRemain:Float= 0F
@@ -72,8 +72,10 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
         txtmoney_amount=root.findViewById(R.id.txtmoney_amount)
         btnpayment=root.findViewById(R.id.btnpass)
         txthis=root.findViewById(R.id.txthis)
+        txtslip=root.findViewById(R.id.txtslip)
 
         txthis?.paintFlags = txthis?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
+        txtslip?.paintFlags = txthis?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
 
         IDhis?.clear()
 
@@ -84,9 +86,14 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-        viewdetail(borrowDetailID!!)
+
 
         btnpayment?.setOnClickListener {
+
+            if(monneytotal==0f){
+                Toast.makeText(context, "เลือกรายการชำระเงิน", Toast.LENGTH_LONG).show()
+            }else{
+
 
             val bundle = Bundle()
            // bundle.putString("criterionID", data.criterionID)
@@ -101,6 +108,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, fm)
             fragmentTransaction.commit()
+            }
         }
         txthis?.setOnClickListener {
             val bundle = Bundle()
@@ -113,6 +121,21 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+        var view:View = layoutInflater.inflate(R.layout.r_slip,null)
+        imgslipLoaner = view.findViewById(R.id.imgslip1)
+        var btnclose:ImageView=view.findViewById(R.id.imageviewback)
+        var dialog: Dialog = Dialog(requireContext(),android.R.style.ThemeOverlay_DeviceDefault_Accent_DayNight)
+        dialog.setContentView(view)
+
+        txtslip?.setOnClickListener {
+            dialog.show()
+        }
+        btnclose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+
+        viewdetail(borrowDetailID!!)
         return root
     }
     @SuppressLint("SetTextI18n")
@@ -152,6 +175,10 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                         var url = getString(R.string.root_url) +
                                 getString(R.string.profileBLoaner_image_url) + data.getString("imageProfile")
                         Picasso.get().load(url).into(imgpro)
+
+                        var url2 = getString(R.string.root_url) +
+                                getString(R.string.Loanerslip_image_url) + data.getString("receipt_slip")
+                        Picasso.get().load(url2).into(imgslipLoaner)
 
                     }
                 } catch (e: JSONException) {

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BorrowerMenuPayingFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView4"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageviewback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/maingree"
+            android:paddingLeft="12dp"
+            android:src="@drawable/ic_baseline_arrow_w_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewartic"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="245dp"
+                android:background="@drawable/bg_article"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txtdetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txttitle" />
+
+                <TextView
+                    android:id="@+id/txttitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Title"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:text="500"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="36dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+
+                    app:layout_constraintEnd_toStartOf="@+id/txtview"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

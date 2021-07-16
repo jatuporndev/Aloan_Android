@@ -177,7 +177,7 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
                     fragmentTransaction.addToBackStack(null)
                     fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuWaitingFragment())
                     fragmentTransaction.commit()
-                    Toast.makeText(requireContext(), "คุณได้กดยอมรับแล้ว รอผู้ให้กู้โอนเงินซักครู่", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "คุณได้กดยอมรับแล้ว รอผู้ให้กู้โอนเงิน", Toast.LENGTH_LONG).show()
 
                 } catch (e: JSONException) {
                     e.printStackTrace()

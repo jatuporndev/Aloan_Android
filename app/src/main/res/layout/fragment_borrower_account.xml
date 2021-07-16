@@ -14,7 +14,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView"
+            android:id="@+id/cardView4"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -52,7 +52,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toEndOf="@+id/cardView4"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -65,7 +65,7 @@
             android:text="โทร 0800000000"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toEndOf="@+id/cardView4"
             app:layout_constraintTop_toBottomOf="@+id/txtfirstname" />
 
         <ImageButton
@@ -76,7 +76,7 @@
             android:background="?android:selectableItemBackground"
             android:src="@drawable/checked"
             app:layout_constraintStart_toEndOf="@+id/imageButtonWaitPay"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <ImageButton
             android:id="@+id/imageButtonPass"
@@ -86,7 +86,7 @@
             android:background="?android:selectableItemBackground"
             android:src="@drawable/mark"
             app:layout_constraintStart_toEndOf="@+id/imageButtonWait"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <ImageButton
             android:id="@+id/imageButtonWaitPay"
@@ -98,7 +98,7 @@
             android:background="?android:selectableItemBackground"
             android:src="@drawable/pay"
             app:layout_constraintStart_toEndOf="@+id/imageButtonPass"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <ImageButton
             android:id="@+id/imageButtonUnpass"
@@ -112,7 +112,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/menusucess"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <ImageButton
             android:id="@+id/imageButtonWait"
@@ -124,7 +124,7 @@
             android:background="?android:selectableItemBackground"
             android:src="@drawable/request"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
         <TextView
             android:id="@+id/textView18"
@@ -201,7 +201,7 @@
             android:text="ffff@gmail.com"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toEndOf="@+id/cardView4"
             app:layout_constraintTop_toBottomOf="@+id/txtphone" />
 
         <TextView
@@ -214,7 +214,7 @@
             android:text="LineID : test"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toEndOf="@+id/cardView4"
             app:layout_constraintTop_toBottomOf="@+id/txtphone" />
 
         <Button
@@ -254,29 +254,6 @@
             android:gravity="left|center_vertical"
             android:inputType="text"
             android:text="รายการโปรด"
-            android:textColor="@color/black"
-            app:backgroundTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnhistory"
-            app:strokeColor="@color/mainor"
-            app:strokeWidth="3dp" />
-
-        <Button
-            android:id="@+id/btnhistory"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:drawableLeft="@drawable/ic_baseline_history_24_or"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24_green"
-            android:gravity="left|center_vertical"
-            android:inputType="text"
-            android:text="ประวัติ"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

@@ -12,11 +12,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -129,7 +132,7 @@ class BorrowerMenuWaitingFragment : Fragment() {
             Picasso.get().load(url).into(holder.imageProfile)
             holder.nameLoaner.text="คุณ ${data.Firstname} ${data.Lastname}"
             holder.money.text="฿"+data.Money
-            holder.txtdate.text="วันที่ส่งคำจอ: "+data.dateRe
+            holder.txtdate.text="วันที่ส่งคำขอ: "+data.dateRe
             holder.txtinstall.text=data.instullment
 
             if(data.status=="2"){
@@ -147,11 +150,12 @@ class BorrowerMenuWaitingFragment : Fragment() {
             holder.btncancel.setOnClickListener {
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setTitle("แจ้งเตือน")
-                builder.setMessage("ยืนยันการที่จะลบคำขอหรือไม่?")
+                builder.setMessage("ยืนยันการที่จะยกเลิกคำขอหรือไม่?")
                         .setCancelable(false)
                         .setPositiveButton("ยืนยัน") { dialog, id ->
                             // ใช่
-                            deleterequest(data.RequestID)
+                            //deleterequest(data.RequestID)
+                            Cancel(data.RequestID)
                             showlist()
                         }
                         .setNegativeButton("ยกเลิก") { dialog, id ->
@@ -220,6 +224,37 @@ class BorrowerMenuWaitingFragment : Fragment() {
             e.printStackTrace()
         }
 
+    }
+    private fun Cancel(RequrstID:String )
+    {
+        var url: String = getString(R.string.root_url) + getString(R.string.loaner_updateUnpass_url) + RequrstID
+        val okHttpClient = OkHttpClient()
+        val formBody: RequestBody = FormBody.Builder()
+                .add("comment", "ยกเลิก")
+                .build()
+        val request: Request = Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build()
+        try {
+            val response = okHttpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                try {
+                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerMenuUnpassFragment())
+                    fragmentTransaction.commit()
+                    Toast.makeText(requireContext(), "\n ยกเลิกสำเร็จ", Toast.LENGTH_LONG).show()
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            } else {
+                response.code
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 
 }

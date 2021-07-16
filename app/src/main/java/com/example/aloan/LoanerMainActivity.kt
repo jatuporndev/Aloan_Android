@@ -19,7 +19,7 @@ class LoanerMainActivity : AppCompatActivity() {
             var fm: Fragment = LoanerHomeFragment()
             when (it.itemId) {
                 R.id.nav_home -> fm = LoanerHomeFragment()
-                R.id.nav_notify -> fm = LoanerNotifyFragment()
+                R.id.nav_notify -> fm = LoanerArticleFragment()
                 R.id.nav_account-> fm = LoanerAccountFragment()
 
             }

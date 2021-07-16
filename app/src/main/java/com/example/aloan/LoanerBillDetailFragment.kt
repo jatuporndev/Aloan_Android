@@ -37,12 +37,14 @@ class LoanerBillDetailFragment : Fragment() {
     var checkBox:CheckBox?=null
     var borrowDetailID = ""
     var historyDetailID = ""
+    var or :TextView?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val root =inflater.inflate(R.layout.fragment_loaner_bill_detail, container, false)
         val bundle = this.arguments
+
         borrowDetailID = bundle?.get("BorrowDetailID").toString()
         historyDetailID = bundle?.get("historyDetailID").toString()
         recyclerView=root.findViewById(R.id.recyclerView4)
@@ -55,6 +57,7 @@ class LoanerBillDetailFragment : Fragment() {
         btncancle=root.findViewById(R.id.btncancleslip)
         txtmoneyfire=root.findViewById(R.id.txtmoneyfire)
         checkBox=root.findViewById(R.id.checkBox7)
+        or=root.findViewById(R.id.textView116)
 
         btnconfrim?.isEnabled=false
         btncancle?.isEnabled=false
@@ -139,6 +142,13 @@ class LoanerBillDetailFragment : Fragment() {
                         txtmoney?.text="฿"+data.getString("money")
                         txtmoneytotal?.text="฿"+data.getString("money_total")
                         txtmoneyfire?.text="฿"+data.getString("fire")
+
+                        if(data.getString("status") =="1"){
+                            or?.visibility=View.GONE
+                            btnconfrim?.visibility=View.GONE
+                            btncancle?.visibility=View.GONE
+                            checkBox?.visibility=View.GONE
+                        }
 
 
                         var url = getString(R.string.root_url) +

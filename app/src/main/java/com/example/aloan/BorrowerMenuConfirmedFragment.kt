@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -27,6 +28,7 @@ class BorrowerMenuConfirmedFragment : Fragment() {
     var txtWar:TextView?=null
     var recyclerView:RecyclerView?=null
     var back: ImageView?=null
+    var wsipe: SwipeRefreshLayout?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -37,12 +39,23 @@ class BorrowerMenuConfirmedFragment : Fragment() {
         txtWar=root.findViewById(R.id.textView79)
         recyclerView=root.findViewById(R.id.recyclerView)
         back=root.findViewById(R.id.imageviewback)
+        wsipe=root.findViewById(R.id.swipe_layout)
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, BorrowerAccountFragment())
             fragmentTransaction.commit()
+        }
+
+        wsipe?.setColorSchemeResources(
+                R.color.mainor,
+                R.color.mainor,
+                R.color.mainor)
+
+        wsipe?.setOnRefreshListener {
+            showlist()
+            wsipe?.isRefreshing=false
         }
 
        txtWar?.fadeIn()

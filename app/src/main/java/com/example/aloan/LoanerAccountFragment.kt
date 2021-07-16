@@ -1,5 +1,6 @@
 package com.example.aloan
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -43,6 +44,7 @@ class  LoanerAccountFragment : Fragment() {
 
     var btneditbank:Button?=null//เมนู1
     var btneditprofile:Button?=null//เมนู2
+    var btnhelp:Button?=null
 
 
 
@@ -73,6 +75,7 @@ class  LoanerAccountFragment : Fragment() {
         btnWaitPay=root.findViewById(R.id.imageButtonWaitPay)
         btnsuccess=root.findViewById(R.id.menusuccess)
         btnunpass=root.findViewById(R.id.imageButtonUnpass)
+        btnhelp=root.findViewById(R.id.btnhelp)
 
         btneditprofile?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -134,6 +137,25 @@ class  LoanerAccountFragment : Fragment() {
             val intent = Intent(context, LoginLoanerActivity::class.java)
             startActivity(intent)
         }
+
+        var view:View = layoutInflater.inflate(R.layout.r_help,null)
+        var btnclose:ImageView=view.findViewById(R.id.imgclose)
+        var dialog: Dialog = Dialog(requireContext(),android.R.style.ThemeOverlay_DeviceDefault_Accent_DayNight)
+        dialog.setContentView(view)
+
+        btnhelp?.setOnClickListener {
+            dialog.show()
+        }
+
+        btnclose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+
+
+
+
+
         viewloaner()
         counts()
         return root

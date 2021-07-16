@@ -222,6 +222,17 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
             if (data.status =="1"){
                 holder.txtstatus.text="ยืนยันแล้ว"
                 holder.txtstatus.setTextColor(Color.parseColor("#33BC40"));
+                holder.constraintLayout.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString("historyDetailID", data.historyDetailID)
+                    bundle.putString("BorrowDetailID", data.BorrowDetailID)
+                    val fm = LoanerBillDetailFragment()
+                    fm.arguments = bundle;
+                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.replace(R.id.nav_host_fragment, fm)
+                    fragmentTransaction.commit()
+                }
             }
             if (data.status =="2"){
                 holder.txtstatus.text="ยกเลิกแล้ว"

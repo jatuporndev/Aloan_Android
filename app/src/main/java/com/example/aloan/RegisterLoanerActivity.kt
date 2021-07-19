@@ -1,4 +1,4 @@
-    package com.example.aloan
+package com.example.aloan
 
 import android.Manifest
 import android.app.Activity
@@ -559,6 +559,7 @@ class  RegisterLoanerActivity : AppCompatActivity() {
     private fun listbank() {
 
         val urlProvince: String = getString(R.string.root_url) + getString(R.string.loaner_allbank_url)
+        Log.d("text",urlProvince)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(urlProvince).get().build()
         try {

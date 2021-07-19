@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -58,6 +59,7 @@ class LoanerMenuGetMoneyFragment : Fragment() {
     private fun showlist() {
         val data = ArrayList<Data>()
         val url: String = getString(R.string.root_url) + getString(R.string.loaner_ViewBorrowDetail_url)+loanerID
+        Log.d("testt",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(url).get().build()
         try {

@@ -564,7 +564,9 @@ class  RegisterLoanerActivity : AppCompatActivity() {
         val request: Request = Request.Builder().url(urlProvince).get().build()
         try {
             val response = okHttpClient.newCall(request).execute()
+            Log.d("text",response.isSuccessful.toString())
             if (response.isSuccessful) {
+                Log.d("text","222")
                 try {
                     val res = JSONArray(response.body!!.string())
                     if (res.length() > 0) {
@@ -580,7 +582,8 @@ class  RegisterLoanerActivity : AppCompatActivity() {
                         }
                     }
                 } catch (e: JSONException) { e.printStackTrace() }
-            } else { response.code }
+            } else {    Log.d("text",response.code.toString() )
+                response.code }
         } catch (e: IOException) { e.printStackTrace() }
     }
 

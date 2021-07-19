@@ -41,6 +41,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
     var txthis:TextView?=null
     var txtslip:TextView?=null
     var imgslipLoaner:ImageView?=null
+    var txtmoney_total:TextView?=null
 
     var monneytotal:Float= 0F
     var monneytoRemain:Float= 0F
@@ -73,6 +74,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
         btnpayment=root.findViewById(R.id.btnpass)
         txthis=root.findViewById(R.id.txthis)
         txtslip=root.findViewById(R.id.txtslip)
+        txtmoney_total=root.findViewById(R.id.txtmoney_total)
 
         txthis?.paintFlags = txthis?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
         txtslip?.paintFlags = txthis?.paintFlags?.or(Paint.UNDERLINE_TEXT_FLAG)!!
@@ -168,6 +170,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                         txtinstullment_amont?.text=data.getString("instullment_Amount")
                         txtInterest?.text=data.getString("Interest")
                         txtInterest_penalty?.text=data.getString("Interest_penalty")
+                        txtmoney_total?.text="฿"+data.getString("total")
                         loanerID=data.getString("LoanerID")
 
                         viewPaying(data.getString("BorrowDetailID"))

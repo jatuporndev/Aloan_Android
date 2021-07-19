@@ -32,11 +32,13 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
     var txtinstullmentRequest:TextView?=null
     var txtmoneyConfirm:TextView?=null
     var txtinstullmentConfirm:TextView?=null
+    var txtInterest_penalty_requestB:TextView?=null
+    var txtInterest:TextView?=null
     var checkbox:CheckBox?=null
     var imgpro:ImageView?=null
     var btnok:Button?=null
     var btncancle:Button?=null
-
+//txtiInterest_requestB  txtInterest_penalty_requestB
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -52,6 +54,8 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
         txtloanerphone=root.findViewById(R.id.txtPhoneB)
         txtloanerline=root.findViewById(R.id.txtlineB)
         imgpro=root.findViewById(R.id.imgpro)
+        txtInterest_penalty_requestB =root.findViewById(R.id.txtInterest_penalty_requestB)
+        txtInterest=root.findViewById(R.id.txtiInterest_requestB)
         txtmoneyRequest=root.findViewById(R.id.txtmoney_amount)
         txtinstullmentRequest=root.findViewById(R.id.txtinstullmentB)
         txtmoneyConfirm=root.findViewById(R.id.txtmoneyconfirmB)
@@ -139,6 +143,8 @@ class BorrowerMenuConfirmDetailFragment : Fragment() {
 
                         txtmoneyRequest?.text="฿"+data.getString("Money")
                         txtinstullmentRequest?.text=data.getString("instullment_request")
+                        txtInterest?.text=data.getString("Interest_request")+"%"
+                        txtInterest_penalty_requestB?.text=data.getString("Interest_penalty_request")+"%"
                         txtmoneyConfirm?.text="฿"+data.getString("money_confirm")
                         txtinstullmentConfirm?.text=data.getString("instullment_confirm")
 

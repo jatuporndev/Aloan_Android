@@ -52,6 +52,28 @@
         app:layout_constraintTop_toBottomOf="@+id/textView120" />
 
     <TextView
+        android:id="@+id/textView139"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:text="จำนวนเงินคงเหลือ :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView125" />
+
+    <TextView
+        android:id="@+id/textView140"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:text="จำนวนงวดคงเหลือ :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView139" />
+
+    <TextView
         android:id="@+id/txtmoneyhis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,6 +84,30 @@
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/textView123"
         app:layout_constraintTop_toBottomOf="@+id/txtnameborrowerhis" />
+
+    <TextView
+        android:id="@+id/txtmoneyhis2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
+        android:text="฿5000"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/textView139"
+        app:layout_constraintTop_toBottomOf="@+id/txtinthis" />
+
+    <TextView
+        android:id="@+id/txtmoneyhis3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
+        android:text="฿5000"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/textView140"
+        app:layout_constraintTop_toBottomOf="@+id/txtmoneyhis2" />
 
     <TextView
         android:id="@+id/textView125"
@@ -90,23 +136,23 @@
         android:id="@+id/textView127"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="6dp"
         android:text="เริ่มเมื่อ :"
-        app:layout_constraintEnd_toStartOf="@+id/txtdatestarthis"
-        app:layout_constraintTop_toBottomOf="@+id/txtstatus1" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/txtdatestarthis" />
 
     <TextView
         android:id="@+id/txtdatestarthis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="6dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtstatus1" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -118,5 +164,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdatestarthis"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/txtmoneyhis3"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

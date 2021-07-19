@@ -224,8 +224,8 @@ class LoanerHomeFragment : Fragment() {
                                     item.getString("money_max"),
                                     item.getString("borrowlistID"),
                                     item.getString("instullment_max"),
-                                    item.getString("edit")
-
+                                    item.getString("edit"),
+                                    item.getString("interest")
 
 
                             )
@@ -256,7 +256,8 @@ class LoanerHomeFragment : Fragment() {
 
     internal class Data(
             var criterionID: String,var Age_range: String,var Saraly_range: String,var Married: String,
-            var money_max: String,var borrowlistID: String,var instullment_max: String,var edit:String
+            var money_max: String,var borrowlistID: String,var instullment_max: String,var edit:String,
+            var interest: String
 
     )
 
@@ -293,6 +294,7 @@ class LoanerHomeFragment : Fragment() {
                 bundle.putString("instullmentMax", instullmentMax)
                 bundle.putString("moneyMax", moneyMax)
 
+
                 val fm = LoanerEditCriterionFragment()
                 fm.arguments = bundle;
                 val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -300,7 +302,7 @@ class LoanerHomeFragment : Fragment() {
                 fragmentTransaction.replace(R.id.nav_host_fragment, fm)
                 fragmentTransaction.commit()
             }
-
+            holder.txtinterest.text=data.interest+"%"
             holder.txtageR.text=arrayAge[data.Age_range.toInt()]
             holder.txtmarriR.text=arrayMarri[data.Married.toInt()]
             holder.txtsalaryR.text=arraySalary[data.Saraly_range.toInt()]
@@ -326,6 +328,7 @@ class LoanerHomeFragment : Fragment() {
             var brndelete:ImageButton= itemView.findViewById(R.id.imageButtondelete)
             var txtinstullment_max:TextView=itemView.findViewById(R.id.txtinstu)
             var txtnew:TextView=itemView.findViewById(R.id.txtnew)
+            var txtinterest:TextView=itemView.findViewById(R.id.txtinterestC)
 
 
         }

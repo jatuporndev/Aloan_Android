@@ -35,6 +35,7 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
     var txtInterest_penalty: TextView?=null
     var txtmoney_amount: TextView?=null
     var txtinstullment_amont: TextView?=null
+    var txttotal:TextView?=null
     var recyclerView: RecyclerView?=null
     var txttotalmoney: TextView?=null
     var btnpayment: Button?=null
@@ -65,6 +66,7 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
         txtmoney_amount=root.findViewById(R.id.txtmoney_amount)
         btnpayment=root.findViewById(R.id.btnpass)
         txthis=root.findViewById(R.id.txthis)
+        txttotal=root.findViewById(R.id.txtmoney_total1)
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -115,7 +117,7 @@ class LoanerMenuGetMoneyDetailFragment : Fragment() {
                         txtinstullment_amont?.text=data.getString("instullment_Amount")
                         txtInterest?.text=data.getString("Interest")
                         txtInterest_penalty?.text=data.getString("Interest_penalty")
-                        
+                        txttotal?.text="฿"+data.getString("total")
 
                         var url = getString(R.string.root_url) +
                                 getString(R.string.profileBorrower_image_url) + data.getString("imageProfile")

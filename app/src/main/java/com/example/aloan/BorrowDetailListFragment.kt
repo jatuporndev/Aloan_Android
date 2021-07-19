@@ -60,6 +60,7 @@ class BorrowDetailListFragment : Fragment() {
     var Interest:String?=""
     var Interest_penalty:String?=""
     var instullment_max:String?=""
+    var interestCri:String?=null
 
     var backlist:String?=null
     var borrowelistID:String?=null
@@ -289,7 +290,8 @@ class BorrowDetailListFragment : Fragment() {
                                     item.getString("money_max"),
                                     item.getString("borrowlistID"),
                                     item.getString("instullment_max"),
-                                    item.getString("edit")
+                                    item.getString("edit"),
+                                    item.getString("interest")
 
                             )
                             )
@@ -318,7 +320,8 @@ class BorrowDetailListFragment : Fragment() {
 
     internal class Data(
             var criterionID: String,var Age_range: String,var Saraly_range: String,var Married: String,
-            var money_max: String,var borrowlistID: String,var instullment_max: String,var edit:String
+            var money_max: String,var borrowlistID: String,var instullment_max: String,var edit:String,
+            var interest: String
 
     )
 
@@ -350,6 +353,7 @@ class BorrowDetailListFragment : Fragment() {
             holder.txtmoneyR.setTextColor(Color.parseColor("#FF000000"))
             holder.txtinstullment_max.text=data.instullment_max
             holder.txtnew.visibility=View.GONE
+                holder.txtinterest.text=data.interest+"%"
 
 
 
@@ -375,6 +379,7 @@ class BorrowDetailListFragment : Fragment() {
             var brndelete:ImageButton= itemView.findViewById(R.id.imageButtondelete)
             var txtinstullment_max:TextView=itemView.findViewById(R.id.txtinstu)
             var txtnew:TextView=itemView.findViewById(R.id.txtnew)
+            var txtinterest:TextView=itemView.findViewById(R.id.txtinterestC)
 
 
         }
@@ -473,7 +478,7 @@ class BorrowDetailListFragment : Fragment() {
         val formBody: RequestBody = FormBody.Builder()
                 .add("Money", editRequest?.text.toString())
                 .add("instullment", txtinstullment?.text.toString())
-                .add("Interest", Interest.toString())
+                .add("Interest", interestCri.toString())
                 .add("Interest_penalty", Interest_penalty.toString())
                 .add("BorrowerID", borrowerID!!)
                 .add("borrowlistID", BorrowelistID!!)
@@ -606,6 +611,7 @@ class BorrowDetailListFragment : Fragment() {
                         borrowerCriMoneyMax=data.getString("money_max")
                         criterionID=data.getString("criterionID")
                         borrowerCriIntu_Max=data.getString("instullment_max")
+                        interestCri=data.getString("interest")
 
                     }else{
                         borrowerCriMoneyMax=Int.MAX_VALUE.toString()

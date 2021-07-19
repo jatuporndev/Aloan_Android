@@ -26,6 +26,7 @@ class LoanerEditCriterionFragment : Fragment() {
     var txtmarri:TextView?=null
     var editinstullment_max:EditText?=null
     var editmoney_max:EditText?=null
+    var editinterest:EditText?=null
     var btncancel:Button?=null
     var btnback:ImageView?=null
     var btnupdate:Button?=null
@@ -55,6 +56,7 @@ class LoanerEditCriterionFragment : Fragment() {
         btnupdate=root.findViewById(R.id.btnconedit)
         btnback=root.findViewById(R.id.btnback)
         txtraw=root.findViewById(R.id.txtraw)
+        editinterest=root.findViewById(R.id.editinterestC)
 
         btnback?.setOnClickListener {
 
@@ -75,7 +77,13 @@ class LoanerEditCriterionFragment : Fragment() {
                 Toast.makeText(context, "จำนวนงวดสูงสุดหรือจำนวนเงินสุด ต้องไม่เกินค่าเริ่มต้น", Toast.LENGTH_LONG).show()
 
             }else{
+                if(editinterest?.text.toString().toFloat() > 15){
+                    Toast.makeText(context, "กำหนดดอกเบี้ยไม่เกิน 15%", Toast.LENGTH_LONG).show()
+                }else{
+
+
                 update(bundle?.get("criterionID").toString())
+                }
             }
 
         }
@@ -134,6 +142,7 @@ class LoanerEditCriterionFragment : Fragment() {
                         txtmarri?.text=arrayMarri[data.getInt("Married")]
                         editmoney_max?.setText(data.getString("money_max"))
                         editinstullment_max?.setText(data.getString("instullment_max"))
+                        editinterest?.setText(data.getString("interest"))
 
 
                     }
@@ -157,6 +166,7 @@ class LoanerEditCriterionFragment : Fragment() {
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("money_max", editmoney_max?.text.toString())
                 .addFormDataPart("instullment_max", editinstullment_max?.text.toString())
+                .addFormDataPart("interest", editinterest?.text.toString())
                 .build()
         request= Request.Builder()
                 .url(url)

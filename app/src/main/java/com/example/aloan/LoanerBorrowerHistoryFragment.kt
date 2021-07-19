@@ -71,7 +71,9 @@ class LoanerBorrowerHistoryFragment : Fragment() {
                                 item.getString("Principle"),
                                 item.getString("instullment_total"),
                                 item.getString("date_start"),
-                                item.getString("Status")
+                                item.getString("Status"),
+                                item.getString("remain"),
+                                item.getString("instullment_Amount")
 
                             )
                             )
@@ -95,7 +97,7 @@ class LoanerBorrowerHistoryFragment : Fragment() {
     }
     internal class Data(
         var firstname: String,var lastname: String,var Principle: String,var instullment_total: String
-        ,var date_start: String,var Status: String
+        ,var date_start: String,var Status: String,var remain:String,var 	instullment_Amount:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -118,6 +120,8 @@ class LoanerBorrowerHistoryFragment : Fragment() {
             holder.money.text="฿"+data.Principle
             holder.txtinstall.text=data.instullment_total
             holder.txtdate.text=data.date_start
+            holder.txtinstall_amount.text=data.instullment_Amount
+            holder.txtremain.text="฿"+data.remain
 
             if(data.Status=="0"){
                 holder.txtstatus.text="อยู่ระหว่างชำระ"
@@ -140,6 +144,8 @@ class LoanerBorrowerHistoryFragment : Fragment() {
             var txtinstall : TextView = itemView.findViewById(R.id.txtinthis)
             var txtdate:TextView=itemView.findViewById(R.id.txtdatestarthis)
             var txtstatus: TextView =itemView.findViewById(R.id.txtstatus1)
+            var txtremain:TextView=itemView.findViewById(R.id.txtmoneyhis2)
+            var txtinstall_amount:TextView=itemView.findViewById(R.id.txtmoneyhis3)
 
 
         }

@@ -130,8 +130,8 @@ class BorrowerHistoryBillFragment : Fragment() {
             if(data.status=="2"){
                 holder.txtstatus.text="ยกเลิกแล้ว"
                 holder.txtstatus.setTextColor(Color.parseColor("#FF0000"));
-                holder.con.isEnabled=false
-                holder.arrow.visibility=View.INVISIBLE
+
+
             }
 
             holder.con.setOnClickListener {

@@ -35,6 +35,7 @@ class LoanerBillDetailFragment : Fragment() {
     var btncancle:TextView?=null
     var txtmoneyfire:TextView?=null
     var checkBox:CheckBox?=null
+    var textView:TextView?=null
     var borrowDetailID = ""
     var historyDetailID = ""
     var or :TextView?=null
@@ -58,6 +59,7 @@ class LoanerBillDetailFragment : Fragment() {
         txtmoneyfire=root.findViewById(R.id.txtmoneyfire)
         checkBox=root.findViewById(R.id.checkBox7)
         or=root.findViewById(R.id.textView116)
+        textView=root.findViewById(R.id.textView109)
 
         btnconfrim?.isEnabled=false
         btncancle?.isEnabled=false
@@ -148,6 +150,13 @@ class LoanerBillDetailFragment : Fragment() {
                             btnconfrim?.visibility=View.GONE
                             btncancle?.visibility=View.GONE
                             checkBox?.visibility=View.GONE
+                        }
+                        if(data.getString("status") =="2"){
+                            or?.visibility=View.GONE
+                            btnconfrim?.visibility=View.GONE
+                            btncancle?.visibility=View.GONE
+                            checkBox?.visibility=View.GONE
+                            textView?.visibility=View.GONE
                         }
 
 

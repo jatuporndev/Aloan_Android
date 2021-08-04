@@ -86,8 +86,8 @@ class BorrowerMenuPayingFragment : Fragment() {
                                     item.getString("imageProfile"),
                                     item.getString("firstname"),
                                     item.getString("lastname"),
-                                    item.getString("perints")
-
+                                    item.getString("perints"),
+                                    item.getString("settlement_date")
 
 
 
@@ -113,7 +113,8 @@ class BorrowerMenuPayingFragment : Fragment() {
     }
     internal class Data(
             var BorrowDetailID: String,var date_start: String,var Update_date: String,var Principle: String
-            ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String,var perints:String
+            ,var remain: String,var instullment_total: String,var imageProfile:String,var firstname:String,var lastname:String,var perints:String,
+            var settlement_date: String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -142,7 +143,7 @@ class BorrowerMenuPayingFragment : Fragment() {
             holder.money.text=data.Principle
             holder.txtinstall.text=data.instullment_total
             holder.txtdate.text=data.date_start
-            holder.txtdatenext.text=nextday(data.BorrowDetailID)
+            holder.txtdatenext.text=data.settlement_date
             holder.moneyper.text="฿"+data.perints
 
             holder.btncheck.setOnClickListener {

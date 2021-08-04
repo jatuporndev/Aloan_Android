@@ -2,6 +2,7 @@ package com.example.aloan
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -67,7 +68,8 @@ class BorrowerArticleFragment : Fragment() {
                                 item.getString("title"),
                                 item.getString("detail"),
                                 item.getString("view"),
-                                item.getString("image_article")
+                                    item.getString("image_article"),
+                                    item.getString("dateCreate")
 
 
 
@@ -93,7 +95,7 @@ class BorrowerArticleFragment : Fragment() {
     }
     internal class Data(
         var ArticleID: String,var title: String,var detail: String,var view: String,
-        var image_article: String
+        var image_article: String,var txtdate:String
 
     )
     internal inner class DataAdapter(private val list: List<Data>) :
@@ -117,7 +119,8 @@ class BorrowerArticleFragment : Fragment() {
             Picasso.get().load(url).into(holder.image_article)
             holder.txttitle.text=data.title
             holder.txtview.text=data.view
-            holder.txtdetail.text=data.detail.take(20)+"..."
+            holder.txtdetail.text= Html.fromHtml(data.detail).toString().take(20)+"..."
+            holder.txtdatear.text=data.txtdate
 
             holder.constraintLayout?.setOnClickListener {
                 val bundle = Bundle()
@@ -144,7 +147,7 @@ class BorrowerArticleFragment : Fragment() {
             var txtview: TextView = itemView.findViewById(R.id.txtview)
             var txtdetail : TextView=itemView.findViewById(R.id.textView132)
             var constraintLayout: ConstraintLayout=itemView.findViewById(R.id.constraintlayout)
-
+            var txtdatear:TextView=itemView.findViewById(R.id.txtdatear)
 
 
         }

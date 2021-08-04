@@ -43,6 +43,7 @@ class LoanerHomeFragment : Fragment() {
     var sc: NestedScrollView?=null
 
     var moneyMax:String?=null
+    var interestMax:String?=null
     var instullmentMax:String?=null
 
     var index = -1
@@ -81,6 +82,7 @@ class LoanerHomeFragment : Fragment() {
 
         btnedit?.setOnClickListener {
             val bundle = Bundle()
+            bundle.putString("interestMax", interestMax)
             val fm = LoanerBorrowlistEditFragment()
             fm.arguments = bundle;
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -130,6 +132,7 @@ class LoanerHomeFragment : Fragment() {
                         moneyMax=data.getString("money_max")
                          txtmoneyMin?.text = data.getString("money_min")+"฿"
                         txtinterest?.text = data.getString("interest")+"%"
+                        interestMax=data.getString("interest")
                         txtinterest_penalty?.text = data.getString("Interest_penalty")+"%"
                         var status = data.getString("status")
                         var name =data.getString("firstname")
@@ -293,6 +296,7 @@ class LoanerHomeFragment : Fragment() {
 
                 bundle.putString("instullmentMax", instullmentMax)
                 bundle.putString("moneyMax", moneyMax)
+                bundle.putString("interest", interestMax)
 
 
                 val fm = LoanerEditCriterionFragment()

@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -66,6 +67,7 @@ class BorrowerMenuUnpassFragment : Fragment() {
     private fun showlist() {
         val data = ArrayList<Data>()
         val url: String = getString(R.string.root_url) + getString(R.string.viewunpass_url)+"?BorrowerID="+borrowerID
+        Log.d("testt",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(url).get().build()
         try {

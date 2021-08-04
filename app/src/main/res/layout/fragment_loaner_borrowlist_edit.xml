@@ -103,12 +103,12 @@
 
         <TextView
             android:id="@+id/textView33"
-            android:layout_width="103dp"
-            android:layout_height="51dp"
+            android:layout_width="107dp"
+            android:layout_height="56dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="ดอกเบี้ยค่าปรับ(ไม่เกิน11%)"
+            android:text="ดอกเบี้ยค่าปรับ(เพิ่มไม่เกิน 3% จากดอกเบี้ยปกติ)"
             app:layout_constraintEnd_toStartOf="@+id/editInterest_penalty"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

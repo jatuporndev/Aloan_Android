@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.squareup.picasso.Picasso
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
@@ -29,7 +30,7 @@ class LoanerMenuUnPassFragment : Fragment() {
     var recyclerView:RecyclerView?=null
     var back:ImageView?=null
     var loanerID:String?=null
-
+    var swip: SwipeRefreshLayout?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -40,7 +41,16 @@ class LoanerMenuUnPassFragment : Fragment() {
 
         recyclerView=root.findViewById(R.id.recyclerView)
         back=root.findViewById(R.id.imageviewback)
+        swip=root.findViewById(R.id.swipe_layout)
+        swip?.setColorSchemeResources(
+                R.color.maingree,
+                R.color.maingree,
+                R.color.maingree)
 
+        swip?.setOnRefreshListener {
+            showlist()
+            swip?.isRefreshing=false
+        }
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()

@@ -45,6 +45,7 @@ class  LoanerAccountFragment : Fragment() {
     var btneditbank:Button?=null//เมนู1
     var btneditprofile:Button?=null//เมนู2
     var btnhelp:Button?=null
+    var btndashborad:Button?=null
 
 
 
@@ -76,6 +77,14 @@ class  LoanerAccountFragment : Fragment() {
         btnsuccess=root.findViewById(R.id.menusuccess)
         btnunpass=root.findViewById(R.id.imageButtonUnpass)
         btnhelp=root.findViewById(R.id.btnhelp)
+        btndashborad=root.findViewById(R.id.btndashborad)
+
+        btndashborad?.setOnClickListener {
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerDashboradFragment())
+            fragmentTransaction.commit()
+        }
 
         btneditprofile?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()

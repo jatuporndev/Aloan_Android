@@ -2,6 +2,7 @@ package com.example.aloan
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.InputType
@@ -53,7 +54,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
 
     var comment:String?=null
     var borrowerID:String?=null
-
+    var loanerID:String?=null
 
 
     override fun onCreateView(
@@ -64,7 +65,9 @@ class LoanerMenuRequestDetailFragment : Fragment() {
         val root =inflater.inflate(R.layout.fragment_loaner_menu_request_detail, container, false)
         val bundle = this.arguments
         var requestID =bundle?.get("RequestID").toString()
-
+        val sharedPrefer = requireContext().getSharedPreferences(
+                LoginLoanerActivity().appPreference, Context.MODE_PRIVATE)
+        loanerID = sharedPrefer?.getString(LoginLoanerActivity().LoanerIdPreference, null)
 
         txtname =root.findViewById(R.id.txtnameB)
         txtemail=root.findViewById(R.id.txtemailB)
@@ -190,6 +193,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
                         txtBirthday?.text=data.getString("birthday")
                         txtage?.text=getAge(data.getString("birthday")).toString()
                         txtaddress?.text=data.getString("address")
+                        date?.text=data.getString("dateRe")
 
                         txtmoneyRequest?.text=data.getString("Money")
                         txtinstullmentRequest?.text=data.getString("instullment_request")
@@ -264,6 +268,7 @@ class LoanerMenuRequestDetailFragment : Fragment() {
         val formBody: RequestBody = FormBody.Builder()
                 .add("money_confirm", editmoneyRequest?.text.toString())
                 .add("instullment_confirm", editinstullmentRequest?.text.toString())
+                .add("loanerID", loanerID.toString())
                 .build()
         val request: Request = Request.Builder()
                 .url(url)
@@ -275,18 +280,24 @@ class LoanerMenuRequestDetailFragment : Fragment() {
                 try {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
-                        Toast.makeText(context, "สำเร็จ", Toast.LENGTH_LONG).show()
+                        if(data.getString("status")=="true"){
+                            Toast.makeText(context, "สำเร็จ", Toast.LENGTH_LONG).show()
 
-                        val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                        fragmentTransaction.addToBackStack(null)
-                        fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuReauestFragment())
-                        fragmentTransaction.commit()
+                            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                            fragmentTransaction.addToBackStack(null)
+                            fragmentTransaction.replace(R.id.nav_host_fragment, LoanerMenuReauestFragment())
+                            fragmentTransaction.commit()
+                        }else{
+                            Toast.makeText(context, "เกินจากจำนวนที่ตั้งไว้", Toast.LENGTH_LONG).show()
+                        }
+
                     }
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
             } else {
+               // Toast.makeText(context, "เกินจากจำนวนที่ตั้งไว้", Toast.LENGTH_LONG).show()
                 response.code
             }
         } catch (e: IOException) {

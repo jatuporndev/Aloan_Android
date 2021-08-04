@@ -45,6 +45,16 @@ class LoanerMenuGetMoneyFragment : Fragment() {
         recyclerView=root.findViewById(R.id.recyclerView)
         back=root.findViewById(R.id.imageviewback)
         swip=root.findViewById(R.id.swipe_layout)
+        swip?.setColorSchemeResources(
+                R.color.maingree,
+                R.color.maingree,
+                R.color.maingree)
+
+        swip?.setOnRefreshListener {
+            showlist()
+            swip?.isRefreshing=false
+        }
+
 
         back?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()

@@ -85,7 +85,7 @@ class BorrowerPaymentFragment : Fragment() {
 
        val updatehis = bundle?.getStringArrayList("arrayID")
 
-        totalmoney?.text=bundle?.get("moneytotal").toString()
+        totalmoney?.text=  String.format("%.2f", bundle?.get("moneytotal").toString().toFloat())
 
         btnconfirm?.setOnClickListener {
                 progressDialog = ProgressDialog(requireContext())

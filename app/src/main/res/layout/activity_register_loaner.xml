@@ -251,7 +251,7 @@
                 android:drawableLeft="@drawable/ic_baseline_credit_card_24_green"
                 android:ems="10"
                 android:hint="| หมายเลขหลังบัตรประชาชน"
-                android:inputType="phone"
+                android:inputType="textPersonName"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

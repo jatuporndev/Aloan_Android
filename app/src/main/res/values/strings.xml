@@ -57,6 +57,9 @@
     <string name="loaner_checkpayMenu_url">api/loaner/checkpayMenu/</string>
     <string name="loaner_ManuGetMoneydetail_url">api/ManuGetMoneydetail/</string>
     <string name="loaner_Bill_url">api/Bill/</string>
+    <string name="loaner_DashboradYM_url">api/DashboradYM/</string>
+    <string name="loaner_DashboradSum_url">api/DashboradSum/</string>
+    <string name="loaner_DashboradSumDetail_url">api/DashboradSumDetail/</string>
 
     <!--API Loaner process History-->
     <string name="loaner_billdetail_url">api/billDetail/</string>

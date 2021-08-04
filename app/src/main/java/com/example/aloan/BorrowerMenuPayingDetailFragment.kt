@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.internal.notify
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
+
 
 class BorrowerMenuPayingDetailFragment : Fragment() {
 
@@ -47,6 +50,13 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
     var monneytoRemain:Float= 0F
     var borrowDetailID:String?=null
     var loanerID:String=""
+    var checkfire:Boolean=true
+    var checkC:Boolean=false
+    var checkOne:Boolean=false
+    var intradayCheckboxsList= java.util.ArrayList<DataCheckbox>()
+
+    private var test= java.util.ArrayList<String>()
+
     private var IDhis = java.util.ArrayList<String>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -113,6 +123,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             }
         }
         txthis?.setOnClickListener {
+
             val bundle = Bundle()
             bundle.putString("BorrowDetailID", borrowDetailID)
             val fm = BorrowerHistoryBillFragment()
@@ -121,6 +132,9 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.replace(R.id.nav_host_fragment, fm)
             fragmentTransaction.commit()
+
+
+            Log.d("testt", "IDhis $IDhis base$monneytoRemain ")
         }
 
         var view:View = layoutInflater.inflate(R.layout.r_slip,null)
@@ -168,8 +182,8 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                         txtmoney_amount?.text="฿"+data.getString("remain")
                         txtinstullment_total?.text=data.getString("instullment_total")
                         txtinstullment_amont?.text=data.getString("instullment_Amount")
-                        txtInterest?.text=data.getString("Interest")
-                        txtInterest_penalty?.text=data.getString("Interest_penalty")
+                        txtInterest?.text=data.getString("Interest")+"%"
+                        txtInterest_penalty?.text=data.getString("Interest_penalty")+"%"
                         txtmoney_total?.text="฿"+data.getString("total")
                         loanerID=data.getString("LoanerID")
 
@@ -195,8 +209,12 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
         }
     }
 
-    private fun viewPaying(BorrowDetailID: String) {
 
+
+    private fun viewPaying(BorrowDetailID: String) {
+       // intradayCheckboxsList.clear()
+        checkfire=true
+        monneytotal=0f
         val data = ArrayList<Data>()
         val url: String = getString(R.string.root_url) + getString(R.string.ViewPaying_url)+BorrowDetailID
         val okHttpClient = OkHttpClient()
@@ -234,6 +252,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                         monneytotal= 0F
                         txttotalmoney?.text=monneytotal.toString()
 
+
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -251,6 +270,10 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             var interest_penalty_money:String
 
     )
+     class DataCheckbox(
+            var HistoryID: String ,var checkbox:CheckBox
+
+    )
 
     internal inner class DataAdapter(private val list: List<Data>) :
             RecyclerView.Adapter<DataAdapter.ViewHolder>() {
@@ -261,26 +284,45 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
 
             )
             return ViewHolder(view)
+
+            
         }
 
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
             val data = list[position]
+
+
             holder.data = data
             holder.txtid.text="รหัสใบแจ้งหนี้ "+data.HistoryID
             holder.txtdate.text=data.settlement_date
             holder.txtmoney.text="฿"+data.moneySet
             holder.txtfire.visibility=View.INVISIBLE
 
+
+
             if (data.dateset_status=="1"){
+
                 holder.txtfire.visibility=View.VISIBLE
                 holder.txtfire.text="+฿"+data.interest_penalty_money
                 holder.txterror.text="เลยวันกำหนด"
                 holder.txtdate.setTextColor(Color.parseColor("#FF0000"))
-                holder.checkBox.isChecked = true
-                holder.checkBox.isEnabled = false
+
+
+                    intradayCheckboxsList.add(DataCheckbox(data.HistoryID,holder.checkBox));
+
+
+                if (checkfire){
+
+                    holder.checkBox.isChecked = true
+                    holder.checkBox.isEnabled = false
+                    checkfire=false
+                }
+
+
             }
+
 
             if (data.dateset_status=="0") {
                 if (holder.checkBox.isChecked) {
@@ -289,15 +331,18 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                     IDhis.add(data.HistoryID)
                 }
             }
+
             if (data.dateset_status=="1") {
-                if (holder.checkBox.isChecked) {
+                if (holder.checkBox.isChecked ) {
                     monneytotal+=data.moneySet.toFloat()+data.interest_penalty_money.toFloat()
                     monneytoRemain += data.moneySet.toFloat()
                     IDhis.add(data.HistoryID)
+
                 }
             }
 
             holder.checkBox.setOnClickListener {
+                if (data.dateset_status=="0") {//check
 
                 if (holder.checkBox.isChecked) {
                     monneytotal += data.moneySet.toFloat()
@@ -309,9 +354,33 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
                     IDhis.remove(data.HistoryID)
                 }
                 txttotalmoney?.text=String.format("%.2f", monneytotal)
+
+                }
+
+                if(data.dateset_status=="1"){//check fire
+
+
+
+
+                    txttotalmoney?.text=String.format("%.2f", monneytotal)
+
+                    if(holder.checkBox.isChecked){
+                       holder.checkBoxOperation(holder.checkBox,data.moneySet,data.interest_penalty_money)
+
+
+                    }else if(!holder.checkBox.isChecked){
+                       holder.UncheckBoxOperation(holder.checkBox)
+                    }
+
+                }
+
+
+
             }
 
             txttotalmoney?.text=String.format("%.2f", monneytotal)
+
+
 
 
         }
@@ -321,6 +390,7 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
 
         internal inner class ViewHolder(itemView: View) :
                 RecyclerView.ViewHolder(itemView) {
+
             var data: Data? = null
             var txtdate: TextView = itemView.findViewById(R.id.txtdateset)
             var txtid: TextView = itemView.findViewById(R.id.txtid)
@@ -329,9 +399,58 @@ class BorrowerMenuPayingDetailFragment : Fragment() {
             var checkBox:CheckBox=itemView.findViewById(R.id.checkBox4)
             var txterror:TextView=itemView.findViewById(R.id.textView101)
 
+            fun checkBoxOperation(ck: CheckBox,moneySet:String,interest_penalty_money:String) {
+                //IDhis.clear()
+                monneytotal=0f
+                monneytoRemain=0f
+
+                var y=0
+                for (i in intradayCheckboxsList) {
+
+                    i.checkbox.isChecked = true
+                    i.checkbox.isEnabled=false
+                    ck.isEnabled=true
+                    monneytotal += moneySet.toFloat()+interest_penalty_money.toFloat()
+                    monneytoRemain += moneySet.toFloat()
+                    //Log.d("testt",intradayCheckboxsList[y].HistoryID)
+                    if(!IDhis.contains(i.HistoryID)){
+                        IDhis.add(i.HistoryID)
+                    }
+
+                    if(i.checkbox ==ck){
+                        break;
+                    }
+                    y++
+                }
+                txttotalmoney?.text=String.format("%.2f", monneytotal)
+
+
+               // notifyDataSetChanged();
+                //viewPaying(borrowDetailID!!)
+                //notifyItemRangeChanged(0,intradayCheckboxsList.size)
+
+
+            }
+
+
+            fun UncheckBoxOperation(ck: CheckBox) {
+
+
+                intradayCheckboxsList.clear()
+                monneytotal=0f
+                monneytoRemain=0f
+                IDhis.clear()
+                checkfire = true
+
+                viewPaying(borrowDetailID!!)
+
+
+            }
+
 
 
         }
     }
+
 
 }

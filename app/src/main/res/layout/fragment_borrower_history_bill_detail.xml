@@ -113,12 +113,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="งวดที่ชำระ"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txttotalmoneyhis" />
+                app:layout_constraintTop_toBottomOf="@+id/txttotalmoneyhistotal" />
 
             <TextView
                 android:id="@+id/textView126"
@@ -149,9 +149,20 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
-                android:text="ยอดที่ชำระ"
+                android:text="ยอดชำระ"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView126" />
+
+            <TextView
+                android:id="@+id/textView144"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="ค่าปรับ"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView130" />
 
             <TextView
                 android:id="@+id/txttotalmoneyhis"
@@ -163,6 +174,39 @@
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtdatehis2" />
+
+            <TextView
+                android:id="@+id/txttotalmoneyhisfire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txttotalmoneyhis" />
+
+            <TextView
+                android:id="@+id/txttotalmoneyhistotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txttotalmoneyhisfire" />
+
+            <TextView
+                android:id="@+id/textView145"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="ยอดชำระรวม"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView144" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

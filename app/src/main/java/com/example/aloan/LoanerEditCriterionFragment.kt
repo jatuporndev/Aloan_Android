@@ -77,8 +77,8 @@ class LoanerEditCriterionFragment : Fragment() {
                 Toast.makeText(context, "จำนวนงวดสูงสุดหรือจำนวนเงินสุด ต้องไม่เกินค่าเริ่มต้น", Toast.LENGTH_LONG).show()
 
             }else{
-                if(editinterest?.text.toString().toFloat() > 15){
-                    Toast.makeText(context, "กำหนดดอกเบี้ยไม่เกิน 15%", Toast.LENGTH_LONG).show()
+                if(editinterest?.text.toString().toFloat() > bundle?.get("interest").toString().toFloat()){
+                    Toast.makeText(context, "กำหนดดอกเบี้ยไม่เกิน เกณฑ์ที่ตั้งไว้", Toast.LENGTH_LONG).show()
                 }else{
 
 

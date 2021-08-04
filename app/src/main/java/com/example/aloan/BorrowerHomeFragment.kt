@@ -2,6 +2,7 @@ package com.example.aloan
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -127,6 +128,7 @@ class BorrowerHomeFragment : Fragment() {
     private fun showlist() {
         val data = ArrayList<Data>()
         val url: String = getString(R.string.root_url) + getString(R.string.showlist_url)+"?money_max="+moneyU+"&interest="+interestU+"&search="+search
+        Log.d("testt",url)
         val okHttpClient = OkHttpClient()
         val request: Request = Request.Builder().url(url).get().build()
         try {

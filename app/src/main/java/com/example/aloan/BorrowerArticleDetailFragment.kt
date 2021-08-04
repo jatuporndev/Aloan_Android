@@ -21,6 +21,7 @@ class BorrowerArticleDetailFragment : Fragment() {
     var txtTitle:TextView?=null
     var txtdetail:TextView?=null
     var txtview:TextView?=null
+    var txtdate:TextView?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,7 @@ class BorrowerArticleDetailFragment : Fragment() {
         txtTitle=root.findViewById(R.id.txttitle)
         txtdetail=root.findViewById(R.id.txtdetail)
         txtview=root.findViewById(R.id.txtview)
+        txtdate=root.findViewById(R.id.txtdatearti)
 
         txtback?.setOnClickListener {
             val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -59,9 +61,12 @@ class BorrowerArticleDetailFragment : Fragment() {
                     val data = JSONObject(response.body!!.string())
                     if (data.length() > 0) {
                         ///////////////////////////
-                        txtdetail?.text=data.getString("detail")
+                        txtdetail?.text=data.getString("detail").replace("<.*?>".toRegex(), " ")
+
+
                         txtTitle?.text=data.getString("title")
                         txtview?.text=data.getString("view")
+                        txtdate?.text=data.getString("dateCreate")
                         var url = getString(R.string.root_url) +
                                 getString(R.string.article_image_url) + data.getString("image_article")
                         Picasso.get().load(url).into(imageArticle)

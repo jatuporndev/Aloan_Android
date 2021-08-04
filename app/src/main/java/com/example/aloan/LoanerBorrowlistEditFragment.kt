@@ -40,6 +40,7 @@ class LoanerBorrowlistEditFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val root= inflater.inflate(R.layout.fragment_loaner_borrowlist_edit, container, false)
+        val bundle =this.arguments
         val sharedPrefer = requireContext().getSharedPreferences(
             LoginLoanerActivity().appPreference, Context.MODE_PRIVATE)
         loanerID = sharedPrefer?.getString(LoginLoanerActivity().LoanerIdPreference, null)
@@ -51,9 +52,9 @@ class LoanerBorrowlistEditFragment : Fragment() {
         btncancel=root.findViewById(R.id.btncancel)
         txtname=root.findViewById(R.id.txtname)
         editinstu=root.findViewById(R.id.editintu)
-
+        Log.d(("testt"),bundle?.get("interestMax").toString())
         btnconedit?.setOnClickListener {
-            if(editinterest?.text.toString().toFloat()>15 || editInterest_penalty?.text.toString().toFloat()>11  ){
+            if(editinterest?.text.toString().toFloat()>15 || editInterest_penalty?.text.toString().toFloat()>(bundle?.get("interestMax").toString().toFloat()+3) ){
                 Toast.makeText(requireContext(), "ระบุดอกเบี้ยไม่เกินกฎหมายกำหนด", Toast.LENGTH_LONG).show()
             }else{
                 update()

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
@@ -28,6 +29,9 @@ class BorrowerHistoryBillDetailFragment : Fragment() {
     var imgbill:ImageView?=null
     var txtdate:TextView?=null
     var txtTotalmoney:TextView?=null
+    var txtlist:TextView?=null
+    var txtfire:TextView?=null
+    var txttotal:TextView?=null
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +44,9 @@ class BorrowerHistoryBillDetailFragment : Fragment() {
         back=root.findViewById(R.id.imageviewback)
         txtdate=root.findViewById(R.id.txtdatehis2)
         txtTotalmoney=root.findViewById(R.id.txttotalmoneyhis)
+        txtlist=root.findViewById(R.id.textView124)
+        txtfire=root.findViewById(R.id.txttotalmoneyhisfire)
+        txttotal=root.findViewById(R.id.txttotalmoneyhistotal)
 
         val Bundle=this.arguments
         var historyDetailID = Bundle?.get("historybillID").toString()
@@ -83,7 +90,13 @@ class BorrowerHistoryBillDetailFragment : Fragment() {
 
                         txtHistoryBillID?.text="รหัส "+data.getString("historyDetailID")
                         txtdate?.text=data.getString("datepaying")
-                        txtTotalmoney?.text="฿"+data.getString("money_total")
+                        txttotal?.text="฿"+data.getString("money_total")
+                        txtTotalmoney?.text=data.getString("money")
+                        txtfire?.text=data.getString("fire")
+
+                        if(data.getString("status")=="2"){
+                            txtlist?.isVisible=false
+                        }
                         //txtmoneyfire?.text="฿"+data.getString("fire")
 
 

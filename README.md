@@ -1,5 +1,6 @@
 โปรเจคจบ 
 เป็นแอพแพตฟอร์มสำหรับ ผู้กู้และผู้ให้กู้ ที่ผู้ให้กู้จะสามารถกำหนดวงเงินที่ต้องการ และผู้ให้กู้จะสามารถเลือกชำระได้ตามต้องการ
+เขียนด้วยภาษา kotlin และสร้างระบบหลังบ้านกับ API ด้วย php laravel https://github.com/Yoneya-ohm1221/aloan_laravel
 
 <p><h3>Ex.UIสำหรับผู้ให้กู้</h3></p>
 <a ><img src="https://cdn.discordapp.com/attachments/802932825887866904/892004828321042442/Screenshot_2021-09-27-18-06-49-86_95cdca098756c68a7c09e1eb124b0734.jpg" alt="HTML tutorial" style="height:800px;"></a>
